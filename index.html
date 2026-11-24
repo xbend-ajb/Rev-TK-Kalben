@@ -1044,6 +1044,7 @@
       border-radius: 14px;
       overflow: hidden;
       box-shadow: var(--clay-inset);
+      transition: aspect-ratio 0.2s ease;
     }
     .viewfinder-wrap.portrait-device {
       aspect-ratio: 3 / 4;
@@ -1329,7 +1330,7 @@
     }
 
     /* ========================================================================
-       9. RESPONSIVE MOBILE PRECISION
+       9. RESPONSIVE MOBILE PRECISION & ADAPTIVE LANDSCAPE CAMERA
        ======================================================================== */
     @media (max-width: 960px) {
       .main-grid { grid-template-columns: 1fr; }
@@ -1341,6 +1342,43 @@
       .camera-toolbar-grid,
       .cam-settings-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    /* Adaptasi Kamera Otomatis saat HP Miring (Landscape Mobile) */
+    @media (orientation: landscape) and (max-height: 540px) {
+      #cameraModal {
+        padding: 4px;
+      }
+      #cameraModal .modal-box {
+        max-height: 98dvh;
+        border-radius: 14px;
+      }
+      #cameraModal .modal-header {
+        padding: 7px 12px;
+      }
+      #cameraModal .modal-body {
+        padding: 8px 12px;
+      }
+      #cameraModal .camera-toolbar-grid {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        margin-bottom: 6px;
+        gap: 6px;
+      }
+      #cameraModal .camera-layout {
+        grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+      }
+      #cameraModal .viewfinder-wrap {
+        aspect-ratio: 4 / 3;
+        max-height: calc(98dvh - 150px);
+        width: auto;
+        margin: 0 auto;
+      }
+      #cameraModal .timemark-settings-panel {
+        max-height: calc(98dvh - 115px);
+        padding: 8px;
       }
     }
 
@@ -2005,7 +2043,7 @@
 </div>
 
 <!-- =========================================================
-     MODAL: KAMERA LIVE WEBRTC + TIMEMARK
+     MODAL: KAMERA LIVE WEBRTC + TIMEMARK + AUTO LANDSCAPE/PORTRAIT
      ========================================================= -->
 <div class="modal-backdrop" id="cameraModal">
   <div class="modal-box">
@@ -2049,7 +2087,7 @@
           </div>
 
           <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
-            <button type="button" class="clay-btn clay-btn-primary" style="padding:10px 20px; font-size:13px; flex:1 1 170px;" onclick="captureTimemarkPhoto()">
+            <button type="button" class="clay-btn clay-btn-primary" id="btnCaptureShutter" style="padding:10px 20px; font-size:13px; flex:1 1 170px;" onclick="captureTimemarkPhoto()">
               Jepret Foto 4:3
             </button>
             <button type="button" class="clay-btn" style="padding:10px 14px;" onclick="triggerNativeDeviceCamera()">
@@ -3931,24 +3969,76 @@
   });
 
   /* ==========================================================================
-     11. WEBRTC CAMERA + CANVAS 4:3 RENDERER (PROPORTIONAL CUSTOM LOGO)
+     11. WEBRTC CAMERA + ADAPTIVE LANDSCAPE/PORTRAIT + CANVAS RENDERER
      ========================================================================== */
+  function getDetectedOrientation() {
+    if (screen.orientation && screen.orientation.type) {
+      return screen.orientation.type.startsWith('landscape') ? 'landscape' : 'portrait';
+    }
+    if (window.matchMedia) {
+      return window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait';
+    }
+    return window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+  }
+
   function isDevicePortrait() {
     if (state.cameraOrientMode === 'portrait') return true;
     if (state.cameraOrientMode === 'landscape') return false;
-    return window.innerHeight > window.innerWidth;
+    return getDetectedOrientation() === 'portrait';
+  }
+
+  function updateOrientButtonLabel() {
+    const isPort = isDevicePortrait();
+    const labelMap = {
+      auto: isPort ? 'Auto (3:4)' : 'Auto (4:3)',
+      landscape: 'Kunci 4:3',
+      portrait: 'Kunci 3:4'
+    };
+    $setText('btnOrientMode', labelMap[state.cameraOrientMode] || 'Auto');
+    $setText('btnCaptureShutter', isPort ? 'Jepret Foto 3:4' : 'Jepret Foto 4:3');
   }
 
   function toggleCameraOrientationPreview() {
     const order = ['auto', 'landscape', 'portrait'];
     state.cameraOrientMode = order[(order.indexOf(state.cameraOrientMode) + 1) % order.length];
-    $setText('btnOrientMode', { auto: 'Auto', landscape: '4:3', portrait: '3:4' }[state.cameraOrientMode]);
     applyViewfinderAspect();
+    showToast(`Orientasi kamera: ${$id('btnOrientMode')?.textContent || state.cameraOrientMode}`);
   }
 
   function applyViewfinderAspect() {
     const wrap = $id('viewfinderWrap');
-    if (wrap) wrap.classList.toggle('portrait-device', isDevicePortrait());
+    const isPort = isDevicePortrait();
+    if (wrap) wrap.classList.toggle('portrait-device', isPort);
+    updateOrientButtonLabel();
+
+    if ($id('cameraModal')?.classList.contains('open')) {
+      const videoEl = $id('cameraVideo');
+      if (videoEl && videoEl.videoWidth && videoEl.videoHeight) {
+        const tag = isPort ? 'PORTRAIT 3:4' : 'LANDSCAPE 4:3';
+        $setText('webrtcResInfo', `${tag} • ${videoEl.videoWidth}×${videoEl.videoHeight}`);
+      }
+      updateLiveTimemark();
+    }
+  }
+
+  let _orientTimer = null;
+  function handleDeviceOrientationAdapt() {
+    clearTimeout(_orientTimer);
+    _orientTimer = setTimeout(async () => {
+      applyViewfinderAspect();
+
+      // Jika kamera sedang aktif & mode Auto, sesuaikan stream saat HP diputar Landscape/Portrait
+      if ($id('cameraModal')?.classList.contains('open') && state.cameraOrientMode === 'auto' && state.stream) {
+        const videoEl = $id('cameraVideo');
+        const isPort = isDevicePortrait();
+        if (videoEl && videoEl.videoWidth && videoEl.videoHeight) {
+          const streamIsPortrait = videoEl.videoHeight > videoEl.videoWidth;
+          if (streamIsPortrait !== isPort) {
+            await startWebRTCCameraStream();
+          }
+        }
+      }
+    }, 180);
   }
 
   function toggleCameraGrid() { $id('cameraGridLines')?.classList.toggle('active'); }
@@ -4011,10 +4101,17 @@
     const videoEl = $id('cameraVideo');
     if (!videoEl) return;
 
+    const isPort = isDevicePortrait();
+    const idealW = isPort ? 960 : 1280;
+    const idealH = isPort ? 1280 : 960;
+
     const constraintsList = state.selectedDeviceId
-      ? [{ video: { deviceId: { exact: state.selectedDeviceId } }, audio: false }]
+      ? [
+          { video: { deviceId: { exact: state.selectedDeviceId }, width: { ideal: idealW }, height: { ideal: idealH } }, audio: false },
+          { video: { deviceId: { exact: state.selectedDeviceId } }, audio: false }
+        ]
       : [
-          { video: { facingMode: { ideal: state.facingMode }, width: { ideal: 1280 }, height: { ideal: 960 } }, audio: false },
+          { video: { facingMode: { ideal: state.facingMode }, width: { ideal: idealW }, height: { ideal: idealH } }, audio: false },
           { video: { facingMode: state.facingMode }, audio: false },
           { video: true, audio: false }
         ];
@@ -4031,7 +4128,8 @@
         if (track) {
           const settings = track.getSettings();
           state.selectedDeviceId = settings.deviceId || state.selectedDeviceId;
-          $setText('webrtcResInfo', `LIVE • ${settings.width || 1280}×${settings.height || 960}`);
+          const tag = isDevicePortrait() ? 'PORTRAIT 3:4' : 'LANDSCAPE 4:3';
+          $setText('webrtcResInfo', `${tag} • ${settings.width || idealW}×${settings.height || idealH}`);
         }
         applyCameraZoom();
         return;
@@ -4304,13 +4402,14 @@
   async function captureTimemarkPhoto() {
     const video = $id('cameraVideo');
     if (!video || !video.srcObject) return showToast('Kamera belum aktif.');
+    const wasPortrait = isDevicePortrait();
     const dataUrl = await renderWithTimemark(video, true, getActivePreset().enable);
     if (!dataUrl) return showToast('Gagal memproses foto.');
     getActiveGroup().photos[state.activeSlot] = dataUrl;
     await persistSessions();
     renderAllUI();
     closeCameraModal();
-    showToast('Foto 4:3 tersimpan.');
+    showToast(wasPortrait ? 'Foto 3:4 Portrait tersimpan.' : 'Foto 4:3 Landscape tersimpan.');
   }
 
   function triggerUpload(slotKey) {
@@ -4339,7 +4438,7 @@
         getActiveGroup().photos[slotKey] = await renderWithTimemark(img, false, shouldStamp);
         await persistSessions();
         renderAllUI();
-        showToast('Foto 4:3 tersimpan.');
+        showToast('Foto berhasil tersimpan.');
       };
       img.src = e.target.result;
     };
@@ -4586,7 +4685,7 @@
     try {
       const data = {
         app: 'REV TK Pertiwi - Desa Kalibenda',
-        version: '13.1',
+        version: '13.2',
         exportedAt: new Date().toISOString(),
         kop: state.kop,
         camPresets: state.camPresets,
@@ -4647,7 +4746,7 @@
   }
 
   /* ==========================================================================
-     14. APPLICATION BOOTSTRAP + PUBLIC AUTO-LOAD
+     14. APPLICATION BOOTSTRAP + PUBLIC AUTO-LOAD + ADAPTIVE CAMERA ORIENTATION
      ========================================================================== */
   async function initApp() {
     try {
@@ -4662,6 +4761,7 @@
 
       $setVal('gasWebAppUrl', state.gasUrl);
       renderAllUI();
+      applyViewfinderAspect();
 
       // Auto-load otomatis menu publik saat dibuka
       if (!state.isAdmin && state.publicAutoLoad) {
@@ -4679,7 +4779,11 @@
       }, 1000);
 
       refreshGPS(true);
-      window.addEventListener('resize', applyViewfinderAspect);
+      window.addEventListener('resize', handleDeviceOrientationAdapt);
+      window.addEventListener('orientationchange', handleDeviceOrientationAdapt);
+      if (screen.orientation && screen.orientation.addEventListener) {
+        screen.orientation.addEventListener('change', handleDeviceOrientationAdapt);
+      }
       window.addEventListener('beforeunload', stopCameraStream);
 
       let lastCompassTick = 0;
