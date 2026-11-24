@@ -2840,42 +2840,28 @@
     return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
   }
 
-  function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes = PHOTO_MAX_BYTES) {
-    let low = 0.50;
-    let high = 0.98;
-    let bestDataUrl = canvas.toDataURL('image/jpeg', 0.90);
-    let bestBytes = estimateDataUrlBytes(bestDataUrl);
+function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes = PHOTO_MAX_BYTES) {
+    // Mulai dari kualitas 0.88 (umumnya langsung di kisaran 0.6 - 0.95 MB)
+    let dataUrl = canvas.toDataURL('image/jpeg', 0.88);
+    let bytes = estimateDataUrlBytes(dataUrl);
 
-    const maxDataUrl = canvas.toDataURL('image/jpeg', high);
-    const maxActualBytes = estimateDataUrlBytes(maxDataUrl);
-    if (maxActualBytes <= maxBytes) {
-      return { dataUrl: maxDataUrl, bytes: maxActualBytes };
-    }
-
-    bestDataUrl = canvas.toDataURL('image/jpeg', low);
-    bestBytes = estimateDataUrlBytes(bestDataUrl);
-
-    for (let i = 0; i < 7; i++) {
-      const mid = (low + high) / 2;
-      const candidate = canvas.toDataURL('image/jpeg', mid);
-      const size = estimateDataUrlBytes(candidate);
-
-      if (size > maxBytes) {
-        high = mid;
-      } else {
-        bestDataUrl = candidate;
-        bestBytes = size;
-        if (size >= minBytes) break;
-        low = mid;
+    if (bytes > maxBytes) {
+      dataUrl = canvas.toDataURL('image/jpeg', 0.72);
+      bytes = estimateDataUrlBytes(dataUrl);
+      if (bytes > maxBytes) {
+        dataUrl = canvas.toDataURL('image/jpeg', 0.55);
+        bytes = estimateDataUrlBytes(dataUrl);
+      }
+    } else if (bytes < minBytes) {
+      const highUrl = canvas.toDataURL('image/jpeg', 0.96);
+      const highBytes = estimateDataUrlBytes(highUrl);
+      if (highBytes <= maxBytes) {
+        dataUrl = highUrl;
+        bytes = highBytes;
       }
     }
 
-    if (bestBytes > maxBytes) {
-      bestDataUrl = canvas.toDataURL('image/jpeg', 0.42);
-      bestBytes = estimateDataUrlBytes(bestDataUrl);
-    }
-
-    return { dataUrl: bestDataUrl, bytes: bestBytes };
+    return { dataUrl, bytes };
   }
 
   function calcProportionalLogoSize(natW, natH, targetHeight) {
@@ -4620,8 +4606,8 @@
 
     const portraitMode = isVideo ? isDevicePortrait() : (srcH > srcW);
     const targetAspect = portraitMode ? (3 / 4) : (4 / 3);
-    const outW = portraitMode ? 1200 : 1600;
-    const outH = portraitMode ? 1600 : 1200;
+    const outW = portraitMode ? 960 : 1280;
+    const outH = portraitMode ? 1280 : 960;
 
     canvas.width = outW;
     canvas.height = outH;
@@ -4804,15 +4790,41 @@
 
   async function captureTimemarkPhoto() {
     const video = $id('cameraVideo');
-    if (!video || !video.srcObject) return showToast('Kamera belum aktif.');
-    const wasPortrait = isDevicePortrait();
-    const res = await renderWithTimemark(video, true, getActivePreset().enable);
-    if (!res || !res.dataUrl) return showToast('Gagal memproses foto.');
-    getActiveGroup().photos[state.activeSlot] = res.dataUrl;
-    await persistSessions();
-    renderAllUI();
-    closeCameraModal();
-    showToast(`Foto ${wasPortrait ? '3:4' : '4:3'} tersimpan (${formatBytesMB(res.bytes)}).`);
+    if (!video || !video.srcObject) {
+      return showToast('Kamera belum aktif. Coba tekan Putar atau Kamera HP.');
+    }
+
+    // Pastikan video sudah memiliki frame gambar yang valid
+    if (video.readyState < 2 || !video.videoWidth || !video.videoHeight) {
+      try { await video.play(); } catch (e) {}
+      if (!video.videoWidth) {
+        return showToast('Tunggu 1 detik hingga gambar kamera tampil penuh.');
+      }
+    }
+
+    const shutterBtns = document.querySelectorAll('#btnCaptureShutter, .floating-shutter-btn');
+    shutterBtns.forEach(b => { b.disabled = true; });
+    showToast('Memproses foto...');
+
+    try {
+      const wasPortrait = isDevicePortrait();
+      const res = await renderWithTimemark(video, true, getActivePreset().enable);
+      if (!res || !res.dataUrl || res.dataUrl.length < 100) {
+        throw new Error('Hasil kanvas kosong');
+      }
+
+      getActiveGroup().photos[state.activeSlot] = res.dataUrl;
+      await persistSessions();
+      renderAllUI();
+      closeCameraModal();
+      showToast(`Foto ${wasPortrait ? '3:4' : '4:3'} tersimpan (${formatBytesMB(res.bytes)}).`);
+    } catch (err) {
+      console.error('Capture error:', err);
+      showToast('Gagal memotret. Mengalihkan ke Kamera HP...');
+      setTimeout(() => triggerNativeDeviceCamera(), 600);
+    } finally {
+      shutterBtns.forEach(b => { b.disabled = false; });
+    }
   }
 
   function triggerUpload(slotKey) {
