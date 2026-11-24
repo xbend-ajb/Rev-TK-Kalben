@@ -286,7 +286,7 @@
       bottom: 3px;
       background: linear-gradient(145deg, #ffffff, #d5d9e2);
       border-radius: 50%;
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.28);
+      box-shadow: 1.5px 1.5px 4px rgba(0, 0, 0, 0.28);
       transition: 0.2s;
     }
     .clay-switch input:checked + .clay-slider { background: var(--accent-blue); }
@@ -314,7 +314,7 @@
     }
 
     /* ========================================================================
-       4. HEADER & PUBLIC DASHBOARD HERO (ZERO GAP BUG)
+       4. HEADER & PUBLIC DASHBOARD HERO
        ======================================================================== */
     .app-header {
       display: flex;
@@ -472,7 +472,7 @@
     }
 
     /* ========================================================================
-       5. SESSION BARS & PROGRESS BAR (FIXED FLEX HEIGHT ON MOBILE)
+       5. SESSION BARS & PROGRESS BAR
        ======================================================================== */
     .session-bar, .room-sub-bar {
       margin-bottom: 9px;
@@ -1446,7 +1446,6 @@
       .clay-card { padding: 10px; border-radius: 13px; }
       .clay-pill-input, .clay-select, .clay-textarea { font-size: 13.5px; padding: 7px 10px; }
 
-      /* Header rapi tanpa flex-basis vertikal */
       .app-header {
         flex-direction: column;
         align-items: stretch;
@@ -1483,7 +1482,6 @@
 
       .public-hero { gap: 8px; margin-bottom: 8px; }
 
-      /* Session & Room Bar: flex-basis auto agar tinggi pas dengan isi */
       .session-bar, .room-sub-bar {
         flex-direction: column;
         align-items: stretch;
@@ -1503,7 +1501,6 @@
       }
       .bar-action-group .clay-btn { width: 100%; padding: 7px 10px; font-size: 11.5px; }
 
-      /* Step / Progress Bar: flex-basis auto agar tidak melar tinggi */
       .step-bar {
         flex-direction: column;
         align-items: stretch;
@@ -2815,7 +2812,7 @@
   }
 
   /* ==========================================================================
-     5. UTILITIES, ADAPTIVE 0.8-1.0 MB IMAGE ENGINE & PROPORTIONAL LOGO
+     5. UTILITIES, FAST 0.8-1.0 MB IMAGE ENGINE & PROPORTIONAL LOGO
      ========================================================================== */
   function escapeHtml(str) {
     return String(str ?? '')
@@ -2840,8 +2837,7 @@
     return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
   }
 
-function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes = PHOTO_MAX_BYTES) {
-    // Mulai dari kualitas 0.88 (umumnya langsung di kisaran 0.6 - 0.95 MB)
+  function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes = PHOTO_MAX_BYTES) {
     let dataUrl = canvas.toDataURL('image/jpeg', 0.88);
     let bytes = estimateDataUrlBytes(dataUrl);
 
@@ -3233,13 +3229,17 @@ function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes 
     return state.camPresets[state.activePresetIndex];
   }
 
+  function getDefaultInlineLogoUri() {
+    return svgToDataUri(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#2563eb" stroke="#ffffff" stroke-width="5"/><text x="60" y="54" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="24" fill="#ffffff">TK</text><text x="60" y="78" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fde047">PERTIWI</text></svg>`
+    );
+  }
+
   function resolveEffectiveLogoSrc(preset) {
     if (preset.logoMode === 'none') return '';
     if (preset.logoMode === 'custom' && preset.customLogo) return preset.customLogo;
     if (state.kop && state.kop.logoKiri) return state.kop.logoKiri;
-    return svgToDataUri(
-      `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#2563eb" stroke="#ffffff" stroke-width="5"/><text x="60" y="54" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="24" fill="#ffffff">TK</text><text x="60" y="78" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#fde047">PERTIWI</text></svg>`
-    );
+    return getDefaultInlineLogoUri();
   }
 
   function applyActivePresetToControls() {
@@ -4355,7 +4355,7 @@ function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes 
   });
 
   /* ==========================================================================
-     11. WEBRTC CAMERA + FULLSCREEN LANDSCAPE + 0.8-1.0 MB CANVAS RENDERER
+     11. WEBRTC CAMERA + TAINT-SAFE LOGO LOADER + 0.8-1.0 MB RENDERER
      ========================================================================== */
   function getDetectedOrientation() {
     if (screen.orientation && screen.orientation.type) {
@@ -4487,8 +4487,8 @@ function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes 
     if (!videoEl) return;
 
     const isPort = isDevicePortrait();
-    const idealW = isPort ? 1200 : 1600;
-    const idealH = isPort ? 1600 : 1200;
+    const idealW = isPort ? 960 : 1280;
+    const idealH = isPort ? 1280 : 960;
 
     const constraintsList = state.selectedDeviceId
       ? [
@@ -4583,13 +4583,49 @@ function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes 
     closeModal('cameraModal');
   }
 
-  function loadImageAsync(src) {
-    return new Promise((resolve) => {
+  /**
+   * TAINT-SAFE IMAGE LOADER:
+   * Mencegah error "Tainted canvases may not be exported" saat logo berasal dari URL eksternal (Google Drive).
+   * Jika URL eksternal memblokir CORS, otomatis fallback ke logo vektor default yang aman untuk Canvas.
+   */
+  function loadTaintSafeCanvasImage(src) {
+    return new Promise(async (resolve) => {
       if (!src) return resolve(null);
-      const img = new Image();
-      img.onload = () => resolve(img);
-      img.onerror = () => resolve(null);
-      img.src = src;
+
+      // 1. Jika sudah Data URI lokal, langsung muat dengan aman
+      if (src.startsWith('data:')) {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => resolve(null);
+        img.src = src;
+        return;
+      }
+
+      // 2. Jika URL eksternal (https://...), coba ambil via fetch() atau crossOrigin="anonymous"
+      try {
+        const resp = await fetch(src, { mode: 'cors' });
+        if (resp.ok) {
+          const blob = await resp.blob();
+          const objUrl = URL.createObjectURL(blob);
+          const img = new Image();
+          img.onload = () => {
+            URL.revokeObjectURL(objUrl);
+            resolve(img);
+          };
+          img.onerror = () => {
+            URL.revokeObjectURL(objUrl);
+            resolve(null);
+          };
+          img.src = objUrl;
+          return;
+        }
+      } catch (e) {}
+
+      // 3. Fallback ke logo default inline (aman dari Tainted Canvas)
+      const fallbackImg = new Image();
+      fallbackImg.onload = () => resolve(fallbackImg);
+      fallbackImg.onerror = () => resolve(null);
+      fallbackImg.src = getDefaultInlineLogoUri();
     });
   }
 
@@ -4601,8 +4637,8 @@ function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes 
     const g = getActiveGroup();
     const p = getActivePreset();
 
-    const srcW = isVideo ? (sourceElement.videoWidth || 1600) : (sourceElement.naturalWidth || 1600);
-    const srcH = isVideo ? (sourceElement.videoHeight || 1200) : (sourceElement.naturalHeight || 1200);
+    const srcW = isVideo ? (sourceElement.videoWidth || 1280) : (sourceElement.naturalWidth || 1280);
+    const srcH = isVideo ? (sourceElement.videoHeight || 960) : (sourceElement.naturalHeight || 960);
 
     const portraitMode = isVideo ? isDevicePortrait() : (srcH > srcW);
     const targetAspect = portraitMode ? (3 / 4) : (4 / 3);
@@ -4637,7 +4673,7 @@ function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes 
     const maxCardRatio = (Number(p.cardWidth) || 92) / 100;
 
     const logoSrc = resolveEffectiveLogoSrc(p);
-    const logoImg = (p.enabledBlocks.header !== false && logoSrc) ? await loadImageAsync(logoSrc) : null;
+    const logoImg = (p.enabledBlocks.header !== false && logoSrc) ? await loadTaintSafeCanvasImage(logoSrc) : null;
     const logoBaseH = (Number(p.logoSize) || 44) * scale * 1.45;
     const logoDims = logoImg
       ? calcProportionalLogoSize(logoImg.naturalWidth || logoImg.width, logoImg.naturalHeight || logoImg.height, logoBaseH)
@@ -4794,7 +4830,6 @@ function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes 
       return showToast('Kamera belum aktif. Coba tekan Putar atau Kamera HP.');
     }
 
-    // Pastikan video sudah memiliki frame gambar yang valid
     if (video.readyState < 2 || !video.videoWidth || !video.videoHeight) {
       try { await video.play(); } catch (e) {}
       if (!video.videoWidth) {
@@ -4821,7 +4856,7 @@ function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes 
     } catch (err) {
       console.error('Capture error:', err);
       showToast('Gagal memotret. Mengalihkan ke Kamera HP...');
-      setTimeout(() => triggerNativeDeviceCamera(), 600);
+      setTimeout(() => triggerNativeDeviceCamera(), 500);
     } finally {
       shutterBtns.forEach(b => { b.disabled = false; });
     }
@@ -5109,7 +5144,7 @@ function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes 
     try {
       const data = {
         app: 'REV TK Pertiwi - Desa Kalibenda',
-        version: '16.1',
+        version: '16.2',
         exportedAt: new Date().toISOString(),
         kop: state.kop,
         camPresets: state.camPresets,
