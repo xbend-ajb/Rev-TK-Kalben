@@ -10,7 +10,7 @@
 
   <style>
     /* ========================================================================
-       1. DESIGN TOKENS — COMPACT CLAYMORPHISM (LIGHT & DARK)
+       1. DESIGN TOKENS — BALANCED COMPACT CLAYMORPHISM (LIGHT & DARK)
        ======================================================================== */
     :root, [data-theme="light"] {
       --bg-canvas: #e8ebf1;
@@ -31,8 +31,8 @@
       --divider-color: rgba(148, 163, 184, 0.28);
 
       --clay-card:
-        3.5px 3.5px 9px rgba(148, 158, 178, 0.36),
-        -3.5px -3.5px 9px rgba(255, 255, 255, 0.9),
+        4px 4px 10px rgba(148, 158, 178, 0.36),
+        -4px -4px 10px rgba(255, 255, 255, 0.9),
         inset 1px 1px 1px rgba(255, 255, 255, 0.92);
 
       --clay-btn:
@@ -87,7 +87,7 @@
     }
 
     /* ========================================================================
-       2. GLOBAL RESET & ULTRA-COMPACT BASE TYPOGRAPHY
+       2. GLOBAL RESET & BALANCED TYPOGRAPHY
        ======================================================================== */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -109,9 +109,9 @@
       min-height: 100dvh;
       display: flex;
       flex-direction: column;
-      padding: 6px 6px 12px;
-      line-height: 1.38;
-      font-size: 12.5px;
+      padding: 10px 10px 16px;
+      line-height: 1.42;
+      font-size: 13px;
       transition: background-color 0.2s ease, color 0.2s ease;
     }
 
@@ -129,8 +129,8 @@
     }
 
     svg.icon {
-      width: 13px;
-      height: 13px;
+      width: 14px;
+      height: 14px;
       flex-shrink: 0;
       stroke: currentColor;
       fill: none;
@@ -140,16 +140,16 @@
     }
 
     /* ========================================================================
-       3. COMPACT CLAY UI PRIMITIVES
+       3. CLAY UI PRIMITIVES (COMPACT & NYAMAN DIBACA)
        ======================================================================== */
     .clay-card {
       width: 100%;
       min-width: 0;
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
-      border-radius: 12px;
+      border-radius: 14px;
       box-shadow: var(--clay-card);
       border: 1px solid var(--border-light);
-      padding: 8px 9px;
+      padding: 11px 12px;
     }
 
     .clay-pill-input, .clay-select, .clay-textarea {
@@ -158,10 +158,10 @@
       min-width: 0;
       background: var(--surface-inset);
       border: 1.5px solid transparent;
-      border-radius: 8px;
-      padding: 5.5px 9px;
+      border-radius: 10px;
+      padding: 7px 11px;
       font-family: inherit;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       color: var(--text-primary);
       box-shadow: var(--clay-inset);
@@ -171,20 +171,20 @@
 
     .clay-pill-input:focus, .clay-select:focus, .clay-textarea:focus {
       border-color: var(--accent-blue);
-      box-shadow: var(--clay-inset), 0 0 0 2px var(--accent-blue-soft);
+      box-shadow: var(--clay-inset), 0 0 0 2.5px var(--accent-blue-soft);
     }
 
     .clay-textarea {
       resize: vertical;
-      min-height: 42px;
+      min-height: 48px;
     }
 
     .clay-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 4px;
-      padding: 5px 9px;
+      gap: 5px;
+      padding: 6.5px 11px;
       border-radius: 999px;
       border: 1px solid var(--border-light);
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
@@ -192,11 +192,11 @@
       color: var(--text-primary);
       font-family: inherit;
       font-weight: 700;
-      font-size: 11px;
+      font-size: 11.5px;
       cursor: pointer;
       user-select: none;
       text-align: center;
-      line-height: 1.15;
+      line-height: 1.2;
       min-width: 0;
       white-space: nowrap;
       touch-action: manipulation;
@@ -211,8 +211,8 @@
     .clay-btn:disabled { opacity: 0.48; cursor: not-allowed; }
 
     .clay-icon-btn {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       padding: 0;
       border-radius: 50%;
       flex-shrink: 0;
@@ -247,9 +247,9 @@
     .clay-link-btn {
       background: none;
       border: none;
-      padding: 1px 3px;
+      padding: 2px 4px;
       font-family: inherit;
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 800;
       color: var(--accent-blue);
       cursor: pointer;
@@ -263,8 +263,8 @@
     .clay-switch {
       position: relative;
       display: inline-block;
-      width: 36px;
-      height: 19px;
+      width: 38px;
+      height: 20px;
       flex-shrink: 0;
     }
     .clay-switch input { opacity: 0; width: 0; height: 0; }
@@ -280,8 +280,8 @@
     .clay-slider::before {
       content: "";
       position: absolute;
-      height: 13px;
-      width: 13px;
+      height: 14px;
+      width: 14px;
       left: 3px;
       bottom: 3px;
       background: linear-gradient(145deg, #ffffff, #d5d9e2);
@@ -290,13 +290,13 @@
       transition: 0.2s;
     }
     .clay-switch input:checked + .clay-slider { background: var(--accent-blue); }
-    .clay-switch input:checked + .clay-slider::before { transform: translateX(17px); }
+    .clay-switch input:checked + .clay-slider::before { transform: translateX(18px); }
 
     input[type="range"].clay-range {
       -webkit-appearance: none;
       appearance: none;
       width: 100%;
-      height: 6px;
+      height: 7px;
       border-radius: 999px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
@@ -304,8 +304,8 @@
     }
     input[type="range"].clay-range::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: linear-gradient(145deg, #ffffff, #dce0e8);
       box-shadow: 1.5px 1.5px 4px rgba(0, 0, 0, 0.32);
@@ -314,17 +314,17 @@
     }
 
     /* ========================================================================
-       4. RAPID-COMPACT HEADER & PUBLIC DASHBOARD HERO
+       4. HEADER & PUBLIC DASHBOARD HERO (ZERO GAP BUG)
        ======================================================================== */
     .app-header {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 6px;
-      margin-bottom: 6px;
-      padding: 6px 9px;
-      border-radius: 12px;
+      gap: 10px;
+      margin-bottom: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
       box-shadow: var(--clay-card);
       border: 1px solid var(--border-light);
@@ -334,15 +334,15 @@
     .brand-box {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 9px;
       min-width: 0;
-      flex: 1 1 190px;
+      flex: 1 1 auto;
     }
 
     .brand-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
       border: 1px solid var(--border-light);
@@ -352,31 +352,31 @@
       color: var(--accent-blue);
       flex-shrink: 0;
       overflow: hidden;
-      padding: 2.5px;
+      padding: 3px;
     }
     .brand-icon img { width: 100%; height: 100%; object-fit: contain; }
 
     .brand-title { min-width: 0; }
     .brand-title h1 {
-      font-size: 14px;
+      font-size: 15.5px;
       font-weight: 800;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       flex-wrap: wrap;
-      line-height: 1.15;
+      line-height: 1.2;
     }
     .brand-title p {
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--text-secondary);
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
     .role-badge {
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 800;
-      padding: 1.5px 6px;
+      padding: 2px 7px;
       border-radius: 999px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
@@ -393,7 +393,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       min-width: 0;
     }
 
@@ -406,28 +406,28 @@
     body.is-admin .admin-only-inline { display: inline-flex !important; }
 
     .public-hero {
-      margin-bottom: 7px;
+      margin-bottom: 10px;
       display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-      gap: 8px;
+      grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+      gap: 10px;
       align-items: center;
     }
 
     .hero-top-meta {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       flex-wrap: wrap;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
 
     .cloud-sync-pill {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      padding: 1.5px 7px;
+      padding: 2px 8px;
       border-radius: 999px;
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 700;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
@@ -436,8 +436,8 @@
     .cloud-sync-pill.syncing { color: var(--accent-blue); }
     .cloud-sync-pill.synced { color: var(--accent-green); background: var(--accent-green-soft); box-shadow: none; }
     .cloud-sync-dot {
-      width: 5px;
-      height: 5px;
+      width: 5.5px;
+      height: 5.5px;
       border-radius: 50%;
       background: currentColor;
     }
@@ -446,56 +446,55 @@
     .stat-pills-row {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 5px;
+      gap: 7px;
       min-width: 0;
     }
 
     .stat-clay-box {
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
-      border-radius: 9px;
-      padding: 5px 4px;
+      border-radius: 10px;
+      padding: 7px 5px;
       text-align: center;
       min-width: 0;
     }
     .stat-clay-box .val {
-      font-size: 14.5px;
+      font-size: 16px;
       font-weight: 800;
       color: var(--accent-blue);
-      line-height: 1.1;
+      line-height: 1.15;
     }
     .stat-clay-box .lbl {
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 700;
       color: var(--text-secondary);
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
     /* ========================================================================
-       5. COMPACT SESSION BARS & CRUD WORKSPACE
+       5. SESSION BARS & PROGRESS BAR (FIXED FLEX HEIGHT ON MOBILE)
        ======================================================================== */
     .session-bar, .room-sub-bar {
-      margin-bottom: 6px;
-      padding: 5px 8px;
+      margin-bottom: 9px;
+      padding: 8px 11px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 5px;
+      gap: 8px;
     }
     .room-sub-bar {
       border-left: 3px solid var(--accent-blue);
-      margin-bottom: 6px;
     }
 
     .session-pills-scroll {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       padding: 2px 1px;
-      flex: 1 1 180px;
+      flex: 1 1 auto;
       min-width: 0;
       max-width: 100%;
       scrollbar-width: thin;
@@ -510,14 +509,14 @@
     .session-pill {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      padding: 4px 8px;
+      gap: 5px;
+      padding: 5.5px 10px;
       border-radius: 999px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
       color: var(--text-secondary);
       font-family: inherit;
-      font-size: 10.5px;
+      font-size: 11.5px;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
@@ -534,15 +533,15 @@
     .session-dot-count {
       background: var(--accent-blue-soft);
       color: var(--accent-blue);
-      padding: 1px 5px;
+      padding: 1.5px 6px;
       border-radius: 999px;
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 800;
     }
 
     .bar-action-group {
       display: flex;
-      gap: 4px;
+      gap: 6px;
       flex-shrink: 0;
       flex-wrap: wrap;
     }
@@ -551,16 +550,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 7px;
-      padding: 6px 9px;
+      gap: 10px;
+      margin-bottom: 10px;
+      padding: 9px 11px;
       flex-wrap: wrap;
     }
 
     .progress-track {
-      flex: 1 1 90px;
-      min-width: 70px;
-      height: 7px;
+      flex: 1 1 auto;
+      min-width: 90px;
+      height: 8px;
       background: var(--surface-inset);
       border-radius: 999px;
       box-shadow: var(--clay-inset);
@@ -577,53 +576,53 @@
 
     .main-grid {
       display: grid;
-      grid-template-columns: minmax(0, 290px) minmax(0, 1fr);
-      gap: 9px;
+      grid-template-columns: minmax(0, 305px) minmax(0, 1fr);
+      gap: 11px;
       align-items: start;
     }
 
     .two-col-inputs {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 5px;
+      gap: 7px;
       min-width: 0;
     }
 
     .section-label {
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: var(--text-secondary);
-      margin-bottom: 3px;
+      margin-bottom: 4px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 5px;
+      gap: 6px;
     }
 
-    .form-group { margin-bottom: 6px; min-width: 0; }
+    .form-group { margin-bottom: 8px; min-width: 0; }
 
     /* ========================================================================
-       6. 4-SLOT GALLERY & ARCHIVE ALBUMS (COMPACT + SIZE BADGE + ZOOM)
+       6. 4-SLOT GALLERY & ARCHIVE ALBUMS
        ======================================================================== */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 7px;
+      gap: 9px;
       min-width: 0;
     }
 
     .slot-card {
       min-width: 0;
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
-      border-radius: 11px;
-      padding: 6px;
+      border-radius: 13px;
+      padding: 8px;
       box-shadow: var(--clay-card);
       border: 1px solid var(--border-light);
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
     }
 
     .slot-header {
@@ -635,20 +634,20 @@
     .slot-badge {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
       font-weight: 800;
-      font-size: 10.5px;
+      font-size: 11px;
     }
     .slot-num {
-      width: 17px;
-      height: 17px;
-      border-radius: 5px;
+      width: 19px;
+      height: 19px;
+      border-radius: 6px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 800;
       color: var(--accent-blue);
     }
@@ -657,7 +656,7 @@
       position: relative;
       width: 100%;
       aspect-ratio: 4 / 3;
-      border-radius: 8px;
+      border-radius: 9px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
       overflow: hidden;
@@ -681,13 +680,13 @@
     .slot-preview.has-image .slot-placeholder { display: none; }
     .slot-zoom-chip {
       position: absolute;
-      bottom: 4px;
-      right: 4px;
+      bottom: 5px;
+      right: 5px;
       background: rgba(15, 23, 42, 0.76);
       color: #fff;
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 700;
-      padding: 2px 6px;
+      padding: 2px 7px;
       border-radius: 999px;
       display: none;
       align-items: center;
@@ -698,35 +697,35 @@
     .slot-placeholder {
       text-align: center;
       color: var(--text-muted);
-      padding: 6px;
+      padding: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3px;
+      gap: 4px;
     }
 
     .slot-controls {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
-      gap: 4px;
+      gap: 5px;
     }
-    .slot-controls .clay-btn { padding: 5px 6px; font-size: 10.5px; }
+    .slot-controls .clay-btn { padding: 6px 7px; font-size: 11px; }
 
-    .archive-section { margin-top: 9px; min-width: 0; }
-    .day-archive-block { margin-top: 7px; padding: 8px; }
+    .archive-section { margin-top: 12px; min-width: 0; }
+    .day-archive-block { margin-top: 9px; padding: 10px; }
     .archive-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
-      gap: 7px;
-      margin-top: 7px;
+      grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+      gap: 9px;
+      margin-top: 9px;
       min-width: 0;
     }
 
     .album-card {
       min-width: 0;
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
-      border-radius: 11px;
-      padding: 7px;
+      border-radius: 13px;
+      padding: 8px;
       box-shadow: var(--clay-card);
       border: 1.5px solid var(--border-light);
     }
@@ -734,26 +733,26 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 3px;
+      gap: 3.5px;
       aspect-ratio: 4 / 3;
-      border-radius: 7px;
+      border-radius: 8px;
       overflow: hidden;
       background: var(--surface-inset);
-      padding: 3px;
+      padding: 3.5px;
       box-shadow: var(--clay-inset);
-      margin-bottom: 6px;
+      margin-bottom: 7px;
     }
     .album-thumb {
       width: 100%;
       height: 100%;
       aspect-ratio: 4 / 3;
-      border-radius: 4px;
+      border-radius: 5px;
       overflow: hidden;
       background: var(--surface);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 8px;
+      font-size: 8.5px;
       font-weight: 700;
       color: var(--text-muted);
       position: relative;
@@ -774,7 +773,7 @@
       left: 2px;
       background: rgba(15, 23, 42, 0.75);
       color: #fff;
-      font-size: 7px;
+      font-size: 7.5px;
       font-weight: 700;
       padding: 1px 4px;
       border-radius: 3px;
@@ -793,7 +792,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 6px;
+      padding: 8px;
     }
     .modal-backdrop.open { display: flex; }
     .modal-backdrop.dialog-top { z-index: 1500; }
@@ -806,34 +805,34 @@
       border: 1px solid var(--border-light);
       width: 100%;
       max-width: 980px;
-      max-height: 95dvh;
+      max-height: 94dvh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
 
     .modal-header {
-      padding: 8px 12px 7px;
+      padding: 10px 14px 8px;
       border-bottom: 1px solid var(--divider-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 6px;
+      gap: 8px;
       flex-shrink: 0;
     }
     .modal-body {
-      padding: 9px 12px;
+      padding: 11px 14px;
       overflow-y: auto;
       flex: 1;
       min-height: 0;
     }
     .modal-footer {
-      padding: 7px 12px 9px;
+      padding: 8px 14px 10px;
       border-top: 1px solid var(--divider-color);
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 5px;
+      gap: 6px;
       flex-wrap: wrap;
       flex-shrink: 0;
     }
@@ -841,17 +840,17 @@
     .suggestion-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 6px;
+      gap: 5px;
+      margin-top: 7px;
     }
     .chip-btn {
-      padding: 3px 8px;
+      padding: 3.5px 9px;
       border-radius: 999px;
       border: 1px solid var(--border-light);
       background: var(--surface-inset);
       color: var(--text-secondary);
       font-family: inherit;
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 700;
       cursor: pointer;
     }
@@ -862,11 +861,11 @@
       background: #ffffff;
       color: #000000;
       font-family: 'Times New Roman', Times, serif;
-      padding: 10px 12px;
-      border-radius: 9px;
+      padding: 11px 13px;
+      border-radius: 10px;
       box-shadow: var(--clay-inset);
       border: 1px solid #cbd5e1;
-      margin-bottom: 9px;
+      margin-bottom: 10px;
       overflow-x: auto;
     }
     .kop-rendered-box {
@@ -904,8 +903,8 @@
     .logo-upload-card {
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
-      border-radius: 10px;
-      padding: 7px 9px;
+      border-radius: 11px;
+      padding: 8px 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -917,19 +916,19 @@
     .cam-settings-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.15fr);
-      gap: 10px;
+      gap: 11px;
     }
 
     .cam-preset-preview-box {
       position: relative;
       width: 100%;
       aspect-ratio: 4 / 3;
-      border-radius: 10px;
+      border-radius: 11px;
       background: linear-gradient(135deg, #273244 0%, #171d28 52%, #344359 100%);
       box-shadow: var(--clay-inset);
       overflow: hidden;
       display: flex;
-      padding: 9px;
+      padding: 10px;
     }
     .cam-preset-preview-box::before {
       content: "PRATINJAU 4:3";
@@ -947,16 +946,16 @@
       border-left: 3.5px solid #f59e0b;
       color: #ffffff;
       padding: 6px 9px;
-      border-radius: 7px;
+      border-radius: 8px;
       max-width: 94%;
-      font-size: 9.5px;
-      line-height: 1.32;
+      font-size: 10px;
+      line-height: 1.34;
       display: flex;
       flex-direction: column;
       gap: 2px;
       overflow-wrap: anywhere;
     }
-    .tm-header-row { display: flex; align-items: center; gap: 7px; margin-bottom: 1px; }
+    .tm-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 1px; }
     .tm-header-row.logo-top { flex-direction: column; align-items: flex-start; gap: 3px; }
     .tm-logo-img {
       display: block;
@@ -971,18 +970,18 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 5px;
+      gap: 6px;
       background: var(--surface);
-      padding: 4.5px 7px;
+      padding: 5px 8px;
       border-radius: 8px;
       box-shadow: var(--clay-btn);
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 700;
     }
     .order-arrows { display: inline-flex; gap: 3px; flex-shrink: 0; }
     .order-arrow-btn {
-      width: 20px;
-      height: 20px;
+      width: 21px;
+      height: 21px;
       border-radius: 5px;
       border: 1px solid var(--border-light);
       background: var(--surface-inset);
@@ -1000,19 +999,19 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 19px;
       font-weight: 800;
-      padding: 8px;
-      margin-bottom: 8px;
+      padding: 9px;
+      margin-bottom: 9px;
     }
     .pin-keypad {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6px;
-      margin-bottom: 8px;
+      gap: 7px;
+      margin-bottom: 9px;
     }
     .pin-key {
-      padding: 10px 0;
-      border-radius: 10px;
-      font-size: 15px;
+      padding: 11px 0;
+      border-radius: 11px;
+      font-size: 15.5px;
       font-weight: 800;
     }
     .pin-lock-banner {
@@ -1021,11 +1020,11 @@
       border: 1px solid rgba(220, 38, 38, 0.35);
       color: var(--accent-red);
       border-radius: 8px;
-      padding: 5px 8px;
-      font-size: 10.5px;
+      padding: 6px 8px;
+      font-size: 11px;
       font-weight: 700;
       text-align: center;
-      margin-bottom: 7px;
+      margin-bottom: 8px;
     }
     .pin-lock-banner.show { display: block; }
 
@@ -1033,14 +1032,14 @@
     .camera-toolbar-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 6px;
-      margin-bottom: 7px;
+      gap: 7px;
+      margin-bottom: 8px;
       align-items: center;
     }
     .camera-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.38fr) minmax(0, 1fr);
-      gap: 10px;
+      gap: 11px;
     }
 
     .viewfinder-wrap {
@@ -1048,7 +1047,7 @@
       width: 100%;
       aspect-ratio: 4 / 3;
       background: #0b0e14;
-      border-radius: 10px;
+      border-radius: 11px;
       overflow: hidden;
       box-shadow: var(--clay-inset);
       transition: aspect-ratio 0.2s ease;
@@ -1079,13 +1078,13 @@
 
     .webrtc-live-badge {
       position: absolute;
-      top: 7px;
-      left: 7px;
+      top: 8px;
+      left: 8px;
       background: rgba(220, 38, 38, 0.85);
       color: #fff;
-      font-size: 8.5px;
+      font-size: 9px;
       font-weight: 800;
-      padding: 2.5px 7px;
+      padding: 3px 7px;
       border-radius: 999px;
       display: flex;
       align-items: center;
@@ -1103,7 +1102,7 @@
 
     .timemark-live-overlay {
       position: absolute;
-      inset: 7px;
+      inset: 8px;
       pointer-events: none;
       display: flex;
       flex-direction: column;
@@ -1118,12 +1117,12 @@
 
     .timemark-settings-panel {
       background: var(--surface-inset);
-      border-radius: 10px;
+      border-radius: 11px;
       padding: 8px;
       box-shadow: var(--clay-inset);
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
       max-height: 460px;
       overflow-y: auto;
       min-width: 0;
@@ -1135,14 +1134,14 @@
       justify-content: space-between;
       gap: 6px;
       background: var(--surface);
-      padding: 5px 9px;
-      border-radius: 8px;
+      padding: 6px 9px;
+      border-radius: 9px;
       box-shadow: var(--clay-btn);
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
     }
 
-    /* Floating Shutter Dock (default hidden, muncul saat HP miring Landscape) */
+    /* Floating Shutter Dock (muncul saat HP miring Landscape) */
     .floating-landscape-dock {
       display: none;
     }
@@ -1165,7 +1164,6 @@
         background: #000000 !important;
         position: relative;
       }
-      /* Auto-hide seluruh tombol header, toolbar, panel seting, dan badge saat HP miring */
       #cameraModal .modal-header,
       #cameraModal .camera-toolbar-grid,
       #cameraModal .timemark-settings-panel,
@@ -1184,7 +1182,6 @@
         width: 100%;
         height: 100%;
       }
-      /* Viewfinder full-screen 100vw x 100dvh */
       #cameraModal .viewfinder-wrap {
         position: fixed !important;
         inset: 0 !important;
@@ -1198,7 +1195,6 @@
       #cameraModal .timemark-live-overlay {
         inset: 12px 105px 12px 14px;
       }
-      /* Tombol jepret melayang warna putih transparan 70% */
       #cameraModal .floating-landscape-dock {
         position: fixed;
         right: 18px;
@@ -1238,12 +1234,12 @@
     .lightbox-4grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 7px;
+      gap: 8px;
     }
     .lb-grid-item {
       background: var(--surface-inset);
-      border-radius: 9px;
-      padding: 5px;
+      border-radius: 10px;
+      padding: 6px;
       box-shadow: var(--clay-inset);
       cursor: pointer;
       border: none;
@@ -1255,7 +1251,7 @@
     .lb-grid-frame {
       width: 100%;
       aspect-ratio: 4 / 3;
-      border-radius: 6px;
+      border-radius: 7px;
       overflow: hidden;
       background: #141820;
       display: flex;
@@ -1271,12 +1267,12 @@
       align-items: center;
       justify-content: center;
       background: #0d1118;
-      border-radius: 10px;
+      border-radius: 11px;
       height: 55vh;
       min-height: 270px;
       max-height: 65vh;
       overflow: hidden;
-      margin-bottom: 7px;
+      margin-bottom: 8px;
       user-select: none;
       touch-action: none;
     }
@@ -1294,13 +1290,13 @@
 
     .lb-zoom-toolbar {
       position: absolute;
-      bottom: 7px;
+      bottom: 8px;
       left: 50%;
       transform: translateX(-50%);
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      padding: 3.5px 6px;
+      padding: 4px 7px;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.84);
       backdrop-filter: blur(8px);
@@ -1312,9 +1308,9 @@
       color: #ffffff;
       border: none;
       border-radius: 999px;
-      padding: 3.5px 7.5px;
+      padding: 4px 8px;
       font-family: inherit;
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
@@ -1325,9 +1321,9 @@
     .lb-zoom-pct {
       color: #f8fafc;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 700;
-      min-width: 36px;
+      min-width: 38px;
       text-align: center;
     }
 
@@ -1335,8 +1331,8 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       border: 1px solid rgba(255, 255, 255, 0.45);
       background: rgba(248, 250, 252, 0.9);
@@ -1348,33 +1344,33 @@
       cursor: pointer;
       z-index: 11;
     }
-    .lb-prev { left: 7px; }
-    .lb-next { right: 7px; }
+    .lb-prev { left: 8px; }
+    .lb-next { right: 8px; }
 
     /* PIN Security Card inside Cloud Modal */
     .security-panel {
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
-      border-radius: 10px;
-      padding: 9px;
-      margin-top: 8px;
+      border-radius: 11px;
+      padding: 10px;
+      margin-top: 9px;
     }
 
     /* Toast */
     .clay-toast {
       position: fixed;
-      bottom: 10px;
-      right: 10px;
-      max-width: calc(100vw - 20px);
+      bottom: 12px;
+      right: 12px;
+      max-width: calc(100vw - 24px);
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
       border: 1px solid var(--border-light);
       box-shadow: var(--clay-card);
-      border-radius: 10px;
-      padding: 7px 11px;
+      border-radius: 11px;
+      padding: 8px 12px;
       display: flex;
       align-items: center;
-      gap: 7px;
-      font-size: 11px;
+      gap: 8px;
+      font-size: 11.5px;
       font-weight: 700;
       z-index: 2000;
       transform: translateY(160%);
@@ -1383,8 +1379,8 @@
     }
     .clay-toast.show { transform: translateY(0); }
     .toast-check {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
@@ -1401,13 +1397,13 @@
     .app-footer {
       width: 100%;
       max-width: 1200px;
-      margin: 10px auto 0;
+      margin: 12px auto 0;
       padding: 2px 6px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 700;
       letter-spacing: 0.08em;
       color: var(--text-muted);
@@ -1417,20 +1413,20 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      padding: 2px 9px;
+      padding: 2.5px 10px;
       border-radius: 999px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
     }
     .footer-dot {
-      width: 4px;
-      height: 4px;
+      width: 4.5px;
+      height: 4.5px;
       border-radius: 50%;
       background: var(--accent-blue);
     }
 
     /* ========================================================================
-       9. RESPONSIVE MOBILE PRECISION (COMPACT & RAPAT)
+       9. RESPONSIVE MOBILE PRECISION (COMPACT, PROPORSIONAL & ZERO EMPTY SPACE)
        ======================================================================== */
     @media (max-width: 960px) {
       .main-grid { grid-template-columns: 1fr; }
@@ -1446,69 +1442,105 @@
     }
 
     @media (max-width: 640px) {
-      body { padding: 5px 5px 10px; }
-      .clay-card { padding: 7px 8px; border-radius: 11px; }
-      .clay-pill-input, .clay-select, .clay-textarea { font-size: 13px; padding: 5.5px 8px; }
+      body { padding: 8px 8px 14px; }
+      .clay-card { padding: 10px; border-radius: 13px; }
+      .clay-pill-input, .clay-select, .clay-textarea { font-size: 13.5px; padding: 7px 10px; }
 
-      .app-header { flex-direction: column; align-items: stretch; gap: 6px; padding: 7px 8px; margin-bottom: 5px; }
-      .brand-title h1 { font-size: 14px; }
+      /* Header rapi tanpa flex-basis vertikal */
+      .app-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 9px 10px;
+        margin-bottom: 8px;
+      }
+      .brand-box {
+        flex: none;
+        width: 100%;
+      }
+      .brand-title h1 { font-size: 15px; }
+      .brand-title p { font-size: 11px; }
 
       .header-actions {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 4px;
+        gap: 5px;
         width: 100%;
       }
       .header-actions .clay-btn {
         width: 100%;
-        padding: 5.5px 4px;
-        font-size: 10px;
+        padding: 7px 6px;
+        font-size: 11px;
       }
       .header-actions .clay-icon-btn {
         width: 100%;
-        height: 28px;
+        height: 31px;
         border-radius: 999px;
       }
       .theme-btn-text { display: inline; }
       #btnAdminAuth { grid-column: span 3; }
       #btnSyncCloud { grid-column: span 2; }
 
-      .public-hero { gap: 6px; margin-bottom: 6px; }
-      .session-bar, .room-sub-bar { flex-direction: column; align-items: stretch; padding: 6px 8px; gap: 4px; margin-bottom: 5px; }
+      .public-hero { gap: 8px; margin-bottom: 8px; }
+
+      /* Session & Room Bar: flex-basis auto agar tinggi pas dengan isi */
+      .session-bar, .room-sub-bar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 8px 10px;
+        gap: 7px;
+        margin-bottom: 8px;
+      }
+      .session-pills-scroll {
+        flex: none;
+        width: 100%;
+      }
       .bar-action-group {
         width: 100%;
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
-        gap: 4px;
-      }
-      .bar-action-group .clay-btn { width: 100%; }
-
-      .step-bar { flex-direction: column; align-items: stretch; gap: 4px; padding: 6px 8px; margin-bottom: 6px; }
-      .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 6px;
       }
-      .slot-card { padding: 6px; gap: 4px; }
-      .slot-badge { font-size: 9.5px; }
+      .bar-action-group .clay-btn { width: 100%; padding: 7px 10px; font-size: 11.5px; }
+
+      /* Step / Progress Bar: flex-basis auto agar tidak melar tinggi */
+      .step-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        padding: 8px 10px;
+        margin-bottom: 8px;
+      }
+      .progress-track {
+        flex: none;
+        width: 100%;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .slot-card { padding: 7px; gap: 5px; }
+      .slot-badge { font-size: 10.5px; }
       .slot-controls {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       }
       .slot-controls .clay-btn-danger {
         grid-column: span 2;
-        padding: 3.5px;
+        padding: 4.5px;
       }
 
       .two-col-inputs, .lightbox-4grid, .archive-grid {
         grid-template-columns: 1fr;
-        gap: 6px;
+        gap: 7px;
       }
 
-      .modal-backdrop { padding: 4px; }
-      .modal-box { border-radius: 12px; }
-      .modal-header { padding: 8px 10px 6px; }
-      .modal-body { padding: 8px 10px; }
-      .modal-footer { padding: 7px 10px 8px; }
-      .clay-toast { left: 5px; right: 5px; bottom: 7px; max-width: none; }
+      .modal-backdrop { padding: 6px; }
+      .modal-box { border-radius: 14px; }
+      .modal-header { padding: 9px 11px 7px; }
+      .modal-body { padding: 9px 11px; }
+      .modal-footer { padding: 8px 11px 9px; }
+      .clay-toast { left: 8px; right: 8px; bottom: 10px; max-width: none; }
     }
 
     /* ========================================================================
@@ -1666,7 +1698,7 @@
   <section class="clay-card public-hero">
     <div style="min-width:0;">
       <div class="hero-top-meta">
-        <span style="font-size:9.5px; font-weight:800; color:var(--accent-blue); text-transform:uppercase; letter-spacing:0.05em;">
+        <span style="font-size:10px; font-weight:800; color:var(--accent-blue); text-transform:uppercase; letter-spacing:0.05em;">
           Portal Transparansi &amp; Dokumentasi
         </span>
         <span class="cloud-sync-pill" id="cloudSyncBadge">
@@ -1674,10 +1706,10 @@
           <span id="cloudSyncBadgeText">Memuat Cloud...</span>
         </span>
       </div>
-      <h2 class="wrap-text" style="font-size:14.5px; font-weight:800; margin-bottom:2px;" id="heroProjectTitle">
+      <h2 class="wrap-text" style="font-size:15px; font-weight:800; margin-bottom:2px;" id="heroProjectTitle">
         Revitalisasi Gedung TK Pertiwi Desa Kalibenda
       </h2>
-      <p style="font-size:11px; color:var(--text-secondary);">
+      <p style="font-size:11.5px; color:var(--text-secondary);">
         Kepala Sekolah: <strong id="heroKepsekName">YUSTIANI</strong> • Desa Kalibenda, Kec. Ajibarang
       </p>
     </div>
@@ -1711,8 +1743,8 @@
 
     <!-- Room Bar -->
     <div class="clay-card room-sub-bar">
-      <div style="display:flex; align-items:center; gap:5px; flex-wrap:wrap; flex:1; min-width:0; width:100%;">
-        <span style="font-size:9.5px; font-weight:800; text-transform:uppercase; color:var(--accent-blue); white-space:nowrap;">
+      <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; flex:1; min-width:0; width:100%;">
+        <span style="font-size:10px; font-weight:800; text-transform:uppercase; color:var(--accent-blue); white-space:nowrap;">
           Ruang (<span id="roomBarDayTitle">Hari ke-1</span>):
         </span>
         <div class="session-pills-scroll" id="roomPillsContainer"></div>
@@ -1725,14 +1757,14 @@
 
     <!-- Progress Bar -->
     <div class="clay-card step-bar">
-      <div style="font-size:11px; font-weight:800;">
+      <div style="font-size:11.5px; font-weight:800;">
         <span id="activeSessionBadgeText" style="color:var(--accent-blue);">Hari ke-1 — Tampak Luar Gedung</span>
         • Slot: <span id="slotCounterText">0 / 4</span>
       </div>
       <div class="progress-track">
         <div class="progress-fill" id="slotProgressFill"></div>
       </div>
-      <div style="font-size:10px; font-weight:700; color:var(--accent-green);">
+      <div style="font-size:10.5px; font-weight:700; color:var(--accent-green);">
         Preset: <span id="activePresetBadgeName">Timemark Aktif (45%)</span> • Max 1 MB
       </div>
     </div>
@@ -1769,7 +1801,7 @@
         <div class="form-group">
           <label class="section-label" for="inputProgres">
             <span>Progres Fisik</span>
-            <span id="progresValLabel" style="color:var(--accent-blue); font-size:10.5px;">0% (Kondisi Awal)</span>
+            <span id="progresValLabel" style="color:var(--accent-blue); font-size:11px;">0% (Kondisi Awal)</span>
           </label>
           <input type="range" id="inputProgres" class="clay-range" min="0" max="100" step="5" value="0" oninput="updateProgresLabel()" />
         </div>
@@ -1797,7 +1829,7 @@
           <input type="text" id="inputCatatan" class="clay-pill-input" placeholder="Keterangan singkat..." oninput="saveCurrentSessionFields()" />
         </div>
 
-        <hr style="border:none; border-top:1px solid var(--divider-color); margin: 7px 0;" />
+        <hr style="border:none; border-top:1px solid var(--divider-color); margin: 8px 0;" />
 
         <div class="section-label"><span>Backup &amp; Restore</span></div>
         <div class="two-col-inputs">
@@ -1814,12 +1846,12 @@
 
   <!-- DAILY ARCHIVE GALLERY -->
   <section class="archive-section">
-    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:5px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
       <div style="min-width:0;">
-        <h2 style="font-size:14px; font-weight:800;">Galeri Dokumentasi Harian</h2>
-        <p style="font-size:10.5px; color:var(--text-secondary);">Klik foto untuk memperbesar (Zoom &amp; Geser), atau cetak PDF F4.</p>
+        <h2 style="font-size:14.5px; font-weight:800;">Galeri Dokumentasi Harian</h2>
+        <p style="font-size:11px; color:var(--text-secondary);">Klik foto untuk memperbesar (Zoom &amp; Geser), atau cetak PDF F4.</p>
       </div>
-      <div style="display:flex; gap:4px; flex-wrap:wrap;">
+      <div style="display:flex; gap:5px; flex-wrap:wrap;">
         <button type="button" class="clay-btn clay-btn-primary admin-only-inline" onclick="addRoomGroupInSameDay()">+ Tambah Ruang</button>
         <button type="button" class="clay-btn clay-btn-success admin-only-inline" onclick="createNextDaySession()">+ Hari Baru</button>
       </div>
@@ -1841,19 +1873,19 @@
   <div class="modal-box">
     <div class="modal-header">
       <div style="min-width:0;">
-        <h3 style="font-size:14.5px; font-weight:800;">Seting Kamera &amp; Timemark</h3>
-        <p style="font-size:10.5px; color:var(--text-secondary);">Kelola preset stempel, logo proporsional, wilayah, dan urutan elemen.</p>
+        <h3 style="font-size:15px; font-weight:800;">Seting Kamera &amp; Timemark</h3>
+        <p style="font-size:11px; color:var(--text-secondary);">Kelola preset stempel, logo proporsional, wilayah, dan urutan elemen.</p>
       </div>
       <button type="button" class="clay-btn" onclick="closeModal('camSettingsCrudModal')">Tutup</button>
     </div>
 
     <div class="modal-body">
-      <div style="background:var(--surface-inset); padding:8px 9px; border-radius:10px; box-shadow:var(--clay-inset); margin-bottom:9px;">
+      <div style="background:var(--surface-inset); padding:9px 10px; border-radius:11px; box-shadow:var(--clay-inset); margin-bottom:10px;">
         <div class="section-label">
           <span>Preset Kamera</span>
           <span style="color:var(--accent-blue);" id="crudPresetCountLabel">3 Preset</span>
         </div>
-        <div class="session-pills-scroll" id="camPresetPillsList" style="margin-bottom:6px;"></div>
+        <div class="session-pills-scroll" id="camPresetPillsList" style="margin-bottom:7px;"></div>
         <div style="display:flex; gap:5px; flex-wrap:wrap;">
           <input type="text" id="crudPresetNameInput" class="clay-pill-input" style="flex:1 1 130px;" placeholder="Nama Preset" />
           <button type="button" class="clay-btn clay-btn-success" onclick="createNewCameraPreset()">+ Buat</button>
@@ -1863,7 +1895,7 @@
       </div>
 
       <div class="cam-settings-grid">
-        <div style="min-width:0; display:flex; flex-direction:column; gap:7px;">
+        <div style="min-width:0; display:flex; flex-direction:column; gap:8px;">
           <div>
             <div class="section-label"><span>Pratinjau Stempel 4:3</span></div>
             <div class="cam-preset-preview-box" id="crudPreviewStage">
@@ -1871,10 +1903,10 @@
             </div>
           </div>
 
-          <div style="background:var(--surface-inset); padding:8px; border-radius:10px; box-shadow:var(--clay-inset);">
+          <div style="background:var(--surface-inset); padding:8px; border-radius:11px; box-shadow:var(--clay-inset);">
             <div class="section-label">
               <span>Susunan Elemen</span>
-              <span style="color:var(--accent-blue); font-size:9px;">Urutkan ↑ / ↓</span>
+              <span style="color:var(--accent-blue); font-size:9.5px;">Urutkan ↑ / ↓</span>
             </div>
             <div id="tmBlockOrderList" style="display:flex; flex-direction:column; gap:4px;"></div>
           </div>
@@ -1889,12 +1921,12 @@
             </label>
           </div>
 
-          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
+          <div style="background:var(--surface); padding:8px 10px; border-radius:9px; box-shadow:var(--clay-btn);">
             <div class="section-label">
               <span>Logo Stempel (Rasio Asli)</span>
               <span id="cfgLogoSizeLabel" style="color:var(--accent-blue);">44 px</span>
             </div>
-            <div class="two-col-inputs" style="margin-bottom:5px;">
+            <div class="two-col-inputs" style="margin-bottom:6px;">
               <select id="cfgTmLogoMode" class="clay-select" onchange="syncCrudSettingsToState(true)">
                 <option value="kop">Ikuti KOP</option>
                 <option value="custom">Logo Khusus</option>
@@ -1905,18 +1937,18 @@
                 <option value="top">Atas Jam</option>
               </select>
             </div>
-            <div style="display:flex; align-items:center; gap:6px; margin-bottom:5px;">
-              <span style="font-size:10px; font-weight:700; white-space:nowrap;">Tinggi:</span>
+            <div style="display:flex; align-items:center; gap:7px; margin-bottom:6px;">
+              <span style="font-size:10.5px; font-weight:700; white-space:nowrap;">Tinggi:</span>
               <input type="range" id="cfgTmLogoSize" class="clay-range" min="24" max="84" step="2" value="44" oninput="syncCrudSettingsToState(true)" />
             </div>
             <div style="display:flex; gap:5px; flex-wrap:wrap;">
-              <button type="button" class="clay-btn clay-btn-primary" style="flex:1; font-size:10.5px;" onclick="document.getElementById('fileCamCustomLogo').click()">Upload Logo Khusus</button>
-              <button type="button" class="clay-btn clay-btn-danger" style="font-size:10.5px;" onclick="removeCamCustomLogo()">Hapus</button>
+              <button type="button" class="clay-btn clay-btn-primary" style="flex:1; font-size:11px;" onclick="document.getElementById('fileCamCustomLogo').click()">Upload Logo Khusus</button>
+              <button type="button" class="clay-btn clay-btn-danger" style="font-size:11px;" onclick="removeCamCustomLogo()">Hapus</button>
               <input type="file" id="fileCamCustomLogo" accept="image/*" style="display:none" onchange="handleCamCustomLogoUpload(event)" />
             </div>
           </div>
 
-          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
+          <div style="background:var(--surface); padding:8px 10px; border-radius:9px; box-shadow:var(--clay-btn);">
             <div class="two-col-inputs">
               <div>
                 <div class="section-label"><span>Jam HH:MM</span><span id="cfgClockScaleLabel" style="color:var(--accent-blue);">115%</span></div>
@@ -1929,7 +1961,7 @@
             </div>
           </div>
 
-          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
+          <div style="background:var(--surface); padding:8px 10px; border-radius:9px; box-shadow:var(--clay-btn);">
             <div class="two-col-inputs">
               <div>
                 <div class="section-label"><span>Transparansi</span><span id="cfgOpacityLabel" style="color:var(--accent-blue);">45%</span></div>
@@ -1942,7 +1974,7 @@
             </div>
           </div>
 
-          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn); display:flex; flex-direction:column; gap:5px;">
+          <div style="background:var(--surface); padding:8px 10px; border-radius:9px; box-shadow:var(--clay-btn); display:flex; flex-direction:column; gap:6px;">
             <div class="section-label" style="margin-bottom:0;"><span>Identitas Wilayah</span></div>
             <input type="text" id="cfgTmTitle" class="clay-pill-input" placeholder="Judul Proyek" oninput="syncCrudSettingsToState(true)" />
             <input type="text" id="cfgTmStreet" class="clay-pill-input" placeholder="Sekolah / Alamat" oninput="syncCrudSettingsToState(true)" />
@@ -2008,8 +2040,8 @@
   <div class="modal-box" style="max-width: 740px;">
     <div class="modal-header">
       <div>
-        <h3 style="font-size:14.5px; font-weight:800;">KOP Surat &amp; Logo</h3>
-        <p style="font-size:10.5px; color:var(--text-secondary);">Pengaturan kop resmi seimbang untuk cetak PDF F4.</p>
+        <h3 style="font-size:15px; font-weight:800;">KOP Surat &amp; Logo</h3>
+        <p style="font-size:11px; color:var(--text-secondary);">Pengaturan kop resmi seimbang untuk cetak PDF F4.</p>
       </div>
       <button type="button" class="clay-btn" onclick="closeModal('kopModal')">Tutup</button>
     </div>
@@ -2034,7 +2066,7 @@
         <input type="text" id="kopInputLine3" class="clay-pill-input" oninput="updateKopFromInputs()" />
       </div>
 
-      <div class="two-col-inputs" style="margin-bottom:8px;">
+      <div class="two-col-inputs" style="margin-bottom:9px;">
         <div>
           <label class="section-label" for="kopInputAlign">Perataan Teks</label>
           <select id="kopInputAlign" class="clay-select" onchange="updateKopFromInputs()">
@@ -2054,24 +2086,24 @@
       <div class="two-col-inputs">
         <div class="logo-upload-card">
           <div style="min-width:0;">
-            <div style="font-size:11px; font-weight:800;">Logo Kiri</div>
-            <div style="font-size:10px; color:var(--text-secondary);" id="kopLogoKiriStatus">Default</div>
+            <div style="font-size:11.5px; font-weight:800;">Logo Kiri</div>
+            <div style="font-size:10.5px; color:var(--text-secondary);" id="kopLogoKiriStatus">Default</div>
           </div>
-          <div style="display:flex; gap:4px; flex-shrink:0;">
-            <button type="button" class="clay-btn clay-btn-primary" style="padding:4px 9px; font-size:10.5px;" onclick="document.getElementById('fileLogoKiri').click()">Upload</button>
-            <button type="button" class="clay-btn clay-btn-danger" style="padding:4px 7px; font-size:10.5px;" onclick="removeKopLogo('kiri')">✕</button>
+          <div style="display:flex; gap:5px; flex-shrink:0;">
+            <button type="button" class="clay-btn clay-btn-primary" style="padding:5px 10px; font-size:11px;" onclick="document.getElementById('fileLogoKiri').click()">Upload</button>
+            <button type="button" class="clay-btn clay-btn-danger" style="padding:5px 8px; font-size:11px;" onclick="removeKopLogo('kiri')">✕</button>
             <input type="file" id="fileLogoKiri" accept="image/*" style="display:none" onchange="handleKopLogoUpload(event, 'kiri')" />
           </div>
         </div>
 
         <div class="logo-upload-card">
           <div style="min-width:0;">
-            <div style="font-size:11px; font-weight:800;">Logo Kanan</div>
-            <div style="font-size:10px; color:var(--text-secondary);" id="kopLogoKananStatus">Kosong</div>
+            <div style="font-size:11.5px; font-weight:800;">Logo Kanan</div>
+            <div style="font-size:10.5px; color:var(--text-secondary);" id="kopLogoKananStatus">Kosong</div>
           </div>
-          <div style="display:flex; gap:4px; flex-shrink:0;">
-            <button type="button" class="clay-btn clay-btn-primary" style="padding:4px 9px; font-size:10.5px;" onclick="document.getElementById('fileLogoKanan').click()">Upload</button>
-            <button type="button" class="clay-btn clay-btn-danger" style="padding:4px 7px; font-size:10.5px;" onclick="removeKopLogo('kanan')">✕</button>
+          <div style="display:flex; gap:5px; flex-shrink:0;">
+            <button type="button" class="clay-btn clay-btn-primary" style="padding:5px 10px; font-size:11px;" onclick="document.getElementById('fileLogoKanan').click()">Upload</button>
+            <button type="button" class="clay-btn clay-btn-danger" style="padding:5px 8px; font-size:11px;" onclick="removeKopLogo('kanan')">✕</button>
             <input type="file" id="fileLogoKanan" accept="image/*" style="display:none" onchange="handleKopLogoUpload(event, 'kanan')" />
           </div>
         </div>
@@ -2080,7 +2112,7 @@
 
     <div class="modal-footer" style="justify-content:space-between;">
       <button type="button" class="clay-btn clay-btn-danger" onclick="confirmResetKopDefault()">Reset Default</button>
-      <div style="display:flex; gap:5px; flex-wrap:wrap;">
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
         <button type="button" class="clay-btn" onclick="syncKopToCloud()">Simpan Cloud</button>
         <button type="button" class="clay-btn clay-btn-primary" onclick="saveKopAndClose()">Simpan &amp; Terapkan</button>
       </div>
@@ -2092,15 +2124,15 @@
      MODAL: LOGIN SUPER ADMIN (PIN 6 DIGIT + SHA-256 + COOLDOWN)
      ========================================================= -->
 <div class="modal-backdrop" id="pinModal">
-  <div class="modal-box" style="max-width: 315px;">
+  <div class="modal-box" style="max-width: 320px;">
     <div class="modal-header" style="justify-content:center; text-align:center; border-bottom:none; padding-bottom:2px;">
       <div>
-        <h3 style="font-size:15px; font-weight:800;">Login Super Admin</h3>
-        <p style="font-size:10.5px; color:var(--text-secondary);">Masukkan 6-digit PIN (SHA-256)</p>
+        <h3 style="font-size:15.5px; font-weight:800;">Login Super Admin</h3>
+        <p style="font-size:11px; color:var(--text-secondary);">Masukkan 6-digit PIN (SHA-256)</p>
       </div>
     </div>
 
-    <div class="modal-body" style="padding-top:4px;">
+    <div class="modal-body" style="padding-top:5px;">
       <div id="pinLockBanner" class="pin-lock-banner"></div>
       <input type="password" inputmode="numeric" pattern="[0-9]*" id="pinInputDisplay" class="clay-pill-input pin-display" maxlength="6" placeholder="••••••" oninput="handleDirectPinInput(this.value)" onkeydown="if(event.key==='Enter') verifyPin();" />
 
@@ -2114,9 +2146,9 @@
         <button type="button" class="clay-btn pin-key" onclick="appendPin('7')">7</button>
         <button type="button" class="clay-btn pin-key" onclick="appendPin('8')">8</button>
         <button type="button" class="clay-btn pin-key" onclick="appendPin('9')">9</button>
-        <button type="button" class="clay-btn clay-btn-danger pin-key" onclick="clearPin()" style="font-size:11.5px;">Hapus</button>
+        <button type="button" class="clay-btn clay-btn-danger pin-key" onclick="clearPin()" style="font-size:12px;">Hapus</button>
         <button type="button" class="clay-btn pin-key" onclick="appendPin('0')">0</button>
-        <button type="button" class="clay-btn clay-btn-primary pin-key" onclick="verifyPin()" style="font-size:11.5px;">Masuk</button>
+        <button type="button" class="clay-btn clay-btn-primary pin-key" onclick="verifyPin()" style="font-size:12px;">Masuk</button>
       </div>
 
       <button type="button" class="clay-btn" style="width:100%;" onclick="closeModal('pinModal')">Batal</button>
@@ -2131,15 +2163,15 @@
   <div class="modal-box">
     <div class="modal-header" style="flex-wrap:wrap;">
       <div style="min-width:0;">
-        <h3 style="font-size:14.5px; font-weight:800;">Kamera Live — <span id="activeCameraSlotTitle" style="color:var(--accent-blue);">TAMPAK DEPAN</span></h3>
+        <h3 style="font-size:15px; font-weight:800;">Kamera Live — <span id="activeCameraSlotTitle" style="color:var(--accent-blue);">TAMPAK DEPAN</span></h3>
       </div>
-      <div style="display:flex; gap:4px; flex-wrap:wrap;">
-        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" onclick="triggerNativeDeviceCamera()">Kamera HP</button>
-        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" onclick="toggleCameraGrid()">Grid</button>
-        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" id="btnTorchToggle" onclick="toggleCameraTorch()">Flash</button>
-        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" id="btnOrientMode" onclick="toggleCameraOrientationPreview()">Auto</button>
-        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" onclick="switchCameraFacing()">Putar</button>
-        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" onclick="closeCameraModal()">Tutup</button>
+      <div style="display:flex; gap:5px; flex-wrap:wrap;">
+        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" onclick="triggerNativeDeviceCamera()">Kamera HP</button>
+        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" onclick="toggleCameraGrid()">Grid</button>
+        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" id="btnTorchToggle" onclick="toggleCameraTorch()">Flash</button>
+        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" id="btnOrientMode" onclick="toggleCameraOrientationPreview()">Auto</button>
+        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" onclick="switchCameraFacing()">Putar</button>
+        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" onclick="closeCameraModal()">Tutup</button>
       </div>
     </div>
 
@@ -2148,8 +2180,8 @@
         <select id="cameraDeviceSelect" class="clay-select" onchange="selectSpecificCameraDevice()">
           <option value="">Mengaktifkan kamera...</option>
         </select>
-        <div style="display:flex; align-items:center; gap:7px; background:var(--surface-inset); padding:5px 9px; border-radius:9px; box-shadow:var(--clay-inset); min-width:0;">
-          <span style="font-size:10px; font-weight:800; white-space:nowrap;">Zoom: <span id="camZoomLabel">1.0x</span></span>
+        <div style="display:flex; align-items:center; gap:8px; background:var(--surface-inset); padding:6px 10px; border-radius:10px; box-shadow:var(--clay-inset); min-width:0;">
+          <span style="font-size:10.5px; font-weight:800; white-space:nowrap;">Zoom: <span id="camZoomLabel">1.0x</span></span>
           <input type="range" id="camZoomSlider" class="clay-range" min="1" max="3" step="0.1" value="1" oninput="applyCameraZoom()" />
         </div>
       </div>
@@ -2168,11 +2200,11 @@
             </div>
           </div>
 
-          <div class="desktop-shutter-row" style="display:flex; gap:6px; margin-top:8px; flex-wrap:wrap;">
-            <button type="button" class="clay-btn clay-btn-primary" id="btnCaptureShutter" style="padding:8px 16px; font-size:12px; flex:1 1 150px;" onclick="captureTimemarkPhoto()">
+          <div class="desktop-shutter-row" style="display:flex; gap:7px; margin-top:9px; flex-wrap:wrap;">
+            <button type="button" class="clay-btn clay-btn-primary" id="btnCaptureShutter" style="padding:9px 18px; font-size:12.5px; flex:1 1 150px;" onclick="captureTimemarkPhoto()">
               Jepret Foto 4:3
             </button>
-            <button type="button" class="clay-btn" style="padding:8px 12px;" onclick="triggerNativeDeviceCamera()">
+            <button type="button" class="clay-btn" style="padding:9px 13px;" onclick="triggerNativeDeviceCamera()">
               Kamera HP
             </button>
           </div>
@@ -2199,23 +2231,23 @@
             </label>
           </div>
 
-          <div style="background:var(--surface); padding:6px 8px; border-radius:8px; box-shadow:var(--clay-btn);">
+          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
             <div class="section-label"><span>Transparansi</span><span id="tmOpacityVal" style="color:var(--accent-blue);">45%</span></div>
             <input type="range" id="tmBgOpacity" class="clay-range" min="0" max="100" step="5" value="45" oninput="syncLiveControlsToPreset()" />
           </div>
 
           <div class="two-col-inputs">
-            <div style="background:var(--surface); padding:6px 8px; border-radius:8px; box-shadow:var(--clay-btn);">
+            <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
               <div class="section-label"><span>Jam</span><span id="tmClockScaleVal" style="color:var(--accent-blue);">115%</span></div>
               <input type="range" id="tmClockScale" class="clay-range" min="80" max="180" step="5" value="115" oninput="syncLiveControlsToPreset()" />
             </div>
-            <div style="background:var(--surface); padding:6px 8px; border-radius:8px; box-shadow:var(--clay-btn);">
+            <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
               <div class="section-label"><span>Teks</span><span id="tmFontSizeVal" style="color:var(--accent-blue);">100%</span></div>
               <input type="range" id="tmFontScale" class="clay-range" min="70" max="145" step="5" value="100" oninput="syncLiveControlsToPreset()" />
             </div>
           </div>
 
-          <div style="background:var(--surface); padding:6px 8px; border-radius:8px; box-shadow:var(--clay-btn);">
+          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
             <label class="section-label" for="tmLiveCustomNoteInput">Catatan Stempel</label>
             <input type="text" id="tmLiveCustomNoteInput" class="clay-pill-input" placeholder="Opsional..." oninput="syncLiveControlsToPreset()" />
           </div>
@@ -2251,10 +2283,10 @@
   <div class="modal-box" style="max-width: 900px;">
     <div class="modal-header" style="flex-wrap:wrap;">
       <div style="min-width:0;">
-        <h3 id="lbHeaderTitle" style="font-size:14.5px; font-weight:800;">Galeri 4 Foto</h3>
-        <p id="lbHeaderSubtitle" style="font-size:10.5px; color:var(--text-secondary);">Klik foto untuk memperbesar (Zoom &amp; Geser).</p>
+        <h3 id="lbHeaderTitle" style="font-size:15px; font-weight:800;">Galeri 4 Foto</h3>
+        <p id="lbHeaderSubtitle" style="font-size:11px; color:var(--text-secondary);">Klik foto untuk memperbesar (Zoom &amp; Geser).</p>
       </div>
-      <div style="display:flex; gap:4px; flex-wrap:wrap;">
+      <div style="display:flex; gap:5px; flex-wrap:wrap;">
         <button type="button" class="clay-btn" onclick="printF4SingleGroup(state.lbSessionIndex, state.lbGroupIndex)">Cetak F4</button>
         <button type="button" class="clay-btn" id="btnLbToggleMode" onclick="toggleLightboxViewMode()">Mode Zoom</button>
         <button type="button" class="clay-btn" onclick="closeModal('lightboxModal')">Tutup</button>
@@ -2286,7 +2318,7 @@
           </div>
         </div>
 
-        <div style="display:flex; justify-content:center; gap:4px; flex-wrap:wrap;">
+        <div style="display:flex; justify-content:center; gap:5px; flex-wrap:wrap;">
           <button type="button" class="clay-btn" id="lbDot-0" onclick="switchSingleSlot(0)">1. Depan</button>
           <button type="button" class="clay-btn" id="lbDot-1" onclick="switchSingleSlot(1)">2. Kanan</button>
           <button type="button" class="clay-btn" id="lbDot-2" onclick="switchSingleSlot(2)">3. Kiri</button>
@@ -2304,8 +2336,8 @@
   <div class="modal-box" style="max-width: 460px;">
     <div class="modal-header">
       <div>
-        <h3 style="font-size:14.5px; font-weight:800;">Cloud &amp; Keamanan PIN</h3>
-        <p style="font-size:10.5px; color:var(--text-secondary);">Sinkronisasi Google Apps Script &amp; Hash PIN lintas perangkat.</p>
+        <h3 style="font-size:15px; font-weight:800;">Cloud &amp; Keamanan PIN</h3>
+        <p style="font-size:11px; color:var(--text-secondary);">Sinkronisasi Google Apps Script &amp; Hash PIN lintas perangkat.</p>
       </div>
       <button type="button" class="clay-btn" onclick="closeModal('gasModal')">Tutup</button>
     </div>
@@ -2316,10 +2348,10 @@
         <input type="url" id="gasWebAppUrl" class="clay-pill-input" placeholder="https://script.google.com/macros/s/.../exec" />
       </div>
 
-      <div class="tm-toggle-row" style="margin-bottom:8px;">
+      <div class="tm-toggle-row" style="margin-bottom:9px;">
         <div>
           <div>Auto-Load Menu Publik</div>
-          <div style="font-size:9.5px; font-weight:600; color:var(--text-secondary);">Muat data Cloud &amp; konfigurasi otomatis saat halaman dibuka.</div>
+          <div style="font-size:10px; font-weight:600; color:var(--text-secondary);">Muat data Cloud &amp; konfigurasi otomatis saat halaman dibuka.</div>
         </div>
         <label class="clay-switch">
           <input type="checkbox" id="cfgPublicAutoLoad" checked />
@@ -2328,18 +2360,18 @@
       </div>
 
       <div class="security-panel">
-        <div class="section-label" style="margin-bottom:6px;">
+        <div class="section-label" style="margin-bottom:7px;">
           <span>PIN Super Admin (SHA-256)</span>
-          <span id="pinStatusBadge" style="color:var(--accent-blue); font-size:9.5px;">Default (123456)</span>
+          <span id="pinStatusBadge" style="color:var(--accent-blue); font-size:10px;">Default (123456)</span>
         </div>
 
-        <div class="form-group" style="margin-bottom:7px;">
+        <div class="form-group" style="margin-bottom:8px;">
           <label class="section-label" for="newAdminPinInput">Ubah PIN Baru (6 Digit — Tersinkron Cloud)</label>
           <input type="text" inputmode="numeric" id="newAdminPinInput" class="clay-pill-input" maxlength="6" placeholder="Kosongkan jika tidak diubah" />
         </div>
 
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:5px; flex-wrap:wrap; padding-top:6px; border-top:1px solid var(--divider-color);">
-          <span style="font-size:10px; color:var(--text-secondary); font-weight:600;">Reset &amp; sinkronkan ke semua perangkat?</span>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; flex-wrap:wrap; padding-top:7px; border-top:1px solid var(--divider-color);">
+          <span style="font-size:10.5px; color:var(--text-secondary); font-weight:600;">Reset &amp; sinkronkan ke semua perangkat?</span>
           <button type="button" class="clay-btn clay-btn-danger" onclick="confirmResetAdminPin()">Reset PIN (123456)</button>
         </div>
       </div>
@@ -2356,12 +2388,12 @@
      MODAL DIALOG KUSTOM: KONFIRMASI & INPUT
      ========================================================= -->
 <div class="modal-backdrop dialog-top" id="customConfirmModal">
-  <div class="modal-box" style="max-width: 375px;">
+  <div class="modal-box" style="max-width: 380px;">
     <div class="modal-header">
-      <h3 id="confirmDialogTitle" style="font-size:14.5px; font-weight:800;">Konfirmasi</h3>
+      <h3 id="confirmDialogTitle" style="font-size:15px; font-weight:800;">Konfirmasi</h3>
     </div>
     <div class="modal-body">
-      <p id="confirmDialogMessage" style="font-size:12px; color:var(--text-secondary); line-height:1.45;"></p>
+      <p id="confirmDialogMessage" style="font-size:12.5px; color:var(--text-secondary); line-height:1.45;"></p>
     </div>
     <div class="modal-footer">
       <button type="button" class="clay-btn" id="btnConfirmCancel">Batal</button>
@@ -2373,10 +2405,10 @@
 <div class="modal-backdrop dialog-top" id="customPromptModal">
   <div class="modal-box" style="max-width: 400px;">
     <div class="modal-header">
-      <h3 id="promptDialogTitle" style="font-size:14.5px; font-weight:800;">Input</h3>
+      <h3 id="promptDialogTitle" style="font-size:15px; font-weight:800;">Input</h3>
     </div>
     <div class="modal-body">
-      <p id="promptDialogMessage" style="font-size:11.5px; color:var(--text-secondary); margin-bottom:6px;"></p>
+      <p id="promptDialogMessage" style="font-size:12px; color:var(--text-secondary); margin-bottom:7px;"></p>
       <input type="text" id="promptDialogInput" class="clay-pill-input" placeholder="Masukkan nama..." />
       <div id="promptSuggestions" class="suggestion-chips"></div>
     </div>
@@ -2392,7 +2424,7 @@
 <input type="file" id="nativeCameraFallbackInput" accept="image/*" capture="environment" style="display:none" onchange="handleFileUpload(event, state.activeSlot, true)" />
 <div class="clay-toast" id="clayToast" role="status" aria-live="polite">
   <div class="toast-check" aria-hidden="true">
-    <svg class="icon" viewBox="0 0 24 24" style="width:11px;height:11px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <svg class="icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
   </div>
   <span id="toastMessage">Tersimpan</span>
 </div>
@@ -2593,7 +2625,6 @@
   const PIN_SALT = 'REV_TK_PERTIWI_KALIBENDA_2026_SALT';
   const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycbwCxmUCxdGblp_cSJDnTy5tJ5wVqYrYFqoJtXHW5Z8g_5oXYdOT9XJMGqaMzDJuzqu4ng/exec';
 
-  // Target ukuran file foto: minimal 0.8 MB (800 KB) s/d maksimal 1.0 MB (1000 KB)
   const PHOTO_MIN_BYTES = 800 * 1024;
   const PHOTO_MAX_BYTES = 1000 * 1024;
 
@@ -2809,24 +2840,18 @@
     return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
   }
 
-  /**
-   * Mengoptimalkan kualitas JPEG pada Canvas sehingga ukuran file berada di
-   * rentang 0.80 MB (800 KB) s/d 1.00 MB (1000 KB) — tidak pernah melebihi 1 MB.
-   */
   function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes = PHOTO_MAX_BYTES) {
     let low = 0.50;
     let high = 0.98;
     let bestDataUrl = canvas.toDataURL('image/jpeg', 0.90);
     let bestBytes = estimateDataUrlBytes(bestDataUrl);
 
-    // Jika kualitas tertinggi (0.98) masih di bawah 0.8 MB, gunakan 0.98
     const maxDataUrl = canvas.toDataURL('image/jpeg', high);
     const maxActualBytes = estimateDataUrlBytes(maxDataUrl);
     if (maxActualBytes <= maxBytes) {
       return { dataUrl: maxDataUrl, bytes: maxActualBytes };
     }
 
-    // Binary search 7 langkah untuk mengunci ukuran tepat di antara 0.8 MB - 1.0 MB
     bestDataUrl = canvas.toDataURL('image/jpeg', low);
     bestBytes = estimateDataUrlBytes(bestDataUrl);
 
@@ -2840,14 +2865,11 @@
       } else {
         bestDataUrl = candidate;
         bestBytes = size;
-        if (size >= minBytes) {
-          break; // Sudah berada di dalam rentang 0.8 MB - 1.0 MB
-        }
+        if (size >= minBytes) break;
         low = mid;
       }
     }
 
-    // Pengaman akhir jika ukuran masih > 1 MB pada kualitas 0.50
     if (bestBytes > maxBytes) {
       bestDataUrl = canvas.toDataURL('image/jpeg', 0.42);
       bestBytes = estimateDataUrlBytes(bestDataUrl);
@@ -3322,7 +3344,7 @@
     listEl.innerHTML = p.blockOrder.map((key, idx) => `
       <div class="order-item-row">
         <div style="display:flex; align-items:center; gap:5px; min-width:0; flex:1;">
-          <span style="font-size:9.5px; font-weight:800; color:var(--accent-blue); width:13px;">${idx + 1}.</span>
+          <span style="font-size:10px; font-weight:800; color:var(--accent-blue); width:14px;">${idx + 1}.</span>
           <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${escapeHtml(BLOCK_LABELS[key] || key)}</span>
         </div>
         <div style="display:flex; align-items:center; gap:5px; flex-shrink:0;">
@@ -3523,7 +3545,7 @@
             ${logoHTML}
             <div>
               <div class="tm-big-clock" style="font-size:${Math.round(19 * clockScale)}px; color:${theme === 'light' ? '#1d4ed8' : '#fbbf24'};">${timeHHMM}</div>
-              <div style="font-weight:700; font-size:9px;">${dateStr} (${escapeHtml(s.tanggalKegiatan)})</div>
+              <div style="font-weight:700; font-size:9.5px;">${dateStr} (${escapeHtml(s.tanggalKegiatan)})</div>
             </div>
           </div>`;
       }
@@ -3535,13 +3557,13 @@
         return `<div>${lineA ? `<div style="font-weight:700;">${escapeHtml(lineA)}</div>` : ''}${lineB ? `<div style="opacity:0.95;">${escapeHtml(lineB)}</div>` : ''}</div>`;
       }
       if (blockKey === 'gps') {
-        return `<div style="font-family:'JetBrains Mono',monospace; font-size:8.5px; opacity:0.92;">GPS: ${escapeHtml(gpsVal)} | Kompas: ${state.heading}°</div>`;
+        return `<div style="font-family:'JetBrains Mono',monospace; font-size:9px; opacity:0.92;">GPS: ${escapeHtml(gpsVal)} | Kompas: ${state.heading}°</div>`;
       }
       if (blockKey === 'note' && combinedNote) {
         return `<div style="font-style:italic;">Ket: ${escapeHtml(combinedNote)}</div>`;
       }
       if (blockKey === 'badge') {
-        return `<div style="font-weight:800; font-size:8px; letter-spacing:0.04em; color:${theme === 'light' ? '#15803d' : '#86efac'};">✓ VERIFIED TIMEMARK TK PERTIWI</div>`;
+        return `<div style="font-weight:800; font-size:8.5px; letter-spacing:0.04em; color:${theme === 'light' ? '#15803d' : '#86efac'};">✓ VERIFIED TIMEMARK TK PERTIWI</div>`;
       }
       return '';
     }).join('');
@@ -3576,7 +3598,7 @@
     if (!box) return;
     box.innerHTML = state.kop && state.kop.logoKiri
       ? `<img src="${state.kop.logoKiri}" alt="Logo TK Pertiwi" />`
-      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>`;
+      : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>`;
   }
 
   function buildKopHTML(kop) {
@@ -3963,17 +3985,17 @@
       <div class="slot-card" data-slot="${sl.key}">
         <div class="slot-header">
           <span class="slot-badge"><span class="slot-num">${idx + 1}</span> ${sl.label.split('. ')[1]}</span>
-          <span style="font-size:9.5px; font-weight:700; color:var(--text-muted);" id="status-${sl.key}">Kosong</span>
+          <span style="font-size:10px; font-weight:700; color:var(--text-muted);" id="status-${sl.key}">Kosong</span>
         </div>
         <button type="button" class="slot-preview" id="preview-${sl.key}" onclick="openGalleryLightbox(state.activeSessionIndex, state.activeGroupIndex, 'single', ${idx})">
           <img id="img-${sl.key}" alt="${sl.label}" />
           <span class="slot-zoom-chip">
-            <svg class="icon" viewBox="0 0 24 24" style="width:9.5px;height:9.5px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <svg class="icon" viewBox="0 0 24 24" style="width:10px;height:10px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
             Zoom
           </span>
           <div class="slot-placeholder">
-            <svg class="icon" viewBox="0 0 24 24" style="width:19px;height:19px;opacity:0.6;"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-            <span style="font-size:10px; font-weight:700;">${sl.label.split('. ')[1]}</span>
+            <svg class="icon" viewBox="0 0 24 24" style="width:20px;height:20px;opacity:0.6;"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span style="font-size:10.5px; font-weight:700;">${sl.label.split('. ')[1]}</span>
           </div>
         </button>
         <div class="slot-controls">
@@ -4052,7 +4074,7 @@
       return `
         <button type="button" class="session-pill ${idx === state.activeSessionIndex ? 'active' : ''}" onclick="switchSession(${idx}, 0)">
           <span>${escapeHtml(sess.sesiLabel)}</span>
-          <span style="opacity:0.75; font-size:9.5px;">(${escapeHtml(sess.tanggalKegiatan)})</span>
+          <span style="opacity:0.75; font-size:10px;">(${escapeHtml(sess.tanggalKegiatan)})</span>
           <span class="session-dot-count">${sess.groups.length}R • ${dayPhotos}F</span>
         </button>`;
     }).join('');
@@ -4080,7 +4102,7 @@
         acc + SLOTS.filter(sl => Boolean(grp.photos && grp.photos[sl.key])).length, 0);
 
       const addRoomBtnHTML = state.isAdmin
-        ? `<button type="button" class="clay-btn clay-btn-primary" style="padding:4.5px 9px; font-size:10px;" onclick="switchSession(${dayIdx}, 0); addRoomGroupInSameDay();">+ Ruang</button>`
+        ? `<button type="button" class="clay-btn clay-btn-primary" style="padding:5px 10px; font-size:10.5px;" onclick="switchSession(${dayIdx}, 0); addRoomGroupInSameDay();">+ Ruang</button>`
         : '';
 
       const cardsHTML = sess.groups.map((grp, grpIdx) => {
@@ -4094,23 +4116,23 @@
         }).join('');
 
         const adminBtns = state.isAdmin
-          ? `<button type="button" class="clay-btn" style="padding:3.5px 7px; font-size:9.5px;" onclick="switchSession(${dayIdx}, ${grpIdx}); window.scrollTo({top:0, behavior:'smooth'});">Edit</button>
-             <button type="button" class="clay-btn" style="padding:3.5px 7px; font-size:9.5px;" onclick="renameRoomGroupPrompt(${dayIdx}, ${grpIdx})">Ubah</button>
-             ${sess.groups.length > 1 ? `<button type="button" class="clay-btn clay-btn-danger" style="padding:3.5px 6px; font-size:9.5px;" onclick="switchSession(${dayIdx}, ${grpIdx}); deleteRoomGroupInSameDay(${grpIdx});">✕</button>` : ''}`
+          ? `<button type="button" class="clay-btn" style="padding:4px 8px; font-size:10px;" onclick="switchSession(${dayIdx}, ${grpIdx}); window.scrollTo({top:0, behavior:'smooth'});">Edit</button>
+             <button type="button" class="clay-btn" style="padding:4px 8px; font-size:10px;" onclick="renameRoomGroupPrompt(${dayIdx}, ${grpIdx})">Ubah</button>
+             ${sess.groups.length > 1 ? `<button type="button" class="clay-btn clay-btn-danger" style="padding:4px 7px; font-size:10px;" onclick="switchSession(${dayIdx}, ${grpIdx}); deleteRoomGroupInSameDay(${grpIdx});">✕</button>` : ''}`
           : '';
 
         return `
           <div class="album-card" style="${state.isAdmin && dayIdx === state.activeSessionIndex && grpIdx === state.activeGroupIndex ? 'border-color:var(--accent-blue);' : ''}">
             <div class="album-collage">${thumbsHTML}</div>
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:4px; flex-wrap:wrap;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:5px; flex-wrap:wrap;">
               <div style="min-width:0;">
-                <div class="wrap-text" style="font-size:12px; font-weight:800;">${escapeHtml(grp.roomName)}</div>
-                <div style="font-size:9.5px; color:var(--text-secondary);">${filledCount}/4 Foto • 1 Hal F4</div>
+                <div class="wrap-text" style="font-size:12.5px; font-weight:800;">${escapeHtml(grp.roomName)}</div>
+                <div style="font-size:10px; color:var(--text-secondary);">${filledCount}/4 Foto • 1 Hal F4</div>
               </div>
-              <div style="display:flex; gap:3.5px; flex-wrap:wrap;">
+              <div style="display:flex; gap:4px; flex-wrap:wrap;">
                 ${adminBtns}
-                <button type="button" class="clay-btn" style="padding:3.5px 7px; font-size:9.5px;" onclick="printF4SingleGroup(${dayIdx}, ${grpIdx})">Cetak F4</button>
-                <button type="button" class="clay-btn clay-btn-primary" style="padding:3.5px 8px; font-size:9.5px;" onclick="openGalleryLightbox(${dayIdx}, ${grpIdx}, 'grid')">Grid</button>
+                <button type="button" class="clay-btn" style="padding:4px 8px; font-size:10px;" onclick="printF4SingleGroup(${dayIdx}, ${grpIdx})">Cetak F4</button>
+                <button type="button" class="clay-btn clay-btn-primary" style="padding:4px 9px; font-size:10px;" onclick="openGalleryLightbox(${dayIdx}, ${grpIdx}, 'grid')">Grid</button>
               </div>
             </div>
           </div>`;
@@ -4118,15 +4140,15 @@
 
       return `
         <div class="clay-card day-archive-block">
-          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:5px; padding-bottom:6px; border-bottom:1px solid var(--divider-color);">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; padding-bottom:7px; border-bottom:1px solid var(--divider-color);">
             <div style="min-width:0;">
-              <span style="font-size:13px; font-weight:800; color:var(--accent-blue);">${escapeHtml(sess.sesiLabel)}</span>
-              <span style="font-size:11px; font-weight:700; margin-left:4px;">(${escapeHtml(sess.tanggalKegiatan)} • ${sess.progres}%)</span>
-              <div style="font-size:10px; color:var(--text-secondary);">${sess.groups.length} Ruang • ${totalDayPhotos} Foto</div>
+              <span style="font-size:13.5px; font-weight:800; color:var(--accent-blue);">${escapeHtml(sess.sesiLabel)}</span>
+              <span style="font-size:11.5px; font-weight:700; margin-left:5px;">(${escapeHtml(sess.tanggalKegiatan)} • ${sess.progres}%)</span>
+              <div style="font-size:10.5px; color:var(--text-secondary);">${sess.groups.length} Ruang • ${totalDayPhotos} Foto</div>
             </div>
-            <div style="display:flex; gap:4px; flex-wrap:wrap;">
+            <div style="display:flex; gap:5px; flex-wrap:wrap;">
               ${addRoomBtnHTML}
-              ${sess.groups.length > 1 ? `<button type="button" class="clay-btn" style="padding:4.5px 9px; font-size:10px;" onclick="printF4DayAllPages(${dayIdx})">Cetak Semua (${sess.groups.length} Hal)</button>` : ''}
+              ${sess.groups.length > 1 ? `<button type="button" class="clay-btn" style="padding:5px 10px; font-size:10.5px;" onclick="printF4DayAllPages(${dayIdx})">Cetak Semua (${sess.groups.length} Hal)</button>` : ''}
             </div>
           </div>
           <div class="archive-grid">${cardsHTML}</div>
@@ -4304,11 +4326,11 @@
         return `
           <button type="button" class="lb-grid-item" onclick="switchSingleSlot(${idx})">
             <div class="lb-grid-frame">
-              ${src ? `<img src="${src}" alt="${sl.label}" />` : `<span style="color:#8891a2; font-size:10.5px; font-weight:700;">Kosong</span>`}
+              ${src ? `<img src="${src}" alt="${sl.label}" />` : `<span style="color:#8891a2; font-size:11px; font-weight:700;">Kosong</span>`}
             </div>
-            <div style="margin-top:5px; display:flex; justify-content:space-between; align-items:center; font-size:10.5px; font-weight:800;">
+            <div style="margin-top:6px; display:flex; justify-content:space-between; align-items:center; font-size:11px; font-weight:800;">
               <span>${sl.label}</span>
-              <span style="color:var(--accent-blue); font-size:9.5px;">Klik Zoom</span>
+              <span style="color:var(--accent-blue); font-size:10px;">Klik Zoom</span>
             </div>
           </button>`;
       }).join('');
@@ -4598,7 +4620,6 @@
 
     const portraitMode = isVideo ? isDevicePortrait() : (srcH > srcW);
     const targetAspect = portraitMode ? (3 / 4) : (4 / 3);
-    // Resolusi 1600x1200 (atau 1200x1600) menghasilkan kisaran 0.8 - 1.0 MB yang tajam
     const outW = portraitMode ? 1200 : 1600;
     const outH = portraitMode ? 1600 : 1200;
 
@@ -5076,7 +5097,7 @@
     try {
       const data = {
         app: 'REV TK Pertiwi - Desa Kalibenda',
-        version: '16.0',
+        version: '16.1',
         exportedAt: new Date().toISOString(),
         kop: state.kop,
         camPresets: state.camPresets,
