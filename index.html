@@ -31,22 +31,22 @@
       --divider-color: rgba(148, 163, 184, 0.28);
 
       --clay-card:
-        4px 4px 10px rgba(148, 158, 178, 0.38),
-        -4px -4px 10px rgba(255, 255, 255, 0.9),
+        3.5px 3.5px 9px rgba(148, 158, 178, 0.36),
+        -3.5px -3.5px 9px rgba(255, 255, 255, 0.9),
         inset 1px 1px 1px rgba(255, 255, 255, 0.92);
 
       --clay-btn:
-        2.5px 2.5px 6px rgba(148, 158, 178, 0.38),
-        -2.5px -2.5px 6px rgba(255, 255, 255, 0.92),
+        2px 2px 5px rgba(148, 158, 178, 0.36),
+        -2px -2px 5px rgba(255, 255, 255, 0.92),
         inset 1px 1px 1px rgba(255, 255, 255, 0.92);
 
       --clay-btn-pressed:
-        inset 2px 2px 5px rgba(148, 158, 178, 0.52),
-        inset -2px -2px 5px rgba(255, 255, 255, 0.86);
+        inset 2px 2px 4px rgba(148, 158, 178, 0.5),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.86);
 
       --clay-inset:
-        inset 2.5px 2.5px 6px rgba(148, 158, 178, 0.42),
-        inset -2.5px -2.5px 6px rgba(255, 255, 255, 0.86);
+        inset 2px 2px 5px rgba(148, 158, 178, 0.4),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.86);
     }
 
     [data-theme="dark"] {
@@ -68,26 +68,26 @@
       --divider-color: rgba(255, 255, 255, 0.08);
 
       --clay-card:
-        5px 5px 12px rgba(5, 7, 11, 0.75),
-        -4px -4px 10px rgba(42, 49, 64, 0.32),
+        4px 4px 10px rgba(5, 7, 11, 0.72),
+        -3px -3px 8px rgba(42, 49, 64, 0.3),
         inset 1px 1px 1px rgba(255, 255, 255, 0.05);
 
       --clay-btn:
-        2.5px 2.5px 6px rgba(5, 7, 11, 0.72),
-        -2.5px -2.5px 6px rgba(42, 49, 64, 0.34),
+        2px 2px 5px rgba(5, 7, 11, 0.7),
+        -2px -2px 5px rgba(42, 49, 64, 0.32),
         inset 1px 1px 1px rgba(255, 255, 255, 0.05);
 
       --clay-btn-pressed:
-        inset 2px 2px 5px rgba(4, 6, 10, 0.82),
-        inset -2px -2px 5px rgba(42, 49, 64, 0.28);
+        inset 2px 2px 4px rgba(4, 6, 10, 0.8),
+        inset -2px -2px 4px rgba(42, 49, 64, 0.26);
 
       --clay-inset:
-        inset 2.5px 2.5px 6px rgba(4, 6, 10, 0.8),
-        inset -2.5px -2.5px 6px rgba(40, 47, 62, 0.3);
+        inset 2px 2px 5px rgba(4, 6, 10, 0.78),
+        inset -2px -2px 5px rgba(40, 47, 62, 0.28);
     }
 
     /* ========================================================================
-       2. GLOBAL RESET & COMPACT BASE TYPOGRAPHY
+       2. GLOBAL RESET & ULTRA-COMPACT BASE TYPOGRAPHY
        ======================================================================== */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -109,9 +109,9 @@
       min-height: 100dvh;
       display: flex;
       flex-direction: column;
-      padding: 8px 8px 14px;
-      line-height: 1.4;
-      font-size: 13px;
+      padding: 6px 6px 12px;
+      line-height: 1.38;
+      font-size: 12.5px;
       transition: background-color 0.2s ease, color 0.2s ease;
     }
 
@@ -129,8 +129,8 @@
     }
 
     svg.icon {
-      width: 13.5px;
-      height: 13.5px;
+      width: 13px;
+      height: 13px;
       flex-shrink: 0;
       stroke: currentColor;
       fill: none;
@@ -146,10 +146,10 @@
       width: 100%;
       min-width: 0;
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
-      border-radius: 14px;
+      border-radius: 12px;
       box-shadow: var(--clay-card);
       border: 1px solid var(--border-light);
-      padding: 10px 11px;
+      padding: 8px 9px;
     }
 
     .clay-pill-input, .clay-select, .clay-textarea {
@@ -158,10 +158,10 @@
       min-width: 0;
       background: var(--surface-inset);
       border: 1.5px solid transparent;
-      border-radius: 9px;
-      padding: 6.5px 10px;
+      border-radius: 8px;
+      padding: 5.5px 9px;
       font-family: inherit;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--text-primary);
       box-shadow: var(--clay-inset);
@@ -171,12 +171,12 @@
 
     .clay-pill-input:focus, .clay-select:focus, .clay-textarea:focus {
       border-color: var(--accent-blue);
-      box-shadow: var(--clay-inset), 0 0 0 2.5px var(--accent-blue-soft);
+      box-shadow: var(--clay-inset), 0 0 0 2px var(--accent-blue-soft);
     }
 
     .clay-textarea {
       resize: vertical;
-      min-height: 46px;
+      min-height: 42px;
     }
 
     .clay-btn {
@@ -184,7 +184,7 @@
       align-items: center;
       justify-content: center;
       gap: 4px;
-      padding: 6px 10px;
+      padding: 5px 9px;
       border-radius: 999px;
       border: 1px solid var(--border-light);
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
@@ -192,7 +192,7 @@
       color: var(--text-primary);
       font-family: inherit;
       font-weight: 700;
-      font-size: 11.5px;
+      font-size: 11px;
       cursor: pointer;
       user-select: none;
       text-align: center;
@@ -211,8 +211,8 @@
     .clay-btn:disabled { opacity: 0.48; cursor: not-allowed; }
 
     .clay-icon-btn {
-      width: 31px;
-      height: 31px;
+      width: 28px;
+      height: 28px;
       padding: 0;
       border-radius: 50%;
       flex-shrink: 0;
@@ -249,7 +249,7 @@
       border: none;
       padding: 1px 3px;
       font-family: inherit;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 800;
       color: var(--accent-blue);
       cursor: pointer;
@@ -263,8 +263,8 @@
     .clay-switch {
       position: relative;
       display: inline-block;
-      width: 38px;
-      height: 20px;
+      width: 36px;
+      height: 19px;
       flex-shrink: 0;
     }
     .clay-switch input { opacity: 0; width: 0; height: 0; }
@@ -280,8 +280,8 @@
     .clay-slider::before {
       content: "";
       position: absolute;
-      height: 14px;
-      width: 14px;
+      height: 13px;
+      width: 13px;
       left: 3px;
       bottom: 3px;
       background: linear-gradient(145deg, #ffffff, #d5d9e2);
@@ -290,13 +290,13 @@
       transition: 0.2s;
     }
     .clay-switch input:checked + .clay-slider { background: var(--accent-blue); }
-    .clay-switch input:checked + .clay-slider::before { transform: translateX(18px); }
+    .clay-switch input:checked + .clay-slider::before { transform: translateX(17px); }
 
     input[type="range"].clay-range {
       -webkit-appearance: none;
       appearance: none;
       width: 100%;
-      height: 7px;
+      height: 6px;
       border-radius: 999px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
@@ -304,8 +304,8 @@
     }
     input[type="range"].clay-range::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 16px;
-      height: 16px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
       background: linear-gradient(145deg, #ffffff, #dce0e8);
       box-shadow: 1.5px 1.5px 4px rgba(0, 0, 0, 0.32);
@@ -314,17 +314,17 @@
     }
 
     /* ========================================================================
-       4. ULTRA-COMPACT HEADER & PUBLIC HERO
+       4. RAPID-COMPACT HEADER & PUBLIC DASHBOARD HERO
        ======================================================================== */
     .app-header {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 8px;
-      padding: 8px 11px;
-      border-radius: 14px;
+      gap: 6px;
+      margin-bottom: 6px;
+      padding: 6px 9px;
+      border-radius: 12px;
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
       box-shadow: var(--clay-card);
       border: 1px solid var(--border-light);
@@ -334,15 +334,15 @@
     .brand-box {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       min-width: 0;
-      flex: 1 1 200px;
+      flex: 1 1 190px;
     }
 
     .brand-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
       border: 1px solid var(--border-light);
@@ -352,31 +352,31 @@
       color: var(--accent-blue);
       flex-shrink: 0;
       overflow: hidden;
-      padding: 3px;
+      padding: 2.5px;
     }
     .brand-icon img { width: 100%; height: 100%; object-fit: contain; }
 
     .brand-title { min-width: 0; }
     .brand-title h1 {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 800;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       flex-wrap: wrap;
       line-height: 1.15;
     }
     .brand-title p {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
       color: var(--text-secondary);
       margin-top: 1px;
     }
 
     .role-badge {
-      font-size: 9.5px;
+      font-size: 9px;
       font-weight: 800;
-      padding: 2px 7px;
+      padding: 1.5px 6px;
       border-radius: 999px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
@@ -393,7 +393,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       min-width: 0;
     }
 
@@ -406,28 +406,28 @@
     body.is-admin .admin-only-inline { display: inline-flex !important; }
 
     .public-hero {
-      margin-bottom: 10px;
+      margin-bottom: 7px;
       display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
-      gap: 10px;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: 8px;
       align-items: center;
     }
 
     .hero-top-meta {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       flex-wrap: wrap;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
 
     .cloud-sync-pill {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      padding: 2px 8px;
+      padding: 1.5px 7px;
       border-radius: 999px;
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 700;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
@@ -436,8 +436,8 @@
     .cloud-sync-pill.syncing { color: var(--accent-blue); }
     .cloud-sync-pill.synced { color: var(--accent-green); background: var(--accent-green-soft); box-shadow: none; }
     .cloud-sync-dot {
-      width: 5.5px;
-      height: 5.5px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: currentColor;
     }
@@ -446,55 +446,55 @@
     .stat-pills-row {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6px;
+      gap: 5px;
       min-width: 0;
     }
 
     .stat-clay-box {
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
-      border-radius: 11px;
-      padding: 7px 4px;
+      border-radius: 9px;
+      padding: 5px 4px;
       text-align: center;
       min-width: 0;
     }
     .stat-clay-box .val {
-      font-size: 16px;
+      font-size: 14.5px;
       font-weight: 800;
       color: var(--accent-blue);
       line-height: 1.1;
     }
     .stat-clay-box .lbl {
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 700;
       color: var(--text-secondary);
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
     /* ========================================================================
        5. COMPACT SESSION BARS & CRUD WORKSPACE
        ======================================================================== */
     .session-bar, .room-sub-bar {
-      margin-bottom: 8px;
-      padding: 7px 10px;
+      margin-bottom: 6px;
+      padding: 5px 8px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 6px;
+      gap: 5px;
     }
     .room-sub-bar {
       border-left: 3px solid var(--accent-blue);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .session-pills-scroll {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      padding: 2px 1px 3px;
+      padding: 2px 1px;
       flex: 1 1 180px;
       min-width: 0;
       max-width: 100%;
@@ -511,13 +511,13 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      padding: 5px 9px;
+      padding: 4px 8px;
       border-radius: 999px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
       color: var(--text-secondary);
       font-family: inherit;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
@@ -536,13 +536,13 @@
       color: var(--accent-blue);
       padding: 1px 5px;
       border-radius: 999px;
-      font-size: 9.5px;
+      font-size: 9px;
       font-weight: 800;
     }
 
     .bar-action-group {
       display: flex;
-      gap: 5px;
+      gap: 4px;
       flex-shrink: 0;
       flex-wrap: wrap;
     }
@@ -551,79 +551,79 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 10px;
-      padding: 8px 11px;
+      gap: 8px;
+      margin-bottom: 7px;
+      padding: 6px 9px;
       flex-wrap: wrap;
     }
 
     .progress-track {
-      flex: 1 1 100px;
-      min-width: 80px;
-      height: 8px;
+      flex: 1 1 90px;
+      min-width: 70px;
+      height: 7px;
       background: var(--surface-inset);
       border-radius: 999px;
       box-shadow: var(--clay-inset);
       overflow: hidden;
-      padding: 1.5px;
+      padding: 1px;
     }
     .progress-fill {
       height: 100%;
       width: 0%;
       background: linear-gradient(90deg, #2563eb, #60a5fa);
       border-radius: 999px;
-      transition: width 0.25s ease;
+      transition: width 0.22s ease;
     }
 
     .main-grid {
       display: grid;
-      grid-template-columns: minmax(0, 305px) minmax(0, 1fr);
-      gap: 12px;
+      grid-template-columns: minmax(0, 290px) minmax(0, 1fr);
+      gap: 9px;
       align-items: start;
     }
 
     .two-col-inputs {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 6px;
+      gap: 5px;
       min-width: 0;
     }
 
     .section-label {
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: var(--text-secondary);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 6px;
+      gap: 5px;
     }
 
-    .form-group { margin-bottom: 7px; min-width: 0; }
+    .form-group { margin-bottom: 6px; min-width: 0; }
 
     /* ========================================================================
-       6. 4-SLOT GALLERY & ARCHIVE ALBUMS (COMPACT + ZOOM)
+       6. 4-SLOT GALLERY & ARCHIVE ALBUMS (COMPACT + SIZE BADGE + ZOOM)
        ======================================================================== */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 9px;
+      gap: 7px;
       min-width: 0;
     }
 
     .slot-card {
       min-width: 0;
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
-      border-radius: 13px;
-      padding: 8px;
+      border-radius: 11px;
+      padding: 6px;
       box-shadow: var(--clay-card);
       border: 1px solid var(--border-light);
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
     .slot-header {
@@ -635,20 +635,20 @@
     .slot-badge {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       font-weight: 800;
-      font-size: 11px;
+      font-size: 10.5px;
     }
     .slot-num {
-      width: 19px;
-      height: 19px;
-      border-radius: 6px;
+      width: 17px;
+      height: 17px;
+      border-radius: 5px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 800;
       color: var(--accent-blue);
     }
@@ -657,7 +657,7 @@
       position: relative;
       width: 100%;
       aspect-ratio: 4 / 3;
-      border-radius: 10px;
+      border-radius: 8px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
       overflow: hidden;
@@ -681,13 +681,13 @@
     .slot-preview.has-image .slot-placeholder { display: none; }
     .slot-zoom-chip {
       position: absolute;
-      bottom: 5px;
-      right: 5px;
-      background: rgba(15, 23, 42, 0.75);
+      bottom: 4px;
+      right: 4px;
+      background: rgba(15, 23, 42, 0.76);
       color: #fff;
-      font-size: 9.5px;
+      font-size: 9px;
       font-weight: 700;
-      padding: 2px 7px;
+      padding: 2px 6px;
       border-radius: 999px;
       display: none;
       align-items: center;
@@ -698,35 +698,35 @@
     .slot-placeholder {
       text-align: center;
       color: var(--text-muted);
-      padding: 8px;
+      padding: 6px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
     }
 
     .slot-controls {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
-      gap: 5px;
+      gap: 4px;
     }
-    .slot-controls .clay-btn { padding: 6px 7px; font-size: 11px; }
+    .slot-controls .clay-btn { padding: 5px 6px; font-size: 10.5px; }
 
-    .archive-section { margin-top: 12px; min-width: 0; }
-    .day-archive-block { margin-top: 10px; padding: 10px; }
+    .archive-section { margin-top: 9px; min-width: 0; }
+    .day-archive-block { margin-top: 7px; padding: 8px; }
     .archive-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 10px;
-      margin-top: 9px;
+      grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+      gap: 7px;
+      margin-top: 7px;
       min-width: 0;
     }
 
     .album-card {
       min-width: 0;
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
-      border-radius: 13px;
-      padding: 8px;
+      border-radius: 11px;
+      padding: 7px;
       box-shadow: var(--clay-card);
       border: 1.5px solid var(--border-light);
     }
@@ -734,26 +734,26 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 3.5px;
+      gap: 3px;
       aspect-ratio: 4 / 3;
-      border-radius: 9px;
+      border-radius: 7px;
       overflow: hidden;
       background: var(--surface-inset);
-      padding: 3.5px;
+      padding: 3px;
       box-shadow: var(--clay-inset);
-      margin-bottom: 7px;
+      margin-bottom: 6px;
     }
     .album-thumb {
       width: 100%;
       height: 100%;
       aspect-ratio: 4 / 3;
-      border-radius: 5px;
+      border-radius: 4px;
       overflow: hidden;
       background: var(--surface);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 8.5px;
+      font-size: 8px;
       font-weight: 700;
       color: var(--text-muted);
       position: relative;
@@ -774,7 +774,7 @@
       left: 2px;
       background: rgba(15, 23, 42, 0.75);
       color: #fff;
-      font-size: 7.5px;
+      font-size: 7px;
       font-weight: 700;
       padding: 1px 4px;
       border-radius: 3px;
@@ -782,7 +782,7 @@
     }
 
     /* ========================================================================
-       7. MODALS, ZOOM LIGHTBOX, CAMERA & FLOATING LANDSCAPE SHUTTER
+       7. MODALS, ZOOM LIGHTBOX, CAMERA & FULLSCREEN LANDSCAPE AUTO-HIDE
        ======================================================================== */
     .modal-backdrop {
       position: fixed;
@@ -793,7 +793,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 8px;
+      padding: 6px;
     }
     .modal-backdrop.open { display: flex; }
     .modal-backdrop.dialog-top { z-index: 1500; }
@@ -801,39 +801,39 @@
     .modal-box {
       background: var(--surface);
       color: var(--text-primary);
-      border-radius: 18px;
+      border-radius: 16px;
       box-shadow: 0 22px 54px rgba(0, 0, 0, 0.48);
       border: 1px solid var(--border-light);
       width: 100%;
-      max-width: 1000px;
-      max-height: 94dvh;
+      max-width: 980px;
+      max-height: 95dvh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
 
     .modal-header {
-      padding: 10px 14px 8px;
+      padding: 8px 12px 7px;
       border-bottom: 1px solid var(--divider-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
+      gap: 6px;
       flex-shrink: 0;
     }
     .modal-body {
-      padding: 11px 14px;
+      padding: 9px 12px;
       overflow-y: auto;
       flex: 1;
       min-height: 0;
     }
     .modal-footer {
-      padding: 8px 14px 10px;
+      padding: 7px 12px 9px;
       border-top: 1px solid var(--divider-color);
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 6px;
+      gap: 5px;
       flex-wrap: wrap;
       flex-shrink: 0;
     }
@@ -841,41 +841,41 @@
     .suggestion-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 5px;
-      margin-top: 7px;
+      gap: 4px;
+      margin-top: 6px;
     }
     .chip-btn {
-      padding: 3.5px 9px;
+      padding: 3px 8px;
       border-radius: 999px;
       border: 1px solid var(--border-light);
       background: var(--surface-inset);
       color: var(--text-secondary);
       font-family: inherit;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       cursor: pointer;
     }
     .chip-btn:hover { color: var(--accent-blue); border-color: var(--accent-blue); }
 
-    /* KOP Preview — Logo seimbang & proporsional */
+    /* KOP Preview */
     .kop-preview-paper {
       background: #ffffff;
       color: #000000;
       font-family: 'Times New Roman', Times, serif;
-      padding: 12px 14px;
-      border-radius: 10px;
+      padding: 10px 12px;
+      border-radius: 9px;
       box-shadow: var(--clay-inset);
       border: 1px solid #cbd5e1;
-      margin-bottom: 11px;
+      margin-bottom: 9px;
       overflow-x: auto;
     }
     .kop-rendered-box {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       border-bottom: 3.5px double #000;
-      padding-bottom: 6px;
+      padding-bottom: 5px;
     }
     .kop-logo-slot {
       flex-shrink: 0;
@@ -904,8 +904,8 @@
     .logo-upload-card {
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
-      border-radius: 12px;
-      padding: 8px 10px;
+      border-radius: 10px;
+      padding: 7px 9px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -917,26 +917,26 @@
     .cam-settings-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.15fr);
-      gap: 12px;
+      gap: 10px;
     }
 
     .cam-preset-preview-box {
       position: relative;
       width: 100%;
       aspect-ratio: 4 / 3;
-      border-radius: 12px;
+      border-radius: 10px;
       background: linear-gradient(135deg, #273244 0%, #171d28 52%, #344359 100%);
       box-shadow: var(--clay-inset);
       overflow: hidden;
       display: flex;
-      padding: 10px;
+      padding: 9px;
     }
     .cam-preset-preview-box::before {
       content: "PRATINJAU 4:3";
       position: absolute;
-      top: 8px;
-      right: 10px;
-      font-size: 8.5px;
+      top: 7px;
+      right: 9px;
+      font-size: 8px;
       font-weight: 800;
       letter-spacing: 0.05em;
       color: rgba(255, 255, 255, 0.42);
@@ -946,17 +946,17 @@
       background: rgba(15, 23, 42, 0.72);
       border-left: 3.5px solid #f59e0b;
       color: #ffffff;
-      padding: 7px 10px;
-      border-radius: 8px;
+      padding: 6px 9px;
+      border-radius: 7px;
       max-width: 94%;
-      font-size: 10px;
-      line-height: 1.34;
+      font-size: 9.5px;
+      line-height: 1.32;
       display: flex;
       flex-direction: column;
-      gap: 2.5px;
+      gap: 2px;
       overflow-wrap: anywhere;
     }
-    .tm-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 1px; }
+    .tm-header-row { display: flex; align-items: center; gap: 7px; margin-bottom: 1px; }
     .tm-header-row.logo-top { flex-direction: column; align-items: flex-start; gap: 3px; }
     .tm-logo-img {
       display: block;
@@ -965,30 +965,30 @@
       border-radius: 4px;
       flex-shrink: 0;
     }
-    .tm-big-clock { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 800; line-height: 1.05; }
+    .tm-big-clock { font-family: 'JetBrains Mono', monospace; font-size: 19px; font-weight: 800; line-height: 1.05; }
 
     .order-item-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 6px;
+      gap: 5px;
       background: var(--surface);
-      padding: 5px 8px;
-      border-radius: 9px;
+      padding: 4.5px 7px;
+      border-radius: 8px;
       box-shadow: var(--clay-btn);
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
     }
     .order-arrows { display: inline-flex; gap: 3px; flex-shrink: 0; }
     .order-arrow-btn {
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
       border: 1px solid var(--border-light);
       background: var(--surface-inset);
       color: var(--text-primary);
       font-weight: 800;
-      font-size: 10.5px;
+      font-size: 10px;
       cursor: pointer;
     }
     .order-arrow-btn:disabled { opacity: 0.35; cursor: not-allowed; }
@@ -998,21 +998,21 @@
       letter-spacing: 0.45em;
       text-align: center;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 800;
-      padding: 9px;
-      margin-bottom: 9px;
+      padding: 8px;
+      margin-bottom: 8px;
     }
     .pin-keypad {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 7px;
-      margin-bottom: 9px;
+      gap: 6px;
+      margin-bottom: 8px;
     }
     .pin-key {
-      padding: 11px 0;
-      border-radius: 11px;
-      font-size: 15.5px;
+      padding: 10px 0;
+      border-radius: 10px;
+      font-size: 15px;
       font-weight: 800;
     }
     .pin-lock-banner {
@@ -1020,12 +1020,12 @@
       background: rgba(220, 38, 38, 0.14);
       border: 1px solid rgba(220, 38, 38, 0.35);
       color: var(--accent-red);
-      border-radius: 9px;
-      padding: 6px 8px;
-      font-size: 11px;
+      border-radius: 8px;
+      padding: 5px 8px;
+      font-size: 10.5px;
       font-weight: 700;
       text-align: center;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
     .pin-lock-banner.show { display: block; }
 
@@ -1033,14 +1033,14 @@
     .camera-toolbar-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 7px;
-      margin-bottom: 8px;
+      gap: 6px;
+      margin-bottom: 7px;
       align-items: center;
     }
     .camera-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.38fr) minmax(0, 1fr);
-      gap: 12px;
+      gap: 10px;
     }
 
     .viewfinder-wrap {
@@ -1048,7 +1048,7 @@
       width: 100%;
       aspect-ratio: 4 / 3;
       background: #0b0e14;
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
       box-shadow: var(--clay-inset);
       transition: aspect-ratio 0.2s ease;
@@ -1079,13 +1079,13 @@
 
     .webrtc-live-badge {
       position: absolute;
-      top: 8px;
-      left: 8px;
-      background: rgba(220, 38, 38, 0.88);
+      top: 7px;
+      left: 7px;
+      background: rgba(220, 38, 38, 0.85);
       color: #fff;
-      font-size: 9px;
+      font-size: 8.5px;
       font-weight: 800;
-      padding: 3px 8px;
+      padding: 2.5px 7px;
       border-radius: 999px;
       display: flex;
       align-items: center;
@@ -1093,8 +1093,8 @@
       z-index: 5;
     }
     .webrtc-live-dot {
-      width: 5.5px;
-      height: 5.5px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: #fff;
       animation: pulseDot 1.2s infinite;
@@ -1103,7 +1103,7 @@
 
     .timemark-live-overlay {
       position: absolute;
-      inset: 8px;
+      inset: 7px;
       pointer-events: none;
       display: flex;
       flex-direction: column;
@@ -1118,13 +1118,13 @@
 
     .timemark-settings-panel {
       background: var(--surface-inset);
-      border-radius: 12px;
-      padding: 9px;
+      border-radius: 10px;
+      padding: 8px;
       box-shadow: var(--clay-inset);
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      max-height: 480px;
+      gap: 5px;
+      max-height: 460px;
       overflow-y: auto;
       min-width: 0;
     }
@@ -1133,22 +1133,22 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
+      gap: 6px;
       background: var(--surface);
-      padding: 6px 10px;
-      border-radius: 9px;
+      padding: 5px 9px;
+      border-radius: 8px;
       box-shadow: var(--clay-btn);
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
     }
 
-    /* Floating Shutter Dock (default hidden on desktop, active on mobile landscape) */
+    /* Floating Shutter Dock (default hidden, muncul saat HP miring Landscape) */
     .floating-landscape-dock {
       display: none;
     }
 
     /* ========================================================================
-       FULLSCREEN KAMERA OTOMATIS SAAT HP MIRING (LANDSCAPE) + FLOATING SHUTTER
+       FULLSCREEN VIEWFINDER + AUTO-HIDE TOMBOL LAIN + SHUTTER PUTIH 70% SAAT MIRING
        ======================================================================== */
     @media (orientation: landscape) and (max-height: 600px) {
       #cameraModal {
@@ -1165,30 +1165,13 @@
         background: #000000 !important;
         position: relative;
       }
-      #cameraModal .modal-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 92px;
-        z-index: 30;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0) 100%);
-        border-bottom: none;
-        padding: 8px 12px;
-        color: #ffffff;
-      }
-      #cameraModal .modal-header h3 {
-        font-size: 13px !important;
-        color: #ffffff;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
-      }
-      #cameraModal .modal-header .clay-btn {
-        background: rgba(15, 23, 42, 0.72);
-        color: #ffffff;
-        border-color: rgba(255, 255, 255, 0.25);
-        box-shadow: none;
-        backdrop-filter: blur(6px);
-        padding: 5px 9px;
-        font-size: 10.5px;
+      /* Auto-hide seluruh tombol header, toolbar, panel seting, dan badge saat HP miring */
+      #cameraModal .modal-header,
+      #cameraModal .camera-toolbar-grid,
+      #cameraModal .timemark-settings-panel,
+      #cameraModal .desktop-shutter-row,
+      #cameraModal .webrtc-live-badge {
+        display: none !important;
       }
       #cameraModal .modal-body {
         padding: 0 !important;
@@ -1196,31 +1179,12 @@
         width: 100%;
         height: 100%;
       }
-      #cameraModal .camera-toolbar-grid {
-        position: fixed;
-        top: 42px;
-        left: 12px;
-        z-index: 25;
-        width: min(360px, calc(100vw - 120px));
-        grid-template-columns: 1fr 1fr;
-        gap: 6px;
-        margin: 0;
-      }
-      #cameraModal .camera-toolbar-grid .clay-select,
-      #cameraModal .camera-toolbar-grid > div {
-        background: rgba(15, 23, 42, 0.72) !important;
-        color: #ffffff !important;
-        box-shadow: none !important;
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        backdrop-filter: blur(6px);
-        padding: 4px 8px !important;
-        font-size: 11px !important;
-      }
       #cameraModal .camera-layout {
         display: block !important;
         width: 100%;
         height: 100%;
       }
+      /* Viewfinder full-screen 100vw x 100dvh */
       #cameraModal .viewfinder-wrap {
         position: fixed !important;
         inset: 0 !important;
@@ -1231,84 +1195,42 @@
         border-radius: 0 !important;
         margin: 0 !important;
       }
-      #cameraModal .webrtc-live-badge {
-        top: auto;
-        bottom: 10px;
-        right: 102px;
-        left: auto;
-      }
       #cameraModal .timemark-live-overlay {
-        inset: 12px 104px 12px 14px;
+        inset: 12px 105px 12px 14px;
       }
-      #cameraModal .desktop-shutter-row {
-        display: none !important;
-      }
-      /* Tombol Jepret Melayang (Floating Shutter Dock) di kanan layar */
+      /* Tombol jepret melayang warna putih transparan 70% */
       #cameraModal .floating-landscape-dock {
         position: fixed;
-        right: 12px;
+        right: 18px;
         top: 0;
         bottom: 0;
-        width: 76px;
-        z-index: 40;
+        width: 74px;
+        z-index: 50;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 14px;
         pointer-events: none;
       }
-      #cameraModal .floating-landscape-dock > * {
-        pointer-events: auto;
-      }
       .floating-shutter-btn {
-        width: 66px;
-        height: 66px;
+        pointer-events: auto;
+        width: 68px;
+        height: 68px;
         border-radius: 50%;
-        background: #ffffff;
-        border: 4px solid rgba(37, 99, 235, 0.9);
-        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.65), inset 0 0 0 3px #e2e8f0;
+        background: rgba(255, 255, 255, 0.70);
+        border: 3px solid rgba(255, 255, 255, 0.92);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45), inset 0 0 0 3px rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(4px);
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #1d4ed8;
-        font-weight: 800;
-        font-size: 10px;
-        transition: transform 0.1s ease;
+        color: #0f172a;
+        transition: transform 0.1s ease, background-color 0.15s ease;
       }
       .floating-shutter-btn:active {
-        transform: scale(0.91);
-      }
-      .floating-mini-btn {
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        background: rgba(15, 23, 42, 0.78);
-        color: #ffffff;
-        border: 1.5px solid rgba(255, 255, 255, 0.32);
-        backdrop-filter: blur(8px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-      }
-      /* Drawer Seting Timemark saat Landscape */
-      #cameraModal .timemark-settings-panel {
-        position: fixed;
-        top: 46px;
-        right: 94px;
-        bottom: 12px;
-        width: 290px;
-        max-height: none;
-        z-index: 35;
-        display: none;
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.16);
-      }
-      #cameraModal .timemark-settings-panel.drawer-open {
-        display: flex !important;
+        transform: scale(0.90);
+        background: rgba(255, 255, 255, 0.92);
       }
     }
 
@@ -1316,12 +1238,12 @@
     .lightbox-4grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
+      gap: 7px;
     }
     .lb-grid-item {
       background: var(--surface-inset);
-      border-radius: 10px;
-      padding: 6px;
+      border-radius: 9px;
+      padding: 5px;
       box-shadow: var(--clay-inset);
       cursor: pointer;
       border: none;
@@ -1333,7 +1255,7 @@
     .lb-grid-frame {
       width: 100%;
       aspect-ratio: 4 / 3;
-      border-radius: 7px;
+      border-radius: 6px;
       overflow: hidden;
       background: #141820;
       display: flex;
@@ -1349,12 +1271,12 @@
       align-items: center;
       justify-content: center;
       background: #0d1118;
-      border-radius: 12px;
+      border-radius: 10px;
       height: 55vh;
-      min-height: 280px;
+      min-height: 270px;
       max-height: 65vh;
       overflow: hidden;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
       user-select: none;
       touch-action: none;
     }
@@ -1372,13 +1294,13 @@
 
     .lb-zoom-toolbar {
       position: absolute;
-      bottom: 8px;
+      bottom: 7px;
       left: 50%;
       transform: translateX(-50%);
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      padding: 4px 7px;
+      padding: 3.5px 6px;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.84);
       backdrop-filter: blur(8px);
@@ -1390,9 +1312,9 @@
       color: #ffffff;
       border: none;
       border-radius: 999px;
-      padding: 4px 8px;
+      padding: 3.5px 7.5px;
       font-family: inherit;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
@@ -1403,9 +1325,9 @@
     .lb-zoom-pct {
       color: #f8fafc;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
-      min-width: 38px;
+      min-width: 36px;
       text-align: center;
     }
 
@@ -1413,12 +1335,12 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       border: 1px solid rgba(255, 255, 255, 0.45);
       background: rgba(248, 250, 252, 0.9);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       color: #0f172a;
       display: flex;
       align-items: center;
@@ -1426,43 +1348,43 @@
       cursor: pointer;
       z-index: 11;
     }
-    .lb-prev { left: 8px; }
-    .lb-next { right: 8px; }
+    .lb-prev { left: 7px; }
+    .lb-next { right: 7px; }
 
     /* PIN Security Card inside Cloud Modal */
     .security-panel {
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
-      border-radius: 12px;
-      padding: 10px;
-      margin-top: 10px;
+      border-radius: 10px;
+      padding: 9px;
+      margin-top: 8px;
     }
 
     /* Toast */
     .clay-toast {
       position: fixed;
-      bottom: 12px;
-      right: 12px;
-      max-width: calc(100vw - 24px);
+      bottom: 10px;
+      right: 10px;
+      max-width: calc(100vw - 20px);
       background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
       border: 1px solid var(--border-light);
       box-shadow: var(--clay-card);
-      border-radius: 12px;
-      padding: 8px 12px;
+      border-radius: 10px;
+      padding: 7px 11px;
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 11.5px;
+      gap: 7px;
+      font-size: 11px;
       font-weight: 700;
       z-index: 2000;
       transform: translateY(160%);
-      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
       pointer-events: none;
     }
     .clay-toast.show { transform: translateY(0); }
     .toast-check {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
@@ -1479,13 +1401,13 @@
     .app-footer {
       width: 100%;
       max-width: 1200px;
-      margin: 12px auto 0;
-      padding: 2px 8px;
+      margin: 10px auto 0;
+      padding: 2px 6px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 9.5px;
+      font-size: 9px;
       font-weight: 700;
       letter-spacing: 0.08em;
       color: var(--text-muted);
@@ -1495,14 +1417,14 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      padding: 2.5px 10px;
+      padding: 2px 9px;
       border-radius: 999px;
       background: var(--surface-inset);
       box-shadow: var(--clay-inset);
     }
     .footer-dot {
-      width: 4.5px;
-      height: 4.5px;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
       background: var(--accent-blue);
     }
@@ -1524,69 +1446,69 @@
     }
 
     @media (max-width: 640px) {
-      body { padding: 6px 6px 12px; }
-      .clay-card { padding: 9px 10px; border-radius: 13px; }
-      .clay-pill-input, .clay-select, .clay-textarea { font-size: 13.5px; padding: 6px 9px; }
+      body { padding: 5px 5px 10px; }
+      .clay-card { padding: 7px 8px; border-radius: 11px; }
+      .clay-pill-input, .clay-select, .clay-textarea { font-size: 13px; padding: 5.5px 8px; }
 
-      .app-header { flex-direction: column; align-items: stretch; gap: 7px; padding: 8px 10px; margin-bottom: 6px; }
-      .brand-title h1 { font-size: 14.5px; }
+      .app-header { flex-direction: column; align-items: stretch; gap: 6px; padding: 7px 8px; margin-bottom: 5px; }
+      .brand-title h1 { font-size: 14px; }
 
       .header-actions {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 5px;
+        gap: 4px;
         width: 100%;
       }
       .header-actions .clay-btn {
         width: 100%;
-        padding: 6.5px 5px;
-        font-size: 10.5px;
+        padding: 5.5px 4px;
+        font-size: 10px;
       }
       .header-actions .clay-icon-btn {
         width: 100%;
-        height: 30px;
+        height: 28px;
         border-radius: 999px;
       }
       .theme-btn-text { display: inline; }
       #btnAdminAuth { grid-column: span 3; }
       #btnSyncCloud { grid-column: span 2; }
 
-      .public-hero { gap: 8px; margin-bottom: 8px; }
-      .session-bar, .room-sub-bar { flex-direction: column; align-items: stretch; padding: 7px 9px; gap: 5px; margin-bottom: 6px; }
+      .public-hero { gap: 6px; margin-bottom: 6px; }
+      .session-bar, .room-sub-bar { flex-direction: column; align-items: stretch; padding: 6px 8px; gap: 4px; margin-bottom: 5px; }
       .bar-action-group {
         width: 100%;
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
-        gap: 5px;
+        gap: 4px;
       }
       .bar-action-group .clay-btn { width: 100%; }
 
-      .step-bar { flex-direction: column; align-items: stretch; gap: 5px; padding: 7px 9px; margin-bottom: 8px; }
+      .step-bar { flex-direction: column; align-items: stretch; gap: 4px; padding: 6px 8px; margin-bottom: 6px; }
       .gallery-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 7px;
+        gap: 6px;
       }
-      .slot-card { padding: 7px; gap: 5px; }
-      .slot-badge { font-size: 10px; }
+      .slot-card { padding: 6px; gap: 4px; }
+      .slot-badge { font-size: 9.5px; }
       .slot-controls {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       }
       .slot-controls .clay-btn-danger {
         grid-column: span 2;
-        padding: 4px;
+        padding: 3.5px;
       }
 
       .two-col-inputs, .lightbox-4grid, .archive-grid {
         grid-template-columns: 1fr;
-        gap: 7px;
+        gap: 6px;
       }
 
-      .modal-backdrop { padding: 5px; }
-      .modal-box { border-radius: 14px; }
-      .modal-header { padding: 9px 11px 7px; }
-      .modal-body { padding: 9px 11px; }
-      .modal-footer { padding: 8px 11px 10px; }
-      .clay-toast { left: 6px; right: 6px; bottom: 8px; max-width: none; }
+      .modal-backdrop { padding: 4px; }
+      .modal-box { border-radius: 12px; }
+      .modal-header { padding: 8px 10px 6px; }
+      .modal-body { padding: 8px 10px; }
+      .modal-footer { padding: 7px 10px 8px; }
+      .clay-toast { left: 5px; right: 5px; bottom: 7px; max-width: none; }
     }
 
     /* ========================================================================
@@ -1744,7 +1666,7 @@
   <section class="clay-card public-hero">
     <div style="min-width:0;">
       <div class="hero-top-meta">
-        <span style="font-size:10px; font-weight:800; color:var(--accent-blue); text-transform:uppercase; letter-spacing:0.05em;">
+        <span style="font-size:9.5px; font-weight:800; color:var(--accent-blue); text-transform:uppercase; letter-spacing:0.05em;">
           Portal Transparansi &amp; Dokumentasi
         </span>
         <span class="cloud-sync-pill" id="cloudSyncBadge">
@@ -1752,10 +1674,10 @@
           <span id="cloudSyncBadgeText">Memuat Cloud...</span>
         </span>
       </div>
-      <h2 class="wrap-text" style="font-size:15px; font-weight:800; margin-bottom:2px;" id="heroProjectTitle">
+      <h2 class="wrap-text" style="font-size:14.5px; font-weight:800; margin-bottom:2px;" id="heroProjectTitle">
         Revitalisasi Gedung TK Pertiwi Desa Kalibenda
       </h2>
-      <p style="font-size:11.5px; color:var(--text-secondary);">
+      <p style="font-size:11px; color:var(--text-secondary);">
         Kepala Sekolah: <strong id="heroKepsekName">YUSTIANI</strong> • Desa Kalibenda, Kec. Ajibarang
       </p>
     </div>
@@ -1789,8 +1711,8 @@
 
     <!-- Room Bar -->
     <div class="clay-card room-sub-bar">
-      <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; flex:1; min-width:0; width:100%;">
-        <span style="font-size:10px; font-weight:800; text-transform:uppercase; color:var(--accent-blue); white-space:nowrap;">
+      <div style="display:flex; align-items:center; gap:5px; flex-wrap:wrap; flex:1; min-width:0; width:100%;">
+        <span style="font-size:9.5px; font-weight:800; text-transform:uppercase; color:var(--accent-blue); white-space:nowrap;">
           Ruang (<span id="roomBarDayTitle">Hari ke-1</span>):
         </span>
         <div class="session-pills-scroll" id="roomPillsContainer"></div>
@@ -1803,15 +1725,15 @@
 
     <!-- Progress Bar -->
     <div class="clay-card step-bar">
-      <div style="font-size:11.5px; font-weight:800;">
+      <div style="font-size:11px; font-weight:800;">
         <span id="activeSessionBadgeText" style="color:var(--accent-blue);">Hari ke-1 — Tampak Luar Gedung</span>
         • Slot: <span id="slotCounterText">0 / 4</span>
       </div>
       <div class="progress-track">
         <div class="progress-fill" id="slotProgressFill"></div>
       </div>
-      <div style="font-size:10.5px; font-weight:700; color:var(--accent-green);">
-        Preset: <span id="activePresetBadgeName">Timemark Aktif (45%)</span>
+      <div style="font-size:10px; font-weight:700; color:var(--accent-green);">
+        Preset: <span id="activePresetBadgeName">Timemark Aktif (45%)</span> • Max 1 MB
       </div>
     </div>
 
@@ -1847,7 +1769,7 @@
         <div class="form-group">
           <label class="section-label" for="inputProgres">
             <span>Progres Fisik</span>
-            <span id="progresValLabel" style="color:var(--accent-blue); font-size:11px;">0% (Kondisi Awal)</span>
+            <span id="progresValLabel" style="color:var(--accent-blue); font-size:10.5px;">0% (Kondisi Awal)</span>
           </label>
           <input type="range" id="inputProgres" class="clay-range" min="0" max="100" step="5" value="0" oninput="updateProgresLabel()" />
         </div>
@@ -1875,7 +1797,7 @@
           <input type="text" id="inputCatatan" class="clay-pill-input" placeholder="Keterangan singkat..." oninput="saveCurrentSessionFields()" />
         </div>
 
-        <hr style="border:none; border-top:1px solid var(--divider-color); margin: 9px 0;" />
+        <hr style="border:none; border-top:1px solid var(--divider-color); margin: 7px 0;" />
 
         <div class="section-label"><span>Backup &amp; Restore</span></div>
         <div class="two-col-inputs">
@@ -1892,12 +1814,12 @@
 
   <!-- DAILY ARCHIVE GALLERY -->
   <section class="archive-section">
-    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:5px;">
       <div style="min-width:0;">
-        <h2 style="font-size:14.5px; font-weight:800;">Galeri Dokumentasi Harian</h2>
-        <p style="font-size:11px; color:var(--text-secondary);">Klik foto untuk memperbesar (Zoom &amp; Geser), atau cetak PDF F4.</p>
+        <h2 style="font-size:14px; font-weight:800;">Galeri Dokumentasi Harian</h2>
+        <p style="font-size:10.5px; color:var(--text-secondary);">Klik foto untuk memperbesar (Zoom &amp; Geser), atau cetak PDF F4.</p>
       </div>
-      <div style="display:flex; gap:5px; flex-wrap:wrap;">
+      <div style="display:flex; gap:4px; flex-wrap:wrap;">
         <button type="button" class="clay-btn clay-btn-primary admin-only-inline" onclick="addRoomGroupInSameDay()">+ Tambah Ruang</button>
         <button type="button" class="clay-btn clay-btn-success admin-only-inline" onclick="createNextDaySession()">+ Hari Baru</button>
       </div>
@@ -1919,21 +1841,21 @@
   <div class="modal-box">
     <div class="modal-header">
       <div style="min-width:0;">
-        <h3 style="font-size:15px; font-weight:800;">Seting Kamera &amp; Timemark</h3>
-        <p style="font-size:11px; color:var(--text-secondary);">Kelola preset stempel, logo proporsional, wilayah, dan urutan elemen.</p>
+        <h3 style="font-size:14.5px; font-weight:800;">Seting Kamera &amp; Timemark</h3>
+        <p style="font-size:10.5px; color:var(--text-secondary);">Kelola preset stempel, logo proporsional, wilayah, dan urutan elemen.</p>
       </div>
       <button type="button" class="clay-btn" onclick="closeModal('camSettingsCrudModal')">Tutup</button>
     </div>
 
     <div class="modal-body">
-      <div style="background:var(--surface-inset); padding:9px 10px; border-radius:12px; box-shadow:var(--clay-inset); margin-bottom:10px;">
+      <div style="background:var(--surface-inset); padding:8px 9px; border-radius:10px; box-shadow:var(--clay-inset); margin-bottom:9px;">
         <div class="section-label">
           <span>Preset Kamera</span>
           <span style="color:var(--accent-blue);" id="crudPresetCountLabel">3 Preset</span>
         </div>
-        <div class="session-pills-scroll" id="camPresetPillsList" style="margin-bottom:7px;"></div>
+        <div class="session-pills-scroll" id="camPresetPillsList" style="margin-bottom:6px;"></div>
         <div style="display:flex; gap:5px; flex-wrap:wrap;">
-          <input type="text" id="crudPresetNameInput" class="clay-pill-input" style="flex:1 1 140px;" placeholder="Nama Preset" />
+          <input type="text" id="crudPresetNameInput" class="clay-pill-input" style="flex:1 1 130px;" placeholder="Nama Preset" />
           <button type="button" class="clay-btn clay-btn-success" onclick="createNewCameraPreset()">+ Buat</button>
           <button type="button" class="clay-btn clay-btn-primary" onclick="updateActiveCameraPreset()">Simpan</button>
           <button type="button" class="clay-btn clay-btn-danger" onclick="deleteActiveCameraPreset()">Hapus</button>
@@ -1941,7 +1863,7 @@
       </div>
 
       <div class="cam-settings-grid">
-        <div style="min-width:0; display:flex; flex-direction:column; gap:8px;">
+        <div style="min-width:0; display:flex; flex-direction:column; gap:7px;">
           <div>
             <div class="section-label"><span>Pratinjau Stempel 4:3</span></div>
             <div class="cam-preset-preview-box" id="crudPreviewStage">
@@ -1949,10 +1871,10 @@
             </div>
           </div>
 
-          <div style="background:var(--surface-inset); padding:9px; border-radius:12px; box-shadow:var(--clay-inset);">
+          <div style="background:var(--surface-inset); padding:8px; border-radius:10px; box-shadow:var(--clay-inset);">
             <div class="section-label">
               <span>Susunan Elemen</span>
-              <span style="color:var(--accent-blue); font-size:9.5px;">Urutkan ↑ / ↓</span>
+              <span style="color:var(--accent-blue); font-size:9px;">Urutkan ↑ / ↓</span>
             </div>
             <div id="tmBlockOrderList" style="display:flex; flex-direction:column; gap:4px;"></div>
           </div>
@@ -1967,12 +1889,12 @@
             </label>
           </div>
 
-          <div style="background:var(--surface); padding:8px 10px; border-radius:10px; box-shadow:var(--clay-btn);">
+          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
             <div class="section-label">
               <span>Logo Stempel (Rasio Asli)</span>
               <span id="cfgLogoSizeLabel" style="color:var(--accent-blue);">44 px</span>
             </div>
-            <div class="two-col-inputs" style="margin-bottom:6px;">
+            <div class="two-col-inputs" style="margin-bottom:5px;">
               <select id="cfgTmLogoMode" class="clay-select" onchange="syncCrudSettingsToState(true)">
                 <option value="kop">Ikuti KOP</option>
                 <option value="custom">Logo Khusus</option>
@@ -1983,18 +1905,18 @@
                 <option value="top">Atas Jam</option>
               </select>
             </div>
-            <div style="display:flex; align-items:center; gap:7px; margin-bottom:6px;">
-              <span style="font-size:10.5px; font-weight:700; white-space:nowrap;">Tinggi:</span>
+            <div style="display:flex; align-items:center; gap:6px; margin-bottom:5px;">
+              <span style="font-size:10px; font-weight:700; white-space:nowrap;">Tinggi:</span>
               <input type="range" id="cfgTmLogoSize" class="clay-range" min="24" max="84" step="2" value="44" oninput="syncCrudSettingsToState(true)" />
             </div>
             <div style="display:flex; gap:5px; flex-wrap:wrap;">
-              <button type="button" class="clay-btn clay-btn-primary" style="flex:1; font-size:11px;" onclick="document.getElementById('fileCamCustomLogo').click()">Upload Logo Khusus</button>
-              <button type="button" class="clay-btn clay-btn-danger" style="font-size:11px;" onclick="removeCamCustomLogo()">Hapus</button>
+              <button type="button" class="clay-btn clay-btn-primary" style="flex:1; font-size:10.5px;" onclick="document.getElementById('fileCamCustomLogo').click()">Upload Logo Khusus</button>
+              <button type="button" class="clay-btn clay-btn-danger" style="font-size:10.5px;" onclick="removeCamCustomLogo()">Hapus</button>
               <input type="file" id="fileCamCustomLogo" accept="image/*" style="display:none" onchange="handleCamCustomLogoUpload(event)" />
             </div>
           </div>
 
-          <div style="background:var(--surface); padding:8px 10px; border-radius:10px; box-shadow:var(--clay-btn);">
+          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
             <div class="two-col-inputs">
               <div>
                 <div class="section-label"><span>Jam HH:MM</span><span id="cfgClockScaleLabel" style="color:var(--accent-blue);">115%</span></div>
@@ -2007,7 +1929,7 @@
             </div>
           </div>
 
-          <div style="background:var(--surface); padding:8px 10px; border-radius:10px; box-shadow:var(--clay-btn);">
+          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
             <div class="two-col-inputs">
               <div>
                 <div class="section-label"><span>Transparansi</span><span id="cfgOpacityLabel" style="color:var(--accent-blue);">45%</span></div>
@@ -2020,7 +1942,7 @@
             </div>
           </div>
 
-          <div style="background:var(--surface); padding:8px 10px; border-radius:10px; box-shadow:var(--clay-btn); display:flex; flex-direction:column; gap:6px;">
+          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn); display:flex; flex-direction:column; gap:5px;">
             <div class="section-label" style="margin-bottom:0;"><span>Identitas Wilayah</span></div>
             <input type="text" id="cfgTmTitle" class="clay-pill-input" placeholder="Judul Proyek" oninput="syncCrudSettingsToState(true)" />
             <input type="text" id="cfgTmStreet" class="clay-pill-input" placeholder="Sekolah / Alamat" oninput="syncCrudSettingsToState(true)" />
@@ -2033,7 +1955,7 @@
               <input type="text" id="cfgTmProvinsi" class="clay-pill-input" placeholder="Provinsi" oninput="syncCrudSettingsToState(true)" />
             </div>
             <div>
-              <div class="section-label" style="margin-bottom:3px;">
+              <div class="section-label" style="margin-bottom:2px;">
                 <span>Koordinat GPS</span>
                 <button type="button" class="clay-link-btn" onclick="refreshGPS(false)">Ambil GPS</button>
               </div>
@@ -2083,11 +2005,11 @@
      MODAL: KOP SURAT & LOGO (FULL CRUD)
      ========================================================= -->
 <div class="modal-backdrop" id="kopModal">
-  <div class="modal-box" style="max-width: 760px;">
+  <div class="modal-box" style="max-width: 740px;">
     <div class="modal-header">
       <div>
-        <h3 style="font-size:15px; font-weight:800;">KOP Surat &amp; Logo</h3>
-        <p style="font-size:11px; color:var(--text-secondary);">Pengaturan kop resmi seimbang untuk cetak PDF F4.</p>
+        <h3 style="font-size:14.5px; font-weight:800;">KOP Surat &amp; Logo</h3>
+        <p style="font-size:10.5px; color:var(--text-secondary);">Pengaturan kop resmi seimbang untuk cetak PDF F4.</p>
       </div>
       <button type="button" class="clay-btn" onclick="closeModal('kopModal')">Tutup</button>
     </div>
@@ -2112,7 +2034,7 @@
         <input type="text" id="kopInputLine3" class="clay-pill-input" oninput="updateKopFromInputs()" />
       </div>
 
-      <div class="two-col-inputs" style="margin-bottom:10px;">
+      <div class="two-col-inputs" style="margin-bottom:8px;">
         <div>
           <label class="section-label" for="kopInputAlign">Perataan Teks</label>
           <select id="kopInputAlign" class="clay-select" onchange="updateKopFromInputs()">
@@ -2132,24 +2054,24 @@
       <div class="two-col-inputs">
         <div class="logo-upload-card">
           <div style="min-width:0;">
-            <div style="font-size:11.5px; font-weight:800;">Logo Kiri</div>
-            <div style="font-size:10.5px; color:var(--text-secondary);" id="kopLogoKiriStatus">Default</div>
+            <div style="font-size:11px; font-weight:800;">Logo Kiri</div>
+            <div style="font-size:10px; color:var(--text-secondary);" id="kopLogoKiriStatus">Default</div>
           </div>
-          <div style="display:flex; gap:5px; flex-shrink:0;">
-            <button type="button" class="clay-btn clay-btn-primary" style="padding:5px 10px; font-size:11px;" onclick="document.getElementById('fileLogoKiri').click()">Upload</button>
-            <button type="button" class="clay-btn clay-btn-danger" style="padding:5px 8px; font-size:11px;" onclick="removeKopLogo('kiri')">✕</button>
+          <div style="display:flex; gap:4px; flex-shrink:0;">
+            <button type="button" class="clay-btn clay-btn-primary" style="padding:4px 9px; font-size:10.5px;" onclick="document.getElementById('fileLogoKiri').click()">Upload</button>
+            <button type="button" class="clay-btn clay-btn-danger" style="padding:4px 7px; font-size:10.5px;" onclick="removeKopLogo('kiri')">✕</button>
             <input type="file" id="fileLogoKiri" accept="image/*" style="display:none" onchange="handleKopLogoUpload(event, 'kiri')" />
           </div>
         </div>
 
         <div class="logo-upload-card">
           <div style="min-width:0;">
-            <div style="font-size:11.5px; font-weight:800;">Logo Kanan</div>
-            <div style="font-size:10.5px; color:var(--text-secondary);" id="kopLogoKananStatus">Kosong</div>
+            <div style="font-size:11px; font-weight:800;">Logo Kanan</div>
+            <div style="font-size:10px; color:var(--text-secondary);" id="kopLogoKananStatus">Kosong</div>
           </div>
-          <div style="display:flex; gap:5px; flex-shrink:0;">
-            <button type="button" class="clay-btn clay-btn-primary" style="padding:5px 10px; font-size:11px;" onclick="document.getElementById('fileLogoKanan').click()">Upload</button>
-            <button type="button" class="clay-btn clay-btn-danger" style="padding:5px 8px; font-size:11px;" onclick="removeKopLogo('kanan')">✕</button>
+          <div style="display:flex; gap:4px; flex-shrink:0;">
+            <button type="button" class="clay-btn clay-btn-primary" style="padding:4px 9px; font-size:10.5px;" onclick="document.getElementById('fileLogoKanan').click()">Upload</button>
+            <button type="button" class="clay-btn clay-btn-danger" style="padding:4px 7px; font-size:10.5px;" onclick="removeKopLogo('kanan')">✕</button>
             <input type="file" id="fileLogoKanan" accept="image/*" style="display:none" onchange="handleKopLogoUpload(event, 'kanan')" />
           </div>
         </div>
@@ -2158,7 +2080,7 @@
 
     <div class="modal-footer" style="justify-content:space-between;">
       <button type="button" class="clay-btn clay-btn-danger" onclick="confirmResetKopDefault()">Reset Default</button>
-      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+      <div style="display:flex; gap:5px; flex-wrap:wrap;">
         <button type="button" class="clay-btn" onclick="syncKopToCloud()">Simpan Cloud</button>
         <button type="button" class="clay-btn clay-btn-primary" onclick="saveKopAndClose()">Simpan &amp; Terapkan</button>
       </div>
@@ -2170,15 +2092,15 @@
      MODAL: LOGIN SUPER ADMIN (PIN 6 DIGIT + SHA-256 + COOLDOWN)
      ========================================================= -->
 <div class="modal-backdrop" id="pinModal">
-  <div class="modal-box" style="max-width: 330px;">
+  <div class="modal-box" style="max-width: 315px;">
     <div class="modal-header" style="justify-content:center; text-align:center; border-bottom:none; padding-bottom:2px;">
       <div>
-        <h3 style="font-size:15.5px; font-weight:800;">Login Super Admin</h3>
-        <p style="font-size:11px; color:var(--text-secondary);">Masukkan 6-digit PIN (SHA-256)</p>
+        <h3 style="font-size:15px; font-weight:800;">Login Super Admin</h3>
+        <p style="font-size:10.5px; color:var(--text-secondary);">Masukkan 6-digit PIN (SHA-256)</p>
       </div>
     </div>
 
-    <div class="modal-body" style="padding-top:5px;">
+    <div class="modal-body" style="padding-top:4px;">
       <div id="pinLockBanner" class="pin-lock-banner"></div>
       <input type="password" inputmode="numeric" pattern="[0-9]*" id="pinInputDisplay" class="clay-pill-input pin-display" maxlength="6" placeholder="••••••" oninput="handleDirectPinInput(this.value)" onkeydown="if(event.key==='Enter') verifyPin();" />
 
@@ -2192,9 +2114,9 @@
         <button type="button" class="clay-btn pin-key" onclick="appendPin('7')">7</button>
         <button type="button" class="clay-btn pin-key" onclick="appendPin('8')">8</button>
         <button type="button" class="clay-btn pin-key" onclick="appendPin('9')">9</button>
-        <button type="button" class="clay-btn clay-btn-danger pin-key" onclick="clearPin()" style="font-size:12px;">Hapus</button>
+        <button type="button" class="clay-btn clay-btn-danger pin-key" onclick="clearPin()" style="font-size:11.5px;">Hapus</button>
         <button type="button" class="clay-btn pin-key" onclick="appendPin('0')">0</button>
-        <button type="button" class="clay-btn clay-btn-primary pin-key" onclick="verifyPin()" style="font-size:12px;">Masuk</button>
+        <button type="button" class="clay-btn clay-btn-primary pin-key" onclick="verifyPin()" style="font-size:11.5px;">Masuk</button>
       </div>
 
       <button type="button" class="clay-btn" style="width:100%;" onclick="closeModal('pinModal')">Batal</button>
@@ -2203,21 +2125,21 @@
 </div>
 
 <!-- =========================================================
-     MODAL: KAMERA LIVE WEBRTC + FULLSCREEN LANDSCAPE + FLOATING SHUTTER
+     MODAL: KAMERA LIVE WEBRTC + FULLSCREEN LANDSCAPE AUTO-HIDE
      ========================================================= -->
 <div class="modal-backdrop" id="cameraModal">
   <div class="modal-box">
     <div class="modal-header" style="flex-wrap:wrap;">
       <div style="min-width:0;">
-        <h3 style="font-size:15px; font-weight:800;">Kamera Live — <span id="activeCameraSlotTitle" style="color:var(--accent-blue);">TAMPAK DEPAN</span></h3>
+        <h3 style="font-size:14.5px; font-weight:800;">Kamera Live — <span id="activeCameraSlotTitle" style="color:var(--accent-blue);">TAMPAK DEPAN</span></h3>
       </div>
       <div style="display:flex; gap:4px; flex-wrap:wrap;">
-        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" onclick="triggerNativeDeviceCamera()">Kamera HP</button>
-        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" onclick="toggleCameraGrid()">Grid</button>
-        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" id="btnTorchToggle" onclick="toggleCameraTorch()">Flash</button>
-        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" id="btnOrientMode" onclick="toggleCameraOrientationPreview()">Auto</button>
-        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" onclick="switchCameraFacing()">Putar</button>
-        <button type="button" class="clay-btn" style="padding:5px 9px; font-size:10.5px;" onclick="closeCameraModal()">Tutup</button>
+        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" onclick="triggerNativeDeviceCamera()">Kamera HP</button>
+        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" onclick="toggleCameraGrid()">Grid</button>
+        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" id="btnTorchToggle" onclick="toggleCameraTorch()">Flash</button>
+        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" id="btnOrientMode" onclick="toggleCameraOrientationPreview()">Auto</button>
+        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" onclick="switchCameraFacing()">Putar</button>
+        <button type="button" class="clay-btn" style="padding:4.5px 8px; font-size:10px;" onclick="closeCameraModal()">Tutup</button>
       </div>
     </div>
 
@@ -2226,8 +2148,8 @@
         <select id="cameraDeviceSelect" class="clay-select" onchange="selectSpecificCameraDevice()">
           <option value="">Mengaktifkan kamera...</option>
         </select>
-        <div style="display:flex; align-items:center; gap:8px; background:var(--surface-inset); padding:6px 10px; border-radius:10px; box-shadow:var(--clay-inset); min-width:0;">
-          <span style="font-size:10.5px; font-weight:800; white-space:nowrap;">Zoom: <span id="camZoomLabel">1.0x</span></span>
+        <div style="display:flex; align-items:center; gap:7px; background:var(--surface-inset); padding:5px 9px; border-radius:9px; box-shadow:var(--clay-inset); min-width:0;">
+          <span style="font-size:10px; font-weight:800; white-space:nowrap;">Zoom: <span id="camZoomLabel">1.0x</span></span>
           <input type="range" id="camZoomSlider" class="clay-range" min="1" max="3" step="0.1" value="1" oninput="applyCameraZoom()" />
         </div>
       </div>
@@ -2246,28 +2168,20 @@
             </div>
           </div>
 
-          <div class="desktop-shutter-row" style="display:flex; gap:7px; margin-top:9px; flex-wrap:wrap;">
-            <button type="button" class="clay-btn clay-btn-primary" id="btnCaptureShutter" style="padding:9px 18px; font-size:12.5px; flex:1 1 160px;" onclick="captureTimemarkPhoto()">
+          <div class="desktop-shutter-row" style="display:flex; gap:6px; margin-top:8px; flex-wrap:wrap;">
+            <button type="button" class="clay-btn clay-btn-primary" id="btnCaptureShutter" style="padding:8px 16px; font-size:12px; flex:1 1 150px;" onclick="captureTimemarkPhoto()">
               Jepret Foto 4:3
             </button>
-            <button type="button" class="clay-btn" style="padding:9px 13px;" onclick="triggerNativeDeviceCamera()">
+            <button type="button" class="clay-btn" style="padding:8px 12px;" onclick="triggerNativeDeviceCamera()">
               Kamera HP
             </button>
           </div>
         </div>
 
-        <!-- Floating Dock khusus Mode Landscape Fullscreen -->
-        <div class="floating-landscape-dock" aria-label="Kontrol Kamera Melayang">
-          <button type="button" class="floating-mini-btn" onclick="switchCameraFacing()" title="Putar Kamera">
-            <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4"></path><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"></path></svg>
-          </button>
-
+        <!-- Floating Shutter Putih Transparan 70% (Hanya muncul saat HP Miring Landscape, tombol lain auto-hidden) -->
+        <div class="floating-landscape-dock" aria-label="Tombol Jepret Melayang">
           <button type="button" class="floating-shutter-btn" onclick="captureTimemarkPhoto()" title="Jepret Foto Sekarang" aria-label="Jepret Foto">
-            <svg class="icon" viewBox="0 0 24 24" style="width:26px;height:26px;stroke-width:2.3;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-          </button>
-
-          <button type="button" class="floating-mini-btn" onclick="toggleLandscapeTimemarkDrawer()" title="Seting Timemark">
-            <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px;"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px;stroke-width:2.2;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
           </button>
         </div>
 
@@ -2285,23 +2199,23 @@
             </label>
           </div>
 
-          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
+          <div style="background:var(--surface); padding:6px 8px; border-radius:8px; box-shadow:var(--clay-btn);">
             <div class="section-label"><span>Transparansi</span><span id="tmOpacityVal" style="color:var(--accent-blue);">45%</span></div>
             <input type="range" id="tmBgOpacity" class="clay-range" min="0" max="100" step="5" value="45" oninput="syncLiveControlsToPreset()" />
           </div>
 
           <div class="two-col-inputs">
-            <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
+            <div style="background:var(--surface); padding:6px 8px; border-radius:8px; box-shadow:var(--clay-btn);">
               <div class="section-label"><span>Jam</span><span id="tmClockScaleVal" style="color:var(--accent-blue);">115%</span></div>
               <input type="range" id="tmClockScale" class="clay-range" min="80" max="180" step="5" value="115" oninput="syncLiveControlsToPreset()" />
             </div>
-            <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
+            <div style="background:var(--surface); padding:6px 8px; border-radius:8px; box-shadow:var(--clay-btn);">
               <div class="section-label"><span>Teks</span><span id="tmFontSizeVal" style="color:var(--accent-blue);">100%</span></div>
               <input type="range" id="tmFontScale" class="clay-range" min="70" max="145" step="5" value="100" oninput="syncLiveControlsToPreset()" />
             </div>
           </div>
 
-          <div style="background:var(--surface); padding:7px 9px; border-radius:9px; box-shadow:var(--clay-btn);">
+          <div style="background:var(--surface); padding:6px 8px; border-radius:8px; box-shadow:var(--clay-btn);">
             <label class="section-label" for="tmLiveCustomNoteInput">Catatan Stempel</label>
             <input type="text" id="tmLiveCustomNoteInput" class="clay-pill-input" placeholder="Opsional..." oninput="syncLiveControlsToPreset()" />
           </div>
@@ -2334,13 +2248,13 @@
      MODAL: LIGHTBOX 4 FOTO + INTERACTIVE ZOOM & PAN
      ========================================================= -->
 <div class="modal-backdrop" id="lightboxModal">
-  <div class="modal-box" style="max-width: 920px;">
+  <div class="modal-box" style="max-width: 900px;">
     <div class="modal-header" style="flex-wrap:wrap;">
       <div style="min-width:0;">
-        <h3 id="lbHeaderTitle" style="font-size:15px; font-weight:800;">Galeri 4 Foto</h3>
-        <p id="lbHeaderSubtitle" style="font-size:11px; color:var(--text-secondary);">Klik foto untuk memperbesar (Zoom &amp; Geser).</p>
+        <h3 id="lbHeaderTitle" style="font-size:14.5px; font-weight:800;">Galeri 4 Foto</h3>
+        <p id="lbHeaderSubtitle" style="font-size:10.5px; color:var(--text-secondary);">Klik foto untuk memperbesar (Zoom &amp; Geser).</p>
       </div>
-      <div style="display:flex; gap:5px; flex-wrap:wrap;">
+      <div style="display:flex; gap:4px; flex-wrap:wrap;">
         <button type="button" class="clay-btn" onclick="printF4SingleGroup(state.lbSessionIndex, state.lbGroupIndex)">Cetak F4</button>
         <button type="button" class="clay-btn" id="btnLbToggleMode" onclick="toggleLightboxViewMode()">Mode Zoom</button>
         <button type="button" class="clay-btn" onclick="closeModal('lightboxModal')">Tutup</button>
@@ -2372,7 +2286,7 @@
           </div>
         </div>
 
-        <div style="display:flex; justify-content:center; gap:5px; flex-wrap:wrap;">
+        <div style="display:flex; justify-content:center; gap:4px; flex-wrap:wrap;">
           <button type="button" class="clay-btn" id="lbDot-0" onclick="switchSingleSlot(0)">1. Depan</button>
           <button type="button" class="clay-btn" id="lbDot-1" onclick="switchSingleSlot(1)">2. Kanan</button>
           <button type="button" class="clay-btn" id="lbDot-2" onclick="switchSingleSlot(2)">3. Kiri</button>
@@ -2387,11 +2301,11 @@
      MODAL: PENGATURAN CLOUD, AUTO-LOAD & RESET PIN (SHA-256 SYNC)
      ========================================================= -->
 <div class="modal-backdrop" id="gasModal">
-  <div class="modal-box" style="max-width: 480px;">
+  <div class="modal-box" style="max-width: 460px;">
     <div class="modal-header">
       <div>
-        <h3 style="font-size:15px; font-weight:800;">Cloud &amp; Keamanan PIN</h3>
-        <p style="font-size:11px; color:var(--text-secondary);">Sinkronisasi Google Apps Script &amp; Hash PIN lintas perangkat.</p>
+        <h3 style="font-size:14.5px; font-weight:800;">Cloud &amp; Keamanan PIN</h3>
+        <p style="font-size:10.5px; color:var(--text-secondary);">Sinkronisasi Google Apps Script &amp; Hash PIN lintas perangkat.</p>
       </div>
       <button type="button" class="clay-btn" onclick="closeModal('gasModal')">Tutup</button>
     </div>
@@ -2402,10 +2316,10 @@
         <input type="url" id="gasWebAppUrl" class="clay-pill-input" placeholder="https://script.google.com/macros/s/.../exec" />
       </div>
 
-      <div class="tm-toggle-row" style="margin-bottom:10px;">
+      <div class="tm-toggle-row" style="margin-bottom:8px;">
         <div>
           <div>Auto-Load Menu Publik</div>
-          <div style="font-size:10px; font-weight:600; color:var(--text-secondary);">Muat data Cloud &amp; konfigurasi otomatis saat halaman dibuka.</div>
+          <div style="font-size:9.5px; font-weight:600; color:var(--text-secondary);">Muat data Cloud &amp; konfigurasi otomatis saat halaman dibuka.</div>
         </div>
         <label class="clay-switch">
           <input type="checkbox" id="cfgPublicAutoLoad" checked />
@@ -2414,18 +2328,18 @@
       </div>
 
       <div class="security-panel">
-        <div class="section-label" style="margin-bottom:7px;">
+        <div class="section-label" style="margin-bottom:6px;">
           <span>PIN Super Admin (SHA-256)</span>
-          <span id="pinStatusBadge" style="color:var(--accent-blue); font-size:10px;">Default (123456)</span>
+          <span id="pinStatusBadge" style="color:var(--accent-blue); font-size:9.5px;">Default (123456)</span>
         </div>
 
-        <div class="form-group" style="margin-bottom:8px;">
+        <div class="form-group" style="margin-bottom:7px;">
           <label class="section-label" for="newAdminPinInput">Ubah PIN Baru (6 Digit — Tersinkron Cloud)</label>
           <input type="text" inputmode="numeric" id="newAdminPinInput" class="clay-pill-input" maxlength="6" placeholder="Kosongkan jika tidak diubah" />
         </div>
 
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; flex-wrap:wrap; padding-top:7px; border-top:1px solid var(--divider-color);">
-          <span style="font-size:10.5px; color:var(--text-secondary); font-weight:600;">Reset &amp; sinkronkan ke semua perangkat?</span>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:5px; flex-wrap:wrap; padding-top:6px; border-top:1px solid var(--divider-color);">
+          <span style="font-size:10px; color:var(--text-secondary); font-weight:600;">Reset &amp; sinkronkan ke semua perangkat?</span>
           <button type="button" class="clay-btn clay-btn-danger" onclick="confirmResetAdminPin()">Reset PIN (123456)</button>
         </div>
       </div>
@@ -2442,12 +2356,12 @@
      MODAL DIALOG KUSTOM: KONFIRMASI & INPUT
      ========================================================= -->
 <div class="modal-backdrop dialog-top" id="customConfirmModal">
-  <div class="modal-box" style="max-width: 390px;">
+  <div class="modal-box" style="max-width: 375px;">
     <div class="modal-header">
-      <h3 id="confirmDialogTitle" style="font-size:15px; font-weight:800;">Konfirmasi</h3>
+      <h3 id="confirmDialogTitle" style="font-size:14.5px; font-weight:800;">Konfirmasi</h3>
     </div>
     <div class="modal-body">
-      <p id="confirmDialogMessage" style="font-size:12.5px; color:var(--text-secondary); line-height:1.45;"></p>
+      <p id="confirmDialogMessage" style="font-size:12px; color:var(--text-secondary); line-height:1.45;"></p>
     </div>
     <div class="modal-footer">
       <button type="button" class="clay-btn" id="btnConfirmCancel">Batal</button>
@@ -2457,12 +2371,12 @@
 </div>
 
 <div class="modal-backdrop dialog-top" id="customPromptModal">
-  <div class="modal-box" style="max-width: 420px;">
+  <div class="modal-box" style="max-width: 400px;">
     <div class="modal-header">
-      <h3 id="promptDialogTitle" style="font-size:15px; font-weight:800;">Input</h3>
+      <h3 id="promptDialogTitle" style="font-size:14.5px; font-weight:800;">Input</h3>
     </div>
     <div class="modal-body">
-      <p id="promptDialogMessage" style="font-size:12px; color:var(--text-secondary); margin-bottom:7px;"></p>
+      <p id="promptDialogMessage" style="font-size:11.5px; color:var(--text-secondary); margin-bottom:6px;"></p>
       <input type="text" id="promptDialogInput" class="clay-pill-input" placeholder="Masukkan nama..." />
       <div id="promptSuggestions" class="suggestion-chips"></div>
     </div>
@@ -2478,7 +2392,7 @@
 <input type="file" id="nativeCameraFallbackInput" accept="image/*" capture="environment" style="display:none" onchange="handleFileUpload(event, state.activeSlot, true)" />
 <div class="clay-toast" id="clayToast" role="status" aria-live="polite">
   <div class="toast-check" aria-hidden="true">
-    <svg class="icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <svg class="icon" viewBox="0 0 24 24" style="width:11px;height:11px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
   </div>
   <span id="toastMessage">Tersimpan</span>
 </div>
@@ -2673,11 +2587,15 @@
   }
 
   /* ==========================================================================
-     3. CONSTANTS & APPLICATION STATE (DEFAULT GAS URL + SHA-256 SALT)
+     3. CONSTANTS & APPLICATION STATE (TARGET FOTO 0.8 - 1.0 MB)
      ========================================================================== */
   const DEFAULT_ADMIN_PIN = '123456';
   const PIN_SALT = 'REV_TK_PERTIWI_KALIBENDA_2026_SALT';
   const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycbwCxmUCxdGblp_cSJDnTy5tJ5wVqYrYFqoJtXHW5Z8g_5oXYdOT9XJMGqaMzDJuzqu4ng/exec';
+
+  // Target ukuran file foto: minimal 0.8 MB (800 KB) s/d maksimal 1.0 MB (1000 KB)
+  const PHOTO_MIN_BYTES = 800 * 1024;
+  const PHOTO_MAX_BYTES = 1000 * 1024;
 
   const SLOTS = Object.freeze([
     { key: 'depan', label: '1. TAMPAK DEPAN' },
@@ -2700,7 +2618,7 @@
   const KEYS = Object.freeze({
     SESSIONS: 'rev_tk_pertiwi_sessions_v12',
     KOP: 'rev_tk_pertiwi_kop_v12',
-    PRESETS: 'rev_tk_pertiwi_cam_presets_v15',
+    PRESETS: 'rev_tk_pertiwi_cam_presets_v16',
     THEME: 'rev_tk_pertiwi_theme',
     PIN: 'rev_tk_pertiwi_admin_pin',
     PIN_HASH: 'rev_tk_pertiwi_admin_pin_hash',
@@ -2754,7 +2672,7 @@
   };
 
   /* ==========================================================================
-     4. DEFAULT DATA FACTORIES & NORMALIZERS (TANPA STANDAR KALIBENDA)
+     4. DEFAULT DATA FACTORIES & NORMALIZERS
      ========================================================================== */
   function svgToDataUri(svg) {
     return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
@@ -2866,7 +2784,7 @@
   }
 
   /* ==========================================================================
-     5. UTILITIES, PROPORTIONAL LOGO MATH & IMAGE COMPRESSION
+     5. UTILITIES, ADAPTIVE 0.8-1.0 MB IMAGE ENGINE & PROPORTIONAL LOGO
      ========================================================================== */
   function escapeHtml(str) {
     return String(str ?? '')
@@ -2875,6 +2793,67 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
+  }
+
+  function estimateDataUrlBytes(dataUrl) {
+    if (!dataUrl || typeof dataUrl !== 'string') return 0;
+    const commaIdx = dataUrl.indexOf(',');
+    if (commaIdx === -1) return 0;
+    const base64 = dataUrl.slice(commaIdx + 1);
+    const padding = (base64.endsWith('==') ? 2 : (base64.endsWith('=') ? 1 : 0));
+    return Math.max(0, Math.floor((base64.length * 3) / 4) - padding);
+  }
+
+  function formatBytesMB(bytes) {
+    if (!bytes) return '';
+    return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+  }
+
+  /**
+   * Mengoptimalkan kualitas JPEG pada Canvas sehingga ukuran file berada di
+   * rentang 0.80 MB (800 KB) s/d 1.00 MB (1000 KB) — tidak pernah melebihi 1 MB.
+   */
+  function encodeCanvasToTargetRange(canvas, minBytes = PHOTO_MIN_BYTES, maxBytes = PHOTO_MAX_BYTES) {
+    let low = 0.50;
+    let high = 0.98;
+    let bestDataUrl = canvas.toDataURL('image/jpeg', 0.90);
+    let bestBytes = estimateDataUrlBytes(bestDataUrl);
+
+    // Jika kualitas tertinggi (0.98) masih di bawah 0.8 MB, gunakan 0.98
+    const maxDataUrl = canvas.toDataURL('image/jpeg', high);
+    const maxActualBytes = estimateDataUrlBytes(maxDataUrl);
+    if (maxActualBytes <= maxBytes) {
+      return { dataUrl: maxDataUrl, bytes: maxActualBytes };
+    }
+
+    // Binary search 7 langkah untuk mengunci ukuran tepat di antara 0.8 MB - 1.0 MB
+    bestDataUrl = canvas.toDataURL('image/jpeg', low);
+    bestBytes = estimateDataUrlBytes(bestDataUrl);
+
+    for (let i = 0; i < 7; i++) {
+      const mid = (low + high) / 2;
+      const candidate = canvas.toDataURL('image/jpeg', mid);
+      const size = estimateDataUrlBytes(candidate);
+
+      if (size > maxBytes) {
+        high = mid;
+      } else {
+        bestDataUrl = candidate;
+        bestBytes = size;
+        if (size >= minBytes) {
+          break; // Sudah berada di dalam rentang 0.8 MB - 1.0 MB
+        }
+        low = mid;
+      }
+    }
+
+    // Pengaman akhir jika ukuran masih > 1 MB pada kualitas 0.50
+    if (bestBytes > maxBytes) {
+      bestDataUrl = canvas.toDataURL('image/jpeg', 0.42);
+      bestBytes = estimateDataUrlBytes(bestDataUrl);
+    }
+
+    return { dataUrl: bestDataUrl, bytes: bestBytes };
   }
 
   function calcProportionalLogoSize(natW, natH, targetHeight) {
@@ -3342,11 +3321,11 @@
     const p = getActivePreset();
     listEl.innerHTML = p.blockOrder.map((key, idx) => `
       <div class="order-item-row">
-        <div style="display:flex; align-items:center; gap:6px; min-width:0; flex:1;">
-          <span style="font-size:10px; font-weight:800; color:var(--accent-blue); width:14px;">${idx + 1}.</span>
+        <div style="display:flex; align-items:center; gap:5px; min-width:0; flex:1;">
+          <span style="font-size:9.5px; font-weight:800; color:var(--accent-blue); width:13px;">${idx + 1}.</span>
           <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${escapeHtml(BLOCK_LABELS[key] || key)}</span>
         </div>
-        <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+        <div style="display:flex; align-items:center; gap:5px; flex-shrink:0;">
           <div class="order-arrows">
             <button type="button" class="order-arrow-btn" onclick="moveTimemarkBlock(${idx}, -1)" ${idx === 0 ? 'disabled' : ''}>↑</button>
             <button type="button" class="order-arrow-btn" onclick="moveTimemarkBlock(${idx}, 1)" ${idx === p.blockOrder.length - 1 ? 'disabled' : ''}>↓</button>
@@ -3543,8 +3522,8 @@
           <div class="tm-header-row ${p.logoLayout === 'top' ? 'logo-top' : ''}">
             ${logoHTML}
             <div>
-              <div class="tm-big-clock" style="font-size:${Math.round(20 * clockScale)}px; color:${theme === 'light' ? '#1d4ed8' : '#fbbf24'};">${timeHHMM}</div>
-              <div style="font-weight:700; font-size:9.5px;">${dateStr} (${escapeHtml(s.tanggalKegiatan)})</div>
+              <div class="tm-big-clock" style="font-size:${Math.round(19 * clockScale)}px; color:${theme === 'light' ? '#1d4ed8' : '#fbbf24'};">${timeHHMM}</div>
+              <div style="font-weight:700; font-size:9px;">${dateStr} (${escapeHtml(s.tanggalKegiatan)})</div>
             </div>
           </div>`;
       }
@@ -3556,13 +3535,13 @@
         return `<div>${lineA ? `<div style="font-weight:700;">${escapeHtml(lineA)}</div>` : ''}${lineB ? `<div style="opacity:0.95;">${escapeHtml(lineB)}</div>` : ''}</div>`;
       }
       if (blockKey === 'gps') {
-        return `<div style="font-family:'JetBrains Mono',monospace; font-size:9px; opacity:0.92;">GPS: ${escapeHtml(gpsVal)} | Kompas: ${state.heading}°</div>`;
+        return `<div style="font-family:'JetBrains Mono',monospace; font-size:8.5px; opacity:0.92;">GPS: ${escapeHtml(gpsVal)} | Kompas: ${state.heading}°</div>`;
       }
       if (blockKey === 'note' && combinedNote) {
         return `<div style="font-style:italic;">Ket: ${escapeHtml(combinedNote)}</div>`;
       }
       if (blockKey === 'badge') {
-        return `<div style="font-weight:800; font-size:8.5px; letter-spacing:0.04em; color:${theme === 'light' ? '#15803d' : '#86efac'};">✓ VERIFIED TIMEMARK TK PERTIWI</div>`;
+        return `<div style="font-weight:800; font-size:8px; letter-spacing:0.04em; color:${theme === 'light' ? '#15803d' : '#86efac'};">✓ VERIFIED TIMEMARK TK PERTIWI</div>`;
       }
       return '';
     }).join('');
@@ -3597,7 +3576,7 @@
     if (!box) return;
     box.innerHTML = state.kop && state.kop.logoKiri
       ? `<img src="${state.kop.logoKiri}" alt="Logo TK Pertiwi" />`
-      : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>`;
+      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>`;
   }
 
   function buildKopHTML(kop) {
@@ -3726,7 +3705,7 @@
   }
 
   /* ==========================================================================
-     9. SESSIONS & ROOMS FULL CRUD
+     9. SESSIONS & ROOMS FULL CRUD (TERMASUK HAPUS CLOUD OTOMATIS)
      ========================================================================== */
   async function loadSessions() {
     const saved = await HybridDB.get(KEYS.SESSIONS);
@@ -3829,22 +3808,65 @@
     renderAllUI();
   }
 
+  async function sendCloudDeleteRequest(payload) {
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      return new Promise((resolve) => {
+        const fn = payload.action === 'deleteSession' ? 'deleteDocumentationSession' : 'deleteDocumentationGroup';
+        if (typeof google.script.run[fn] === 'function') {
+          google.script.run
+            .withSuccessHandler((res) => resolve(Boolean(res && res.status === 'success')))
+            .withFailureHandler(() => resolve(false))[fn](payload);
+        } else {
+          resolve(false);
+        }
+      });
+    }
+    if (!state.gasUrl) return false;
+    try {
+      const res = await fetch(state.gasUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+      const json = await res.json();
+      return Boolean(json && json.status === 'success');
+    } catch (e) {
+      return false;
+    }
+  }
+
   async function deleteRoomGroupInSameDay(groupIdx) {
     if (!state.isAdmin) return handleAdminAuthClick();
     const s = getActiveSession();
     if (s.groups.length <= 1) return showToast('Minimal tersisa 1 ruang dalam 1 hari.');
     const target = s.groups[groupIdx];
     const ok = await showConfirmDialog({
-      title: 'Hapus Ruang',
-      message: `Hapus ruang "${target.roomName}" beserta seluruh fotonya dari ${s.sesiLabel}?`,
-      confirmText: 'Hapus Ruang'
+      title: 'Hapus Ruang (Lokal & Cloud)',
+      message: `Hapus ruang "${target.roomName}" beserta seluruh fotonya dari ${s.sesiLabel} dan Google Sheets?`,
+      confirmText: 'Hapus Permanen'
     });
     if (!ok) return;
+
+    const deletedSessionId = s.id;
+    const deletedGroupId = target.id;
+    const deletedRoomName = target.roomName;
+
     s.groups.splice(groupIdx, 1);
     state.activeGroupIndex = Math.max(0, state.activeGroupIndex - 1);
-    persistSessions();
+    await persistSessions();
     renderAllUI();
-    showToast(`Ruang "${target.roomName}" dihapus.`);
+    showToast(`Menghapus "${deletedRoomName}" dari Cloud...`);
+
+    const cloudOk = await sendCloudDeleteRequest({
+      action: 'deleteGroup',
+      sessionId: deletedSessionId,
+      groupId: deletedGroupId,
+      roomName: deletedRoomName
+    });
+    showToast(cloudOk
+      ? `Ruang "${deletedRoomName}" dihapus lokal & Cloud.`
+      : `Ruang "${deletedRoomName}" dihapus lokal.`
+    );
   }
 
   async function deleteSessionByIndex(index) {
@@ -3852,17 +3874,31 @@
     if (state.sessions.length <= 1) return showToast('Minimal tersisa 1 sesi hari.');
     const target = state.sessions[index];
     const ok = await showConfirmDialog({
-      title: 'Hapus Sesi Hari',
-      message: `Hapus seluruh dokumentasi "${target.sesiLabel}" (${target.groups.length} ruang)?`,
-      confirmText: 'Hapus Sesi'
+      title: 'Hapus Sesi Hari (Lokal & Cloud)',
+      message: `Hapus seluruh dokumentasi "${target.sesiLabel}" (${target.groups.length} ruang) secara permanen dari perangkat dan Google Sheets?`,
+      confirmText: 'Hapus Permanen'
     });
     if (!ok) return;
+
+    const deletedSessionId = target.id;
+    const deletedLabel = target.sesiLabel;
+
     state.sessions.splice(index, 1);
     state.activeSessionIndex = Math.max(0, state.activeSessionIndex - 1);
     state.activeGroupIndex = 0;
-    persistSessions();
+    await persistSessions();
     renderAllUI();
-    showToast(`Sesi "${target.sesiLabel}" dihapus.`);
+    showToast(`Menghapus "${deletedLabel}" dari Cloud...`);
+
+    const cloudOk = await sendCloudDeleteRequest({
+      action: 'deleteSession',
+      sessionId: deletedSessionId,
+      sesiLabel: deletedLabel
+    });
+    showToast(cloudOk
+      ? `Sesi "${deletedLabel}" dihapus lokal & Cloud.`
+      : `Sesi "${deletedLabel}" dihapus lokal.`
+    );
   }
 
   function saveCurrentSessionFields() {
@@ -3927,17 +3963,17 @@
       <div class="slot-card" data-slot="${sl.key}">
         <div class="slot-header">
           <span class="slot-badge"><span class="slot-num">${idx + 1}</span> ${sl.label.split('. ')[1]}</span>
-          <span style="font-size:10px; font-weight:700; color:var(--text-muted);" id="status-${sl.key}">Kosong</span>
+          <span style="font-size:9.5px; font-weight:700; color:var(--text-muted);" id="status-${sl.key}">Kosong</span>
         </div>
         <button type="button" class="slot-preview" id="preview-${sl.key}" onclick="openGalleryLightbox(state.activeSessionIndex, state.activeGroupIndex, 'single', ${idx})">
           <img id="img-${sl.key}" alt="${sl.label}" />
           <span class="slot-zoom-chip">
-            <svg class="icon" viewBox="0 0 24 24" style="width:10px;height:10px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <svg class="icon" viewBox="0 0 24 24" style="width:9.5px;height:9.5px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
             Zoom
           </span>
           <div class="slot-placeholder">
-            <svg class="icon" viewBox="0 0 24 24" style="width:20px;height:20px;opacity:0.6;"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-            <span style="font-size:10.5px; font-weight:700;">${sl.label.split('. ')[1]}</span>
+            <svg class="icon" viewBox="0 0 24 24" style="width:19px;height:19px;opacity:0.6;"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span style="font-size:10px; font-weight:700;">${sl.label.split('. ')[1]}</span>
           </div>
         </button>
         <div class="slot-controls">
@@ -3980,7 +4016,8 @@
     const g = getActiveGroup();
     let filled = 0;
     SLOTS.forEach(sl => {
-      const hasImg = Boolean(g.photos && g.photos[sl.key]);
+      const val = g.photos ? g.photos[sl.key] : '';
+      const hasImg = Boolean(val);
       if (hasImg) filled++;
       const previewEl = $id(`preview-${sl.key}`);
       const imgEl = $id(`img-${sl.key}`);
@@ -3988,9 +4025,10 @@
       if (!previewEl || !imgEl || !statusEl) return;
 
       if (hasImg) {
-        imgEl.src = g.photos[sl.key];
+        imgEl.src = val;
         previewEl.classList.add('has-image');
-        statusEl.textContent = 'Terisi ✓';
+        const bytes = val.startsWith('data:image/') ? estimateDataUrlBytes(val) : 0;
+        statusEl.textContent = bytes ? `${formatBytesMB(bytes)} ✓` : 'Cloud ✓';
         statusEl.style.color = 'var(--accent-green)';
       } else {
         imgEl.removeAttribute('src');
@@ -4014,7 +4052,7 @@
       return `
         <button type="button" class="session-pill ${idx === state.activeSessionIndex ? 'active' : ''}" onclick="switchSession(${idx}, 0)">
           <span>${escapeHtml(sess.sesiLabel)}</span>
-          <span style="opacity:0.75; font-size:10px;">(${escapeHtml(sess.tanggalKegiatan)})</span>
+          <span style="opacity:0.75; font-size:9.5px;">(${escapeHtml(sess.tanggalKegiatan)})</span>
           <span class="session-dot-count">${sess.groups.length}R • ${dayPhotos}F</span>
         </button>`;
     }).join('');
@@ -4042,7 +4080,7 @@
         acc + SLOTS.filter(sl => Boolean(grp.photos && grp.photos[sl.key])).length, 0);
 
       const addRoomBtnHTML = state.isAdmin
-        ? `<button type="button" class="clay-btn clay-btn-primary" style="padding:5px 10px; font-size:10.5px;" onclick="switchSession(${dayIdx}, 0); addRoomGroupInSameDay();">+ Ruang</button>`
+        ? `<button type="button" class="clay-btn clay-btn-primary" style="padding:4.5px 9px; font-size:10px;" onclick="switchSession(${dayIdx}, 0); addRoomGroupInSameDay();">+ Ruang</button>`
         : '';
 
       const cardsHTML = sess.groups.map((grp, grpIdx) => {
@@ -4056,23 +4094,23 @@
         }).join('');
 
         const adminBtns = state.isAdmin
-          ? `<button type="button" class="clay-btn" style="padding:4px 8px; font-size:10px;" onclick="switchSession(${dayIdx}, ${grpIdx}); window.scrollTo({top:0, behavior:'smooth'});">Edit</button>
-             <button type="button" class="clay-btn" style="padding:4px 8px; font-size:10px;" onclick="renameRoomGroupPrompt(${dayIdx}, ${grpIdx})">Ubah Nama</button>
-             ${sess.groups.length > 1 ? `<button type="button" class="clay-btn clay-btn-danger" style="padding:4px 7px; font-size:10px;" onclick="switchSession(${dayIdx}, ${grpIdx}); deleteRoomGroupInSameDay(${grpIdx});">✕</button>` : ''}`
+          ? `<button type="button" class="clay-btn" style="padding:3.5px 7px; font-size:9.5px;" onclick="switchSession(${dayIdx}, ${grpIdx}); window.scrollTo({top:0, behavior:'smooth'});">Edit</button>
+             <button type="button" class="clay-btn" style="padding:3.5px 7px; font-size:9.5px;" onclick="renameRoomGroupPrompt(${dayIdx}, ${grpIdx})">Ubah</button>
+             ${sess.groups.length > 1 ? `<button type="button" class="clay-btn clay-btn-danger" style="padding:3.5px 6px; font-size:9.5px;" onclick="switchSession(${dayIdx}, ${grpIdx}); deleteRoomGroupInSameDay(${grpIdx});">✕</button>` : ''}`
           : '';
 
         return `
           <div class="album-card" style="${state.isAdmin && dayIdx === state.activeSessionIndex && grpIdx === state.activeGroupIndex ? 'border-color:var(--accent-blue);' : ''}">
             <div class="album-collage">${thumbsHTML}</div>
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:5px; flex-wrap:wrap;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:4px; flex-wrap:wrap;">
               <div style="min-width:0;">
-                <div class="wrap-text" style="font-size:12.5px; font-weight:800;">${escapeHtml(grp.roomName)}</div>
-                <div style="font-size:10px; color:var(--text-secondary);">${filledCount}/4 Foto • 1 Hal F4</div>
+                <div class="wrap-text" style="font-size:12px; font-weight:800;">${escapeHtml(grp.roomName)}</div>
+                <div style="font-size:9.5px; color:var(--text-secondary);">${filledCount}/4 Foto • 1 Hal F4</div>
               </div>
-              <div style="display:flex; gap:4px; flex-wrap:wrap;">
+              <div style="display:flex; gap:3.5px; flex-wrap:wrap;">
                 ${adminBtns}
-                <button type="button" class="clay-btn" style="padding:4px 8px; font-size:10px;" onclick="printF4SingleGroup(${dayIdx}, ${grpIdx})">Cetak F4</button>
-                <button type="button" class="clay-btn clay-btn-primary" style="padding:4px 9px; font-size:10px;" onclick="openGalleryLightbox(${dayIdx}, ${grpIdx}, 'grid')">Grid</button>
+                <button type="button" class="clay-btn" style="padding:3.5px 7px; font-size:9.5px;" onclick="printF4SingleGroup(${dayIdx}, ${grpIdx})">Cetak F4</button>
+                <button type="button" class="clay-btn clay-btn-primary" style="padding:3.5px 8px; font-size:9.5px;" onclick="openGalleryLightbox(${dayIdx}, ${grpIdx}, 'grid')">Grid</button>
               </div>
             </div>
           </div>`;
@@ -4080,15 +4118,15 @@
 
       return `
         <div class="clay-card day-archive-block">
-          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; padding-bottom:7px; border-bottom:1px solid var(--divider-color);">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:5px; padding-bottom:6px; border-bottom:1px solid var(--divider-color);">
             <div style="min-width:0;">
-              <span style="font-size:13.5px; font-weight:800; color:var(--accent-blue);">${escapeHtml(sess.sesiLabel)}</span>
-              <span style="font-size:11.5px; font-weight:700; margin-left:5px;">(${escapeHtml(sess.tanggalKegiatan)} • ${sess.progres}%)</span>
-              <div style="font-size:10.5px; color:var(--text-secondary);">${sess.groups.length} Ruang • ${totalDayPhotos} Foto</div>
+              <span style="font-size:13px; font-weight:800; color:var(--accent-blue);">${escapeHtml(sess.sesiLabel)}</span>
+              <span style="font-size:11px; font-weight:700; margin-left:4px;">(${escapeHtml(sess.tanggalKegiatan)} • ${sess.progres}%)</span>
+              <div style="font-size:10px; color:var(--text-secondary);">${sess.groups.length} Ruang • ${totalDayPhotos} Foto</div>
             </div>
-            <div style="display:flex; gap:5px; flex-wrap:wrap;">
+            <div style="display:flex; gap:4px; flex-wrap:wrap;">
               ${addRoomBtnHTML}
-              ${sess.groups.length > 1 ? `<button type="button" class="clay-btn" style="padding:5px 10px; font-size:10.5px;" onclick="printF4DayAllPages(${dayIdx})">Cetak Semua (${sess.groups.length} Hal)</button>` : ''}
+              ${sess.groups.length > 1 ? `<button type="button" class="clay-btn" style="padding:4.5px 9px; font-size:10px;" onclick="printF4DayAllPages(${dayIdx})">Cetak Semua (${sess.groups.length} Hal)</button>` : ''}
             </div>
           </div>
           <div class="archive-grid">${cardsHTML}</div>
@@ -4266,11 +4304,11 @@
         return `
           <button type="button" class="lb-grid-item" onclick="switchSingleSlot(${idx})">
             <div class="lb-grid-frame">
-              ${src ? `<img src="${src}" alt="${sl.label}" />` : `<span style="color:#8891a2; font-size:11px; font-weight:700;">Kosong</span>`}
+              ${src ? `<img src="${src}" alt="${sl.label}" />` : `<span style="color:#8891a2; font-size:10.5px; font-weight:700;">Kosong</span>`}
             </div>
-            <div style="margin-top:6px; display:flex; justify-content:space-between; align-items:center; font-size:11px; font-weight:800;">
+            <div style="margin-top:5px; display:flex; justify-content:space-between; align-items:center; font-size:10.5px; font-weight:800;">
               <span>${sl.label}</span>
-              <span style="color:var(--accent-blue); font-size:10px;">Klik Zoom</span>
+              <span style="color:var(--accent-blue); font-size:9.5px;">Klik Zoom</span>
             </div>
           </button>`;
       }).join('');
@@ -4309,7 +4347,7 @@
   });
 
   /* ==========================================================================
-     11. WEBRTC CAMERA + FULLSCREEN LANDSCAPE + FLOATING SHUTTER + RENDERER
+     11. WEBRTC CAMERA + FULLSCREEN LANDSCAPE + 0.8-1.0 MB CANVAS RENDERER
      ========================================================================== */
   function getDetectedOrientation() {
     if (screen.orientation && screen.orientation.type) {
@@ -4345,21 +4383,11 @@
     showToast(`Orientasi kamera: ${$id('btnOrientMode')?.textContent || state.cameraOrientMode}`);
   }
 
-  function toggleLandscapeTimemarkDrawer() {
-    const panel = $id('camTimemarkPanel');
-    if (panel) panel.classList.toggle('drawer-open');
-  }
-
   function applyViewfinderAspect() {
     const wrap = $id('viewfinderWrap');
     const isPort = isDevicePortrait();
     if (wrap) wrap.classList.toggle('portrait-device', isPort);
     updateOrientButtonLabel();
-
-    if (!isPort) {
-      const panel = $id('camTimemarkPanel');
-      if (panel) panel.classList.remove('drawer-open');
-    }
 
     if ($id('cameraModal')?.classList.contains('open')) {
       const videoEl = $id('cameraVideo');
@@ -4426,7 +4454,6 @@
     $setVal('camZoomSlider', 1);
     $setText('camZoomLabel', '1.0x');
     $setText('btnTorchToggle', 'Flash');
-    $id('camTimemarkPanel')?.classList.remove('drawer-open');
     applyActivePresetToControls();
 
     if (!window.isSecureContext || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -4452,8 +4479,8 @@
     if (!videoEl) return;
 
     const isPort = isDevicePortrait();
-    const idealW = isPort ? 960 : 1280;
-    const idealH = isPort ? 1280 : 960;
+    const idealW = isPort ? 1200 : 1600;
+    const idealH = isPort ? 1600 : 1200;
 
     const constraintsList = state.selectedDeviceId
       ? [
@@ -4545,7 +4572,6 @@
 
   function closeCameraModal() {
     stopCameraStream();
-    $id('camTimemarkPanel')?.classList.remove('drawer-open');
     closeModal('cameraModal');
   }
 
@@ -4561,19 +4587,20 @@
 
   async function renderWithTimemark(sourceElement, isVideo = true, forceEnable = null) {
     const canvas = $id('renderCanvas');
-    if (!canvas) return '';
+    if (!canvas) return { dataUrl: '', bytes: 0 };
     const ctx = canvas.getContext('2d');
     const s = getActiveSession();
     const g = getActiveGroup();
     const p = getActivePreset();
 
-    const srcW = isVideo ? (sourceElement.videoWidth || 1280) : (sourceElement.naturalWidth || 1280);
-    const srcH = isVideo ? (sourceElement.videoHeight || 960) : (sourceElement.naturalHeight || 960);
+    const srcW = isVideo ? (sourceElement.videoWidth || 1600) : (sourceElement.naturalWidth || 1600);
+    const srcH = isVideo ? (sourceElement.videoHeight || 1200) : (sourceElement.naturalHeight || 1200);
 
     const portraitMode = isVideo ? isDevicePortrait() : (srcH > srcW);
     const targetAspect = portraitMode ? (3 / 4) : (4 / 3);
-    const outW = portraitMode ? 900 : 1200;
-    const outH = portraitMode ? 1200 : 900;
+    // Resolusi 1600x1200 (atau 1200x1600) menghasilkan kisaran 0.8 - 1.0 MB yang tajam
+    const outW = portraitMode ? 1200 : 1600;
+    const outH = portraitMode ? 1600 : 1200;
 
     canvas.width = outW;
     canvas.height = outH;
@@ -4590,7 +4617,9 @@
     ctx.drawImage(sourceElement, (srcW - cropW) / 2, (srcH - cropH) / 2, cropW, cropH, 0, 0, outW, outH);
 
     const shouldStamp = forceEnable !== null ? forceEnable : p.enable;
-    if (!shouldStamp) return canvas.toDataURL('image/jpeg', 0.86);
+    if (!shouldStamp) {
+      return encodeCanvasToTargetRange(canvas, PHOTO_MIN_BYTES, PHOTO_MAX_BYTES);
+    }
 
     const { timeHHMM, dateStr } = getFormattedDateTime();
     const pos = p.position || 'bl';
@@ -4648,7 +4677,9 @@
       }
     });
 
-    if (renderBlocks.length === 0) return canvas.toDataURL('image/jpeg', 0.86);
+    if (renderBlocks.length === 0) {
+      return encodeCanvasToTargetRange(canvas, PHOTO_MIN_BYTES, PHOTO_MAX_BYTES);
+    }
 
     const pad = 16 * scale;
     const lineGap = 6 * scale;
@@ -4747,20 +4778,20 @@
       }
     });
 
-    return canvas.toDataURL('image/jpeg', 0.86);
+    return encodeCanvasToTargetRange(canvas, PHOTO_MIN_BYTES, PHOTO_MAX_BYTES);
   }
 
   async function captureTimemarkPhoto() {
     const video = $id('cameraVideo');
     if (!video || !video.srcObject) return showToast('Kamera belum aktif.');
     const wasPortrait = isDevicePortrait();
-    const dataUrl = await renderWithTimemark(video, true, getActivePreset().enable);
-    if (!dataUrl) return showToast('Gagal memproses foto.');
-    getActiveGroup().photos[state.activeSlot] = dataUrl;
+    const res = await renderWithTimemark(video, true, getActivePreset().enable);
+    if (!res || !res.dataUrl) return showToast('Gagal memproses foto.');
+    getActiveGroup().photos[state.activeSlot] = res.dataUrl;
     await persistSessions();
     renderAllUI();
     closeCameraModal();
-    showToast(wasPortrait ? 'Foto 3:4 Portrait tersimpan.' : 'Foto 4:3 Landscape tersimpan.');
+    showToast(`Foto ${wasPortrait ? '3:4' : '4:3'} tersimpan (${formatBytesMB(res.bytes)}).`);
   }
 
   function triggerUpload(slotKey) {
@@ -4786,10 +4817,11 @@
       const img = new Image();
       img.onerror = () => showToast('Gambar tidak dapat dimuat.');
       img.onload = async () => {
-        getActiveGroup().photos[slotKey] = await renderWithTimemark(img, false, shouldStamp);
+        const res = await renderWithTimemark(img, false, shouldStamp);
+        getActiveGroup().photos[slotKey] = res.dataUrl;
         await persistSessions();
         renderAllUI();
-        showToast('Foto berhasil tersimpan.');
+        showToast(`Foto tersimpan (${formatBytesMB(res.bytes)}).`);
       };
       img.src = e.target.result;
     };
@@ -5044,7 +5076,7 @@
     try {
       const data = {
         app: 'REV TK Pertiwi - Desa Kalibenda',
-        version: '15.0',
+        version: '16.0',
         exportedAt: new Date().toISOString(),
         kop: state.kop,
         camPresets: state.camPresets,
@@ -5123,7 +5155,6 @@
       renderAllUI();
       applyViewfinderAspect();
 
-      // Auto-load otomatis menu publik saat dibuka (termasuk hash PIN terbaru dari Cloud)
       if (!state.isAdmin && state.publicAutoLoad) {
         fetchFromGoogleCloud(true);
       } else {
