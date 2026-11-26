@@ -472,7 +472,7 @@
     }
 
     /* ========================================================================
-       5. SESSION BARS & PROGRESS BAR
+       5. SESSION BARS, PAGINATION CONTROLS & PROGRESS BAR
        ======================================================================== */
     .session-bar, .room-sub-bar {
       margin-bottom: 9px;
@@ -537,6 +537,88 @@
       border-radius: 999px;
       font-size: 9.5px;
       font-weight: 800;
+    }
+
+    .mini-pager-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--surface-inset);
+      box-shadow: var(--clay-inset);
+      border-radius: 999px;
+      padding: 2px 6px;
+      flex-shrink: 0;
+    }
+    .mini-pager-btn {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid var(--border-light);
+      background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
+      box-shadow: var(--clay-btn);
+      color: var(--text-primary);
+      font-weight: 800;
+      font-size: 11px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mini-pager-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .mini-pager-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      padding: 0 3px;
+      white-space: nowrap;
+    }
+
+    /* Pagination Bar Galeri Harian (6 Hari / Halaman) */
+    .pagination-bar {
+      margin-top: 11px;
+      padding: 8px 11px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pagination-info {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+    .pagination-controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+    .page-num-btn {
+      min-width: 28px;
+      height: 28px;
+      padding: 0 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border-light);
+      background: linear-gradient(145deg, var(--surface-grad-1), var(--surface-grad-2));
+      box-shadow: var(--clay-btn);
+      color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .page-num-btn.active {
+      background: linear-gradient(145deg, #3b7cf6, #1d58d1);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
     .bar-action-group {
@@ -1729,9 +1811,16 @@
 
   <!-- SUPER ADMIN WORKSPACE (FULL CRUD) -->
   <div id="adminCrudWorkspace">
-    <!-- Day Session Bar -->
+    <!-- Day Session Bar (Paginasi Otomatis 6 Hari per Halaman) -->
     <div class="clay-card session-bar">
-      <div class="session-pills-scroll" id="sessionPillsContainer"></div>
+      <div style="display:flex; align-items:center; gap:6px; flex:1 1 auto; min-width:0; width:100%;">
+        <div class="mini-pager-pill" id="sessionMiniPager" style="display:none;" title="Navigasi Halaman Sesi Hari (6 Hari / Halaman)">
+          <button type="button" class="mini-pager-btn" id="btnPrevSessionPage" onclick="changeDayPage(-1)">‹</button>
+          <span class="mini-pager-label" id="sessionMiniPagerLabel">1/1</span>
+          <button type="button" class="mini-pager-btn" id="btnNextSessionPage" onclick="changeDayPage(1)">›</button>
+        </div>
+        <div class="session-pills-scroll" id="sessionPillsContainer"></div>
+      </div>
       <div class="bar-action-group">
         <button type="button" class="clay-btn clay-btn-success" onclick="createNextDaySession()">+ Hari Baru</button>
         <button type="button" class="clay-btn clay-btn-danger" onclick="deleteSessionByIndex(state.activeSessionIndex)">Hapus Hari</button>
@@ -1841,12 +1930,15 @@
     </div>
   </div>
 
-  <!-- DAILY ARCHIVE GALLERY -->
+  <!-- DAILY ARCHIVE GALLERY (PAGINASI OTOMATIS 6 HARI PER HALAMAN) -->
   <section class="archive-section">
     <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
       <div style="min-width:0;">
-        <h2 style="font-size:14.5px; font-weight:800;">Galeri Dokumentasi Harian</h2>
-        <p style="font-size:11px; color:var(--text-secondary);">Klik foto untuk memperbesar (Zoom &amp; Geser), atau cetak PDF F4.</p>
+        <h2 style="font-size:14.5px; font-weight:800;">
+          Galeri Dokumentasi Harian
+          <span class="role-badge" id="archivePageSummaryBadge" style="margin-left:5px;">Hal 1 / 1</span>
+        </h2>
+        <p style="font-size:11px; color:var(--text-secondary);">Tampilan otomatis 6 hari per halaman • Klik foto untuk memperbesar (Zoom &amp; Geser), atau cetak PDF F4.</p>
       </div>
       <div style="display:flex; gap:5px; flex-wrap:wrap;">
         <button type="button" class="clay-btn clay-btn-primary admin-only-inline" onclick="addRoomGroupInSameDay()">+ Tambah Ruang</button>
@@ -1854,7 +1946,13 @@
       </div>
     </div>
 
+    <!-- Pagination Bar Atas (Muncul otomatis jika > 6 Hari) -->
+    <div id="archivePaginationTop"></div>
+
     <div id="archiveDaysContainer"></div>
+
+    <!-- Pagination Bar Bawah (Muncul otomatis jika > 6 Hari) -->
+    <div id="archivePaginationBottom"></div>
   </section>
 </div>
 
@@ -2616,12 +2714,13 @@
   }
 
   /* ==========================================================================
-     3. CONSTANTS & APPLICATION STATE (TARGET FOTO 0.8 - 1.0 MB)
+     3. CONSTANTS & APPLICATION STATE (PAGINASI 6 HARI / HALAMAN)
      ========================================================================== */
   const DEFAULT_ADMIN_PIN = '123456';
   const PIN_SALT = 'REV_TK_PERTIWI_KALIBENDA_2026_SALT';
   const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycbwCxmUCxdGblp_cSJDnTy5tJ5wVqYrYFqoJtXHW5Z8g_5oXYdOT9XJMGqaMzDJuzqu4ng/exec';
 
+  const DAYS_PER_PAGE = 6;
   const PHOTO_MIN_BYTES = 800 * 1024;
   const PHOTO_MAX_BYTES = 1000 * 1024;
 
@@ -2676,6 +2775,7 @@
     sessions: [],
     activeSessionIndex: 0,
     activeGroupIndex: 0,
+    currentDayPage: 1,
     activeSlot: 'depan',
     lbSessionIndex: 0,
     lbGroupIndex: 0,
@@ -3713,11 +3813,86 @@
   }
 
   /* ==========================================================================
-     9. SESSIONS & ROOMS FULL CRUD (TERMASUK HAPUS CLOUD OTOMATIS)
+     9. SESSIONS, ROOMS & PAGINASI OTOMATIS PER HARI (6 HARI / HALAMAN)
      ========================================================================== */
+  function getTotalDayPages() {
+    const total = Array.isArray(state.sessions) ? state.sessions.length : 1;
+    return Math.max(1, Math.ceil(total / DAYS_PER_PAGE));
+  }
+
+  function clampDayPage() {
+    const totalPages = getTotalDayPages();
+    if (state.currentDayPage < 1) state.currentDayPage = 1;
+    if (state.currentDayPage > totalPages) state.currentDayPage = totalPages;
+  }
+
+  function syncDayPageWithSession(dayIdx) {
+    const safeIdx = Math.max(0, Math.min(dayIdx, Math.max(0, state.sessions.length - 1)));
+    state.currentDayPage = Math.floor(safeIdx / DAYS_PER_PAGE) + 1;
+    clampDayPage();
+  }
+
+  function goToDayPage(page, scrollToArchive = false) {
+    const totalPages = getTotalDayPages();
+    state.currentDayPage = Math.max(1, Math.min(page, totalPages));
+    renderSessionPills();
+    renderArchiveGrid();
+    if (scrollToArchive) {
+      $id('archiveDaysContainer')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  function changeDayPage(delta) {
+    goToDayPage(state.currentDayPage + delta, false);
+  }
+
+  function buildArchivePaginationHTML(position = 'top') {
+    const totalDays = state.sessions.length;
+    const totalPages = getTotalDayPages();
+    if (totalPages <= 1) return '';
+
+    clampDayPage();
+    const startIdx = (state.currentDayPage - 1) * DAYS_PER_PAGE;
+    const endIdx = Math.min(startIdx + DAYS_PER_PAGE, totalDays);
+
+    let pageButtons = '';
+    for (let p = 1; p <= totalPages; p++) {
+      const pStart = (p - 1) * DAYS_PER_PAGE + 1;
+      const pEnd = Math.min(p * DAYS_PER_PAGE, totalDays);
+      pageButtons += `
+        <button type="button"
+          class="page-num-btn ${p === state.currentDayPage ? 'active' : ''}"
+          onclick="goToDayPage(${p}, ${position === 'bottom'})"
+          title="Halaman ${p} (Hari ke-${pStart} s/d ${pEnd})">
+          ${p}
+        </button>`;
+    }
+
+    return `
+      <div class="clay-card pagination-bar" aria-label="Navigasi Halaman Dokumentasi Harian">
+        <div class="pagination-info">
+          Menampilkan <strong>Hari ke-${startIdx + 1} – ${endIdx}</strong> dari <strong>${totalDays} Hari</strong> (6 Hari / Halaman)
+        </div>
+        <div class="pagination-controls">
+          <button type="button" class="clay-btn" style="padding:5px 10px; font-size:11px;"
+            onclick="goToDayPage(${state.currentDayPage - 1}, ${position === 'bottom'})"
+            ${state.currentDayPage <= 1 ? 'disabled' : ''}>
+            ‹ Sebelumnya
+          </button>
+          ${pageButtons}
+          <button type="button" class="clay-btn" style="padding:5px 10px; font-size:11px;"
+            onclick="goToDayPage(${state.currentDayPage + 1}, ${position === 'bottom'})"
+            ${state.currentDayPage >= totalPages ? 'disabled' : ''}>
+            Berikutnya ›
+          </button>
+        </div>
+      </div>`;
+  }
+
   async function loadSessions() {
     const saved = await HybridDB.get(KEYS.SESSIONS);
     state.sessions = normalizeSessionList(saved);
+    state.currentDayPage = 1;
     if (!saved) persistSessions();
   }
 
@@ -3758,9 +3933,10 @@
     state.sessions.push(newSession);
     state.activeSessionIndex = state.sessions.length - 1;
     state.activeGroupIndex = 0;
+    syncDayPageWithSession(state.activeSessionIndex);
     persistSessions();
     renderAllUI();
-    showToast(`${newSession.sesiLabel} ditambahkan.`);
+    showToast(`${newSession.sesiLabel} ditambahkan (Halaman ${state.currentDayPage}).`);
   }
 
   async function addRoomGroupInSameDay() {
@@ -3808,6 +3984,7 @@
   function switchSession(dayIdx, groupIdx = 0) {
     state.activeSessionIndex = dayIdx;
     state.activeGroupIndex = groupIdx;
+    syncDayPageWithSession(dayIdx);
     renderAllUI();
   }
 
@@ -3894,6 +4071,7 @@
     state.sessions.splice(index, 1);
     state.activeSessionIndex = Math.max(0, state.activeSessionIndex - 1);
     state.activeGroupIndex = 0;
+    syncDayPageWithSession(state.activeSessionIndex);
     await persistSessions();
     renderAllUI();
     showToast(`Menghapus "${deletedLabel}" dari Cloud...`);
@@ -3995,6 +4173,7 @@
   }
 
   function renderAllUI() {
+    clampDayPage();
     const s = getActiveSession();
     const g = getActiveGroup();
 
@@ -4053,8 +4232,24 @@
 
   function renderSessionPills() {
     const container = $id('sessionPillsContainer');
+    const miniPager = $id('sessionMiniPager');
     if (!container) return;
-    container.innerHTML = state.sessions.map((sess, idx) => {
+
+    clampDayPage();
+    const totalPages = getTotalDayPages();
+    const startIdx = (state.currentDayPage - 1) * DAYS_PER_PAGE;
+    const endIdx = Math.min(startIdx + DAYS_PER_PAGE, state.sessions.length);
+
+    if (miniPager) {
+      miniPager.style.display = totalPages > 1 ? 'inline-flex' : 'none';
+      $setText('sessionMiniPagerLabel', `Hal ${state.currentDayPage}/${totalPages}`);
+      if ($id('btnPrevSessionPage')) $id('btnPrevSessionPage').disabled = state.currentDayPage <= 1;
+      if ($id('btnNextSessionPage')) $id('btnNextSessionPage').disabled = state.currentDayPage >= totalPages;
+    }
+
+    const slice = state.sessions.slice(startIdx, endIdx);
+    container.innerHTML = slice.map((sess, relIdx) => {
+      const idx = startIdx + relIdx;
       let dayPhotos = 0;
       sess.groups.forEach(g => SLOTS.forEach(sl => { if (g.photos && g.photos[sl.key]) dayPhotos++; }));
       return `
@@ -4083,7 +4278,23 @@
   function renderArchiveGrid() {
     const container = $id('archiveDaysContainer');
     if (!container) return;
-    container.innerHTML = state.sessions.map((sess, dayIdx) => {
+
+    clampDayPage();
+    const totalDays = state.sessions.length;
+    const totalPages = getTotalDayPages();
+    const startIdx = (state.currentDayPage - 1) * DAYS_PER_PAGE;
+    const endIdx = Math.min(startIdx + DAYS_PER_PAGE, totalDays);
+
+    $setText('archivePageSummaryBadge', `Hal ${state.currentDayPage} / ${totalPages} (${totalDays} Hari)`);
+
+    const topPager = $id('archivePaginationTop');
+    const bottomPager = $id('archivePaginationBottom');
+    if (topPager) topPager.innerHTML = buildArchivePaginationHTML('top');
+    if (bottomPager) bottomPager.innerHTML = buildArchivePaginationHTML('bottom');
+
+    const paginatedSessions = state.sessions.slice(startIdx, endIdx);
+    container.innerHTML = paginatedSessions.map((sess, relIdx) => {
+      const dayIdx = startIdx + relIdx;
       const totalDayPhotos = sess.groups.reduce((acc, grp) =>
         acc + SLOTS.filter(sl => Boolean(grp.photos && grp.photos[sl.key])).length, 0);
 
@@ -4583,16 +4794,10 @@
     closeModal('cameraModal');
   }
 
-  /**
-   * TAINT-SAFE IMAGE LOADER:
-   * Mencegah error "Tainted canvases may not be exported" saat logo berasal dari URL eksternal (Google Drive).
-   * Jika URL eksternal memblokir CORS, otomatis fallback ke logo vektor default yang aman untuk Canvas.
-   */
   function loadTaintSafeCanvasImage(src) {
     return new Promise(async (resolve) => {
       if (!src) return resolve(null);
 
-      // 1. Jika sudah Data URI lokal, langsung muat dengan aman
       if (src.startsWith('data:')) {
         const img = new Image();
         img.onload = () => resolve(img);
@@ -4601,7 +4806,6 @@
         return;
       }
 
-      // 2. Jika URL eksternal (https://...), coba ambil via fetch() atau crossOrigin="anonymous"
       try {
         const resp = await fetch(src, { mode: 'cors' });
         if (resp.ok) {
@@ -4621,7 +4825,6 @@
         }
       } catch (e) {}
 
-      // 3. Fallback ke logo default inline (aman dari Tainted Canvas)
       const fallbackImg = new Image();
       fallbackImg.onload = () => resolve(fallbackImg);
       fallbackImg.onerror = () => resolve(null);
@@ -5106,6 +5309,7 @@
         state.sessions = normalizeSessionList(res.records);
         state.activeSessionIndex = 0;
         state.activeGroupIndex = 0;
+        state.currentDayPage = 1;
         await persistSessions();
         renderAllUI();
         setCloudSyncBadge('synced', `Cloud Terbaru (${state.sessions.length} Sesi)`);
@@ -5144,7 +5348,7 @@
     try {
       const data = {
         app: 'REV TK Pertiwi - Desa Kalibenda',
-        version: '16.2',
+        version: '16.3',
         exportedAt: new Date().toISOString(),
         kop: state.kop,
         camPresets: state.camPresets,
@@ -5190,6 +5394,7 @@
           state.sessions = normalizeSessionList(data.sessions);
           state.activeSessionIndex = 0;
           state.activeGroupIndex = 0;
+          state.currentDayPage = 1;
           await persistSessions();
           renderAllUI();
           showToast(`Restore berhasil (${state.sessions.length} sesi).`);
