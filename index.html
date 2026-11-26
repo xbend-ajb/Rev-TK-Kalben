@@ -2724,6 +2724,15 @@
   const PHOTO_MIN_BYTES = 800 * 1024;
   const PHOTO_MAX_BYTES = 1000 * 1024;
 
+  const BULAN_ID = Object.freeze([
+    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+  ]);
+
+  const HARI_ID = Object.freeze([
+    'Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'
+  ]);
+
   const SLOTS = Object.freeze([
     { key: 'depan', label: '1. TAMPAK DEPAN' },
     { key: 'kanan', label: '2. SAMPING KANAN' },
@@ -2912,7 +2921,7 @@
   }
 
   /* ==========================================================================
-     5. UTILITIES, FAST 0.8-1.0 MB IMAGE ENGINE & PROPORTIONAL LOGO
+     5. UTILITIES, FORMAT TANGGAL (dd mmmm yyyy), FAST 0.8-1.0 MB IMAGE ENGINE
      ========================================================================== */
   function escapeHtml(str) {
     return String(str ?? '')
@@ -2921,6 +2930,36 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
+  }
+
+  /**
+   * Format tanggal standar ke bentuk: "dd mmmm yyyy" (contoh: "26 November 2026")
+   */
+  function formatTanggalIndo(dateInput) {
+    if (!dateInput) return '-';
+    const raw = String(dateInput).trim();
+
+    // Parse format YYYY-MM-DD (dari input date / ISO string) tanpa pergeseran zona waktu
+    const isoMatch = raw.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
+    if (isoMatch) {
+      const year = isoMatch[1];
+      const monthIdx = parseInt(isoMatch[2], 10) - 1;
+      const day = String(parseInt(isoMatch[3], 10)).padStart(2, '0');
+      if (monthIdx >= 0 && monthIdx < 12) {
+        return `${day} ${BULAN_ID[monthIdx]} ${year}`;
+      }
+    }
+
+    // Fallback untuk objek Date atau string tanggal lainnya
+    const d = new Date(raw);
+    if (!Number.isNaN(d.getTime())) {
+      const day = String(d.getDate()).padStart(2, '0');
+      const month = BULAN_ID[d.getMonth()];
+      const year = d.getFullYear();
+      return `${day} ${month} ${year}`;
+    }
+
+    return raw;
   }
 
   function estimateDataUrlBytes(dataUrl) {
@@ -2995,11 +3034,12 @@
 
   function getFormattedDateTime() {
     const now = new Date();
-    const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+    const dd = String(now.getDate()).padStart(2, '0');
+    const mmmm = BULAN_ID[now.getMonth()];
+    const yyyy = now.getFullYear();
     return {
       timeHHMM: `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`,
-      dateStr: `${days[now.getDay()]}, ${String(now.getDate()).padStart(2, '0')} ${months[now.getMonth()]} ${now.getFullYear()}`
+      dateStr: `${HARI_ID[now.getDay()]}, ${dd} ${mmmm} ${yyyy}`
     };
   }
 
@@ -3614,6 +3654,7 @@
     const g = getActiveGroup();
     const slotObj = SLOTS.find(sl => sl.key === state.activeSlot) || SLOTS[0];
     const { timeHHMM, dateStr } = getFormattedDateTime();
+    const tanggalIndo = formatTanggalIndo(s.tanggalKegiatan);
     const logoSrc = resolveEffectiveLogoSrc(p);
     const { lineA, lineB } = buildRegionLines(p);
     const gpsVal = (p.gpsText || s.gps || '').trim();
@@ -3631,7 +3672,7 @@
             ${logoHTML}
             <div>
               <div class="tm-big-clock" style="font-size:${Math.round(19 * clockScale)}px; color:${theme === 'light' ? '#1d4ed8' : '#fbbf24'};">${timeHHMM}</div>
-              <div style="font-weight:700; font-size:9.5px;">${dateStr} (${escapeHtml(s.tanggalKegiatan)})</div>
+              <div style="font-weight:700; font-size:9.5px;">${dateStr} (${escapeHtml(tanggalIndo)})</div>
             </div>
           </div>`;
       }
@@ -3936,7 +3977,7 @@
     syncDayPageWithSession(state.activeSessionIndex);
     persistSessions();
     renderAllUI();
-    showToast(`${newSession.sesiLabel} ditambahkan (Halaman ${state.currentDayPage}).`);
+    showToast(`${newSession.sesiLabel} (${formatTanggalIndo(newSession.tanggalKegiatan)}) ditambahkan.`);
   }
 
   async function addRoomGroupInSameDay() {
@@ -4252,10 +4293,11 @@
       const idx = startIdx + relIdx;
       let dayPhotos = 0;
       sess.groups.forEach(g => SLOTS.forEach(sl => { if (g.photos && g.photos[sl.key]) dayPhotos++; }));
+      const tglIndo = formatTanggalIndo(sess.tanggalKegiatan);
       return `
         <button type="button" class="session-pill ${idx === state.activeSessionIndex ? 'active' : ''}" onclick="switchSession(${idx}, 0)">
           <span>${escapeHtml(sess.sesiLabel)}</span>
-          <span style="opacity:0.75; font-size:10px;">(${escapeHtml(sess.tanggalKegiatan)})</span>
+          <span style="opacity:0.75; font-size:10px;">(${escapeHtml(tglIndo)})</span>
           <span class="session-dot-count">${sess.groups.length}R • ${dayPhotos}F</span>
         </button>`;
     }).join('');
@@ -4295,6 +4337,7 @@
     const paginatedSessions = state.sessions.slice(startIdx, endIdx);
     container.innerHTML = paginatedSessions.map((sess, relIdx) => {
       const dayIdx = startIdx + relIdx;
+      const tglIndo = formatTanggalIndo(sess.tanggalKegiatan);
       const totalDayPhotos = sess.groups.reduce((acc, grp) =>
         acc + SLOTS.filter(sl => Boolean(grp.photos && grp.photos[sl.key])).length, 0);
 
@@ -4340,7 +4383,7 @@
           <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; padding-bottom:7px; border-bottom:1px solid var(--divider-color);">
             <div style="min-width:0;">
               <span style="font-size:13.5px; font-weight:800; color:var(--accent-blue);">${escapeHtml(sess.sesiLabel)}</span>
-              <span style="font-size:11.5px; font-weight:700; margin-left:5px;">(${escapeHtml(sess.tanggalKegiatan)} • ${sess.progres}%)</span>
+              <span style="font-size:11.5px; font-weight:700; margin-left:5px;">(${escapeHtml(tglIndo)} • ${sess.progres}%)</span>
               <div style="font-size:10.5px; color:var(--text-secondary);">${sess.groups.length} Ruang • ${totalDayPhotos} Foto</div>
             </div>
             <div style="display:flex; gap:5px; flex-wrap:wrap;">
@@ -4510,13 +4553,14 @@
     const toggleBtn = $id('btnLbToggleMode');
     if (!gridEl || !singleEl || !toggleBtn) return;
 
+    const tglIndo = formatTanggalIndo(sess.tanggalKegiatan);
     $setText('lbHeaderTitle', `${sess.sesiLabel} — ${grp.roomName}`);
 
     if (state.lbMode === 'grid') {
       gridEl.style.display = 'grid';
       singleEl.style.display = 'none';
       toggleBtn.textContent = 'Mode Zoom';
-      $setText('lbHeaderSubtitle', `${sess.tanggalKegiatan} • Progres ${sess.progres}% • Klik foto untuk Zoom`);
+      $setText('lbHeaderSubtitle', `${tglIndo} • Progres ${sess.progres}% • Klik foto untuk Zoom`);
 
       gridEl.innerHTML = SLOTS.map((sl, idx) => {
         const src = grp.photos ? grp.photos[sl.key] : '';
@@ -4538,7 +4582,7 @@
 
       const slot = SLOTS[state.lbSlotIndex];
       const dataUrl = grp.photos ? grp.photos[slot.key] : '';
-      $setText('lbHeaderSubtitle', `${slot.label} • ${sess.tanggalKegiatan} • Klik foto / scroll untuk zoom`);
+      $setText('lbHeaderSubtitle', `${slot.label} • ${tglIndo} • Klik foto / scroll untuk zoom`);
 
       const lbImg = $id('lbImage');
       const lbEmpty = $id('lbEmptyMsg');
@@ -4868,6 +4912,7 @@
     }
 
     const { timeHHMM, dateStr } = getFormattedDateTime();
+    const tanggalIndo = formatTanggalIndo(s.tanggalKegiatan);
     const pos = p.position || 'bl';
     const theme = p.theme || 'dark';
     const bgAlpha = (Number(p.opacity) || 0) / 100;
@@ -4895,7 +4940,7 @@
         renderBlocks.push({
           type: 'header',
           timeText: timeHHMM,
-          dateText: `${dateStr} (${s.tanggalKegiatan})`,
+          dateText: `${dateStr} (${tanggalIndo})`,
           timeSize: 34 * scale * clockScale,
           dateSize: 15 * scale,
           hasLogo: Boolean(logoImg),
@@ -5128,7 +5173,7 @@
   }
 
   /* ==========================================================================
-     12. PRINT F4 (215mm x 330mm, RASIO 4:3 MURNI)
+     12. PRINT F4 (215mm x 330mm, RASIO 4:3 MURNI & FORMAT TANGGAL dd mmmm yyyy)
      ========================================================================== */
   function buildF4PageHTML(sess, grp, hasNextPage = false) {
     const emptyPlaceholder = svgToDataUri(
@@ -5144,6 +5189,7 @@
         </div>`;
     }).join('');
 
+    const tglIndo = formatTanggalIndo(sess.tanggalKegiatan);
     const ketText = grp.catatan || `Dokumentasi visual 4 sisi (${grp.roomName}) pada ${sess.sesiLabel}.`;
     const namaKepsek = (sess.kepalaSekolah || 'YUSTIANI').toUpperCase();
 
@@ -5159,7 +5205,7 @@
             </tr>
             <tr>
               <td><strong>Ruang / Bagian</strong></td><td>:</td><td><strong>${escapeHtml(grp.roomName)}</strong></td>
-              <td><strong>Tanggal</strong></td><td>:</td><td>${escapeHtml(sess.tanggalKegiatan)}</td>
+              <td><strong>Tanggal</strong></td><td>:</td><td>${escapeHtml(tglIndo)}</td>
             </tr>
             <tr><td><strong>Lokasi / GPS</strong></td><td>:</td><td colspan="4">${escapeHtml(sess.alamat)} (${escapeHtml(sess.gps)})</td></tr>
             <tr><td><strong>Keterangan</strong></td><td>:</td><td colspan="4">${escapeHtml(ketText)}</td></tr>
@@ -5168,7 +5214,7 @@
         <div class="photo-grid-f4">${gridBoxes}</div>
         <div class="ttd-single-kepsek">
           <div class="ttd-kepsek-box">
-            Kalibenda, ${escapeHtml(sess.tanggalKegiatan)}<br />
+            Kalibenda, ${escapeHtml(tglIndo)}<br />
             Kepala Sekolah TK Pertiwi Desa Kalibenda
             <div class="ttd-space"></div>
             <strong style="text-decoration: underline;">${escapeHtml(namaKepsek)}</strong>
@@ -5348,7 +5394,7 @@
     try {
       const data = {
         app: 'REV TK Pertiwi - Desa Kalibenda',
-        version: '16.3',
+        version: '16.4',
         exportedAt: new Date().toISOString(),
         kop: state.kop,
         camPresets: state.camPresets,
